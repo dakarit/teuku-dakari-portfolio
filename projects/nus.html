@@ -52,7 +52,7 @@
       <header class="cs-header">
         <div class="container container--text">
           <h1>FitCheck</h1>
-          <p class="cs-header__summary">A fashion super-app concept that won First Prize at the National University of Singapore’s School of Computing summer workshop. I designed its Virtual Wardrobe and created the design system for our team of four.</p>
+          <p class="cs-header__summary">A fashion super-app concept that won First Prize at the National University of Singapore’s School of Computing summer workshop, where I designed the Virtual Wardrobe and created the design system for our team of four.</p>
 
           <dl class="cs-meta">
             <div>
@@ -89,18 +89,18 @@
 
         <section class="cs-section reveal" aria-labelledby="problem">
           <h2 id="problem">The Problem</h2>
-          <p>Young people manage their wardrobes, outfit decisions, shopping, resale, and fashion inspiration across disconnected tools. That makes it hard to use what they already own, make confident fashion decisions, and build a consistent personal style.</p>
+          <p>Young people currently manage their wardrobes, outfit decisions, shopping, resale, and fashion inspiration across disconnected tools. This makes it difficult to use what they already own, make confident fashion decisions, and develop a consistent personal style.</p>
           <p>FitCheck brings it all into one app by connecting four services: a Virtual Wardrobe, an Outfit Designer, a Marketplace for buying and reselling, and Outfit Sharing.</p>
-          <p>The service I designed, the Virtual Wardrobe, tackles a narrower problem: people own more clothes than they actually use. Without a clear picture of their closet, they repeat the same few outfits, forget what they’ve bought, and struggle with a basic question: what do I have, and what should I wear?</p>
+          <p>The service I designed, the Virtual Wardrobe, focuses on a narrower problem. People own more clothes than they actually use, and without a clear picture of what’s in their closet, they default to the same few outfits, forget items they already bought, and struggle to answer a basic question: what do I actually have, and what should I wear?</p>
         </section>
 
         <section class="cs-section reveal" aria-labelledby="context">
           <h2 id="context">Context &amp; Constraints</h2>
-          <p>FitCheck was our group project for <em>Designing Interactive Interfaces: UI/UX in the Digital World</em>, an intensive course in the NUS School of Computing Summer Workshop in Singapore. I led our team with Li Ka Kit, Ji Caitong, and Chen Xiangning. I designed the Virtual Wardrobe, created the design system the whole app uses, and took part in all of the team’s shared work: research, the ecosystem map, and testing.</p>
+          <p>FitCheck was our group project for <em>Designing Interactive Interfaces: UI/UX in the Digital World</em>, an intensive course in the NUS School of Computing Summer Workshop in Singapore. I led our team of four, working alongside Li Ka Kit, Ji Caitong, and Chen Xiangning. I designed the Virtual Wardrobe, created the design system used across the whole app, and took part in all of the group work, including research, the ecosystem map, and testing.</p>
           <ul>
-            <li>We had one month for the entire project, from research to a final showcase, so research and testing had to be small but efficient.</li>
-            <li>Our primary users, teenagers and young adults, range from people who dress for the occasion to people who live and breathe fashion. We had to design for both, plus secondary users like content creators and resellers.</li>
-            <li>Four services had to feel like one continuous app, not four apps stitched together.</li>
+            <li>We only had one month for the entire project, from research to the final showcase, so our research and testing had to be small but efficient.</li>
+            <li>Our primary users are teenagers and young adults, whose interest in fashion can vary heavily, from people who only dress for the occasion to people who live and breathe fashion. As such, we needed to design for both, as well as secondary users like content creators and clothing resellers.</li>
+            <li>The four services also had to feel like one continuous experience rather than separate apps.</li>
           </ul>
         </section>
 
@@ -109,39 +109,39 @@
 
           <div class="cs-subsection">
             <h3>1. Research</h3>
-            <p>With one month for the whole project, we ran four semi-structured interviews rather than a larger study, and made each one count by choosing a stratified sample, from people who only dress for occasions to people who decide what to wear every day. Fashion is a form of self-expression, so we wanted qualitative answers over survey data. We asked follow-up questions only where they applied, like digging into thrifting habits only with people who thrift.</p>
-            <p>We clustered the findings into an affinity diagram and built two deliberately opposite personas: Alex, who only wants to be styled for relevant occasions, and Sam, who wants to make a career out of fashion. Together they cover the whole primary audience and reach into the secondary ones. A journey map for Alex then shaped how the app should flow.</p>
+            <p>Due to our one-month timeline, we had to keep our research small while getting as much out of it as possible. As such, we conducted four semi-structured interviews with a stratified sample, ranging from people who only dress for the occasion to people who decide what to wear every single day. Since fashion is inherently a form of creative expression, we needed qualitative data, which is why we chose interviews so that we could directly ask people about their fashion habits. We went in with a list of questions, but some were only asked when they applied, such as follow-up questions about thrifting only being asked if the interviewee actually thrifted.</p>
+            <p>From there, we clustered our findings into an affinity diagram and created two personas designed to be polar opposites: Alex, who doesn’t care too much about fashion and only wants to be styled for relevant occasions, and Sam, who wants to make a career out of fashion. This let our personas cover our entire primary user base while also dipping into the secondary ones. Our personas then helped us figure out how the app should flow, which we mapped out in a user journey map for Alex.</p>
           </div>
 
           <div class="cs-subsection">
             <h3>2. Design system</h3>
-            <p>I created the design system for the whole app, built for a calm, photo-first interface where people’s clothes are the focus.</p>
+            <p>I created the design system for the whole app, built around a calm, photo-first interface that keeps the focus on the user’s clothes.</p>
             <ul>
-              <li><strong>Accessible color.</strong> Every color is documented with its WCAG contrast ratio, e.g. navy text at 18.3:1 and the accent blue at 5.74:1. The palette stays small so it never competes with the clothes. Blue and white are both neutrals in fashion, so they don’t clash with anything: almost everyone owns something blue, and white lets clothing stand out. Red is reserved for destructive actions like deleting.</li>
-              <li><strong>Tokens in three tiers.</strong> Primitives feed semantic tokens, which feed components, so a rebrand is a one-place edit.</li>
-              <li><strong>Glass vs. crisp.</strong> Translucent, blurred “glass” is reserved for navigation and controls; content like cards and forms stays solid. It echoes iOS’s Liquid Glass, so the app feels native.</li>
-              <li><strong>One type family.</strong> Manrope in six sizes, approachable and clean, with enough weights for a full hierarchy.</li>
+              <li><strong>Accessible color.</strong> Every color is documented with its WCAG contrast ratio, such as navy text at 18.3:1 and the accent blue at 5.74:1. We kept the palette to a few key colors so the clothes wouldn’t be overshadowed by a busy visual design. Blue and white are both neutral colors in fashion, so they don’t clash with anything. Pretty much everyone owns something blue, like a pair of jeans, and white really lets the clothing shine. Red is reserved for destructive actions like deleting, to stay consistent with other apps.</li>
+              <li><strong>Three tiers of tokens.</strong> Primitives feed into semantic tokens, which then feed into components. This means a rebrand only needs to be edited in one place.</li>
+              <li><strong>Glass vs. crisp.</strong> Translucent, blurred “glass” is reserved for navigation and controls, while content like cards and forms stays solid. This gives the interface a lighter feel and a clearer sense of depth, and since it mirrors iOS’s Liquid Glass, the app feels native to the platform.</li>
+              <li><strong>One type family.</strong> We used Manrope in six sizes. Its geometric, slightly rounded style feels approachable rather than corporate, and its wide range of weights gives us a full type hierarchy from a single font family.</li>
             </ul>
           </div>
 
           <div class="cs-subsection">
             <h3>3. Designing the Virtual Wardrobe</h3>
-            <p>Each design decision came straight from what interviewees told us.</p>
+            <p>Each design decision was based on what our interviewees told us.</p>
             <ul>
-              <li><strong>Fast cataloging.</strong> “I would not spend hours photographing and entering every item I own.” An AI camera scan fills in an item’s category, brand, size, and condition in seconds. Entering details by hand uses the exact same form, so it’s never a dead end.</li>
-              <li><strong>Deciding what to wear.</strong> “I mainly wear the same few clothes because they are easier to find.” Favorite pieces rise to the top of the wardrobe, and any item can be tried on virtually straight from the grid.</li>
-              <li><strong>Surfacing forgotten items.</strong> “I sometimes forget that I already own a similar item.” A one-tap “Mark as Worn” builds a wear history, and item cards flag pieces that haven’t been worn in a while.</li>
+              <li><strong>Fast cataloging.</strong> “I would not spend hours photographing and entering every item I own.” To make adding an item as quick as possible, an AI camera scan fills in its category, brand, size, and condition in seconds. Entering details manually uses the exact same form, so typing it in yourself is always an option.</li>
+              <li><strong>Deciding what to wear.</strong> “I mainly wear the same few clothes because they are easier to find.” Users can mark their favorite pieces so they show up first in the wardrobe, and they can virtually try on any item straight from the grid rather than digging through their closet.</li>
+              <li><strong>Surfacing forgotten items.</strong> “I sometimes forget that I already own a similar item.” A one-tap “Mark as Worn” button builds a wear history, and item cards flag pieces that haven’t been worn in a while so they don’t get lost in the grid.</li>
             </ul>
             <figure class="cs-figure">
               <img src="../images/nus/process-wardrobe.jpg" alt="Adding an item in FitCheck: the Scan Item camera screen, the Review Details screen with AI-filled fields, and the wardrobe grid with a Not worn 46d badge" width="1440" height="900" loading="lazy">
-              <figcaption>Adding an item: scan it, check the AI-filled details, and it lands in the wardrobe, where favorites and a “Not worn” badge help decide what to wear.</figcaption>
+              <figcaption>Adding an item to the wardrobe. After scanning it and checking the AI-filled details, the item shows up in the wardrobe grid, where favorites and a “Not worn” badge help you decide what to wear.</figcaption>
             </figure>
           </div>
 
           <div class="cs-subsection">
             <h3>4. Prototyping and testing</h3>
             <p>We built FitCheck into an interactive, testable prototype in Figma. <a href="https://www.figma.com/proto/b9Adcl0N2yXYHbVpYsxegp/Fitcheck-Designs?page-id=865%3A2&amp;node-id=725-72&amp;p=f&amp;m=draw&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;starting-point-node-id=725%3A72&amp;show-proto-sidebar=0&amp;t=Y2bTqY3LODWqlm0p-1" target="_blank" rel="noopener">Try the prototype<span class="visually-hidden"> (opens in new tab)</span></a>.</p>
-            <p>Before the final iteration, we ran a lightweight heuristic review alongside an unmoderated usability study in Maze. Given the one-month timeline, the study was about learning usability-testing workflows and catching real problems, not a large-scale research exercise. Participants completed four realistic tasks, like adding an item to the wardrobe, without being shown the intended path, then explored freely so we could see what drew their attention.</p>
+            <p>Before the final iteration, we ran a lightweight heuristic review alongside an unmoderated usability study in Maze. Due to our one-month timeline, the study was less about large-scale research and more about getting familiar with usability testing and catching real problems. Participants completed four realistic tasks, such as adding an item to their wardrobe, without being shown the intended path, and then freely explored the app so we could see what naturally caught their attention.</p>
           </div>
         </section>
 
@@ -149,7 +149,7 @@
           <h2 id="outcome">Outcome</h2>
           <p>FitCheck won First Prize at the workshop’s final showcase. <a href="../assets/nus-first-prize-certificate.pdf">View the certificate (PDF)</a></p>
           <div class="cs-callout">
-            <p>Building the Maze study pushed us past static screens to define what successful interaction actually means, and showed us where the prototype needed clearer feedback and more complete navigation.</p>
+            <p>Building the Maze study helped us think beyond static screens and define what successful interaction actually means. It also showed us where our prototype needed clearer feedback and more complete navigation.</p>
           </div>
         </section>
 
