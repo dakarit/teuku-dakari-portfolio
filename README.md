@@ -103,13 +103,11 @@ git push -u origin main
 
 Either way, every push to `main` redeploys automatically, and you can add a custom domain in the project's domain settings.
 
-### 3. After your first deploy: fix link previews
+### 3. Domain
 
-Link previews (the card that shows up when you paste your URL into LinkedIn, Slack or iMessage) need
-full URLs. Every page has `og:` meta tags pointing at `https://your-domain.com`. Once you know your real
-address (e.g. `teukudakari.vercel.app` or your own domain), find-and-replace `https://your-domain.com`
-across all HTML files, then push. You can test the result with LinkedIn's
-[Post Inspector](https://www.linkedin.com/post-inspector/).
+The site is served at **https://dakari.dev**. Link-preview tags (`og:url`, `og:image`) on every page point there,
+so if the domain ever changes, find-and-replace `https://dakari.dev` across the HTML files. You can test previews
+with LinkedIn's [Post Inspector](https://www.linkedin.com/post-inspector/).
 
 ## Craft details (for reference)
 
