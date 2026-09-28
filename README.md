@@ -20,7 +20,6 @@ A static HTML/CSS portfolio site. No framework, no build step, no dependencies.
 │   └── nus.html            # Case study 3 — NUS workshop (lighter treatment)
 ├── images/
 │   ├── og-image.png        # 1200×630 link-preview image (name card; swap for your own if you like)
-│   ├── placeholders/       # Temporary placeholder SVGs — delete once everything is swapped
 │   ├── clinic/             # Put real images for each project here
 │   ├── oakland/
 │   └── nus/
@@ -30,10 +29,7 @@ A static HTML/CSS portfolio site. No framework, no build step, no dependencies.
 
 ## Swapping in real content
 
-1. **Find every placeholder:** search the project for `PLACEHOLDER`.
-   ```bash
-   grep -rn "PLACEHOLDER" --include="*.html" .
-   ```
+1. **Edit copy** directly in the HTML files. Case study pages share the same section structure.
 2. **Contact links** (already filled in from your resume): email, LinkedIn and GitHub live in the
    footer on every page (marked with `SHARED FOOTER` comments). Change them with find-and-replace across files.
 3. **Resume:** `assets/resume.pdf` is your resume. Replace that file whenever you update it.
