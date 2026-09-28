@@ -5,7 +5,7 @@
   <script>document.documentElement.classList.add("js")</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AI Document Accessibility Converter, City of Oakland — Teuku Dakari</title>
-  <meta name="description" content="Case study: designing the UI for a tool that converts City of Oakland documents into WCAG-compliant formats.">
+  <meta name="description" content="Case study: designing and building the UI for a tool that converts City of Oakland documents into WCAG-compliant formats.">
 
   <meta name="theme-color" content="#F6F0E8">
 
@@ -13,7 +13,7 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Teuku Dakari">
   <meta property="og:title" content="AI Document Accessibility Converter, City of Oakland — Teuku Dakari">
-  <meta property="og:description" content="Case study: designing the UI for a tool that converts City of Oakland documents into WCAG-compliant formats.">
+  <meta property="og:description" content="Case study: designing and building the UI for a tool that converts City of Oakland documents into WCAG-compliant formats.">
   <meta property="og:url" content="https://dakari.dev/projects/oakland.html">
   <meta property="og:image" content="https://dakari.dev/images/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -57,7 +57,7 @@
           <dl class="cs-meta">
             <div>
               <dt>Role</dt>
-              <dd>UI designer, design system</dd>
+              <dd>UI designer and front-end developer, design system</dd>
             </div>
             <div>
               <dt>Timeline</dt>
@@ -97,7 +97,7 @@
 
         <section class="cs-section reveal" aria-labelledby="context">
           <h2 id="context">Context &amp; Constraints</h2>
-          <p>This was a course project for CS 2535 at Northeastern, with the City of Oakland as our client. Anh Nguyen was our principal investigator, and Professor Miguel Fuentes-Cabrera was our mentor. I worked alongside Anthony Bazhenov, Sun Choi, Audrey Tung, and Dani Luo, where I created the website’s design system, designed most of its screens, and helped with minor pieces of the backend logic.</p>
+          <p>This was a course project for CS 2535 at Northeastern, with the City of Oakland as our client. Anh Nguyen was our principal investigator, and Professor Miguel Fuentes-Cabrera was our mentor. I worked alongside Anthony Bazhenov, Sun Choi, Audrey Tung, and Dani Luo, where I created the website’s design system, designed and implemented most of its screens in HTML and CSS, and helped with minor pieces of the backend logic.</p>
           <ul>
             <li>We aimed for WCAG level AA, as the stricter AAA guidelines mostly don’t apply to the text documents we were working with.</li>
             <li>The city couldn’t provide pairs of inaccessible and fixed documents for us to train on, and none existed publicly, so the team turned to AI to generate synthetic training data.</li>
@@ -112,7 +112,7 @@
 
           <div class="cs-subsection">
             <h3>1. Designing the interface</h3>
-            <p>I built the website’s design system and used it to design every screen except the document viewer, including sign-in and registration, the dashboard where staff upload, list, and delete documents, settings, and password reset. The document viewer, which shows the converted document next to a sidebar report of what changed and what still needs a person’s review, was designed by a teammate.</p>
+            <p>I built the website’s design system and used it to design every screen except the document viewer, including sign-in and registration, the dashboard where staff upload, list, and delete documents, settings, and password reset. I then implemented my screens in HTML and CSS. The document viewer, which shows the converted document next to a sidebar report of what changed and what still needs a person’s review, was designed by a teammate.</p>
             <p>We wanted the website to feel familiar to the City of Oakland’s employees, which is why the design system closely follows the city’s main website, keeping the same colors and a similar style of clean, readable sans-serif fonts. We also wanted it to be as simple as possible to see which documents you have and whether they’ve been fully converted or still need manual fixes, so each document’s name and compliance status are the first things you see on the dashboard. Since accessibility was such an important part of this project, our website had to be accessible too, which is why the high contrast toggle sits in the top bar of every page instead of being buried in a settings menu. Given more time, this would have grown into a full accessibility menu so that anyone could use the website, regardless of the accommodations they need.</p>
             <figure class="cs-figure">
               <img src="../images/oakland/process-contrast.jpg" alt="The dashboard side by side in default mode and in high contrast mode, where controls gain outlines and borders" width="1440" height="466" loading="lazy">
