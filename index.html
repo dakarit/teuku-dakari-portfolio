@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teuku Dakari — UI/UX Designer</title>
+  <meta name="description" content="Teuku Dakari is a UI/UX designer and computer science student at Northeastern University, focused on making technology easier for everyone to use.">
+
+  <meta name="theme-color" content="#F6F0E8">
+
+  <!-- Link previews (LinkedIn, Slack, iMessage…). Replace https://your-domain.com with your real domain after deploying. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Teuku Dakari">
+  <meta property="og:title" content="Teuku Dakari — UI/UX Designer">
+  <meta property="og:description" content="UI/UX designer and computer science student at Northeastern University, focused on making technology easier for everyone to use.">
+  <meta property="og:url" content="https://your-domain.com/">
+  <meta property="og:image" content="https://your-domain.com/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Teuku Dakari, UI/UX Designer">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ SHARED HEADER (keep in sync across all pages) ============ -->
+  <header class="site-header">
+    <div class="container">
+      <a class="site-name" href="index.html">Teuku Dakari</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html#work">Work</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="assets/resume.pdf">Resume</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- ============ /SHARED HEADER ============ -->
+
+  <main id="main">
+
+    <!-- Intro -->
+    <section class="intro" aria-labelledby="intro-title">
+      <div class="container">
+        <!-- Square photo, 480×480 (3× the 160px display size for sharp Retina screens) -->
+        <img class="intro__photo" src="images/headshot.jpg" alt="Portrait of Teuku Dakari" width="160" height="160">
+        <div>
+          <h1 id="intro-title">Hi, I'm Teuku Dakari.</h1>
+          <p class="intro__statement">UI/UX designer and computer science student at Northeastern University, focused on making technology easier for everyone to use.</p>
+          <p class="intro__availability">Available for co-op, January–June 2027</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project grid -->
+    <section class="section" id="work" aria-labelledby="work-title">
+      <div class="container">
+        <h2 class="section__title" id="work-title">Selected work</h2>
+        <ul class="project-grid">
+
+          <li>
+            <article class="card">
+                            <img class="card__image" src="images/clinic/cover.jpg" alt="" width="1200" height="900" loading="lazy">
+              <div class="card__body">
+                <h3 class="card__title"><a href="projects/clinic.html">Melasma Clinic by Dr. Tompi</a></h3>
+                <p class="card__desc">I turned a Jakarta dermatology clinic’s ideas into a full website design, then built it. It’s now live.</p>
+                <ul class="tags" aria-label="Tags">
+                  <li class="tag">Client work</li>
+                  <li class="tag">Healthcare</li>
+                  <li class="tag">Web design</li>
+                </ul>
+              </div>
+            </article>
+          </li>
+
+          <li>
+            <article class="card">
+                            <img class="card__image" src="images/oakland/cover.jpg" alt="" width="1200" height="900" loading="lazy">
+              <div class="card__body">
+                <h3 class="card__title"><a href="projects/oakland.html">City of Oakland</a></h3>
+                <p class="card__desc">A website that turns City of Oakland documents into accessible, WCAG-compliant versions.</p>
+                <ul class="tags" aria-label="Tags">
+                  <li class="tag">Accessibility</li>
+                  <li class="tag">Public sector</li>
+                  <li class="tag">Course project</li>
+                </ul>
+              </div>
+            </article>
+          </li>
+
+          <li>
+            <article class="card">
+                            <img class="card__image" src="images/nus/cover.jpg" alt="" width="1200" height="900" loading="lazy">
+              <div class="card__body">
+                <h3 class="card__title"><a href="projects/nus.html">FitCheck</a></h3>
+                <p class="card__desc">A fashion super-app concept that won First Prize at the NUS School of Computing summer workshop. I designed its Virtual Wardrobe and design system.</p>
+                <ul class="tags" aria-label="Tags">
+                  <li class="tag">First Prize</li>
+                  <li class="tag">Mobile app</li>
+                  <li class="tag">Prototyping</li>
+                </ul>
+              </div>
+            </article>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="container container--text">
+        <h2 class="section__title" id="about-title">About</h2>
+        <p>I’m a computer science student at Northeastern University, graduating in 2029, and I design interfaces that make technology easier to use. I’m interested in both programming and UI/UX design, and have experience with both.</p>
+        <p>I’ve worked on both sides of the design handoff. I’ve designed in Figma, including at an NUS workshop I took part in, and as a software engineering intern at Sekolahmu, I turned designers’ work into production Flutter code for its mobile app. I’m looking for a UI/UX design or front-end development co-op for January–June 2027.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ SHARED FOOTER (keep in sync across all pages) ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Teuku Dakari</p>
+      <ul>
+        <li><a href="mailto:dakari.t@northeastern.edu">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/dakarit">LinkedIn</a></li>
+        <li><a href="https://github.com/dakarit">GitHub</a></li>
+        <li><a href="assets/resume.pdf">Resume (PDF)</a></li>
+      </ul>
+    </div>
+  </footer>
+  <!-- ============ /SHARED FOOTER ============ -->
+</body>
+</html>

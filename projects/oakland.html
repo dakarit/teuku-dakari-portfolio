@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script>document.documentElement.classList.add("js")</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Document Accessibility Converter, City of Oakland — Teuku Dakari</title>
+  <meta name="description" content="Case study: designing the UI for a tool that converts City of Oakland documents into WCAG-compliant formats.">
+
+  <meta name="theme-color" content="#F6F0E8">
+
+  <!-- Link previews (LinkedIn, Slack, iMessage…). Replace https://your-domain.com with your real domain after deploying. -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Teuku Dakari">
+  <meta property="og:title" content="AI Document Accessibility Converter, City of Oakland — Teuku Dakari">
+  <meta property="og:description" content="Case study: designing the UI for a tool that converts City of Oakland documents into WCAG-compliant formats.">
+  <meta property="og:url" content="https://your-domain.com/projects/oakland.html">
+  <meta property="og:image" content="https://your-domain.com/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Teuku Dakari, UI/UX Designer">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ SHARED HEADER (keep in sync across all pages) ============ -->
+  <header class="site-header">
+    <div class="container">
+      <a class="site-name" href="../index.html">Teuku Dakari</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="../index.html#work" aria-current="true">Work</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../assets/resume.pdf">Resume</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- ============ /SHARED HEADER ============ -->
+
+  <main id="main">
+    <article>
+
+      <!-- Case study header -->
+      <header class="cs-header">
+        <div class="container container--text">
+          <h1>City of Oakland: AI Document Accessibility Converter</h1>
+          <p class="cs-header__summary">A website where City of Oakland staff upload a PDF and get back an accessible version, plus a report of every fix and flagged issue.</p>
+
+          <dl class="cs-meta">
+            <div>
+              <dt>Role</dt>
+              <dd>UI designer, design system</dd>
+            </div>
+            <div>
+              <dt>Timeline</dt>
+              <dd>Jan–Apr 2026</dd>
+            </div>
+            <div>
+              <dt>Tools</dt>
+              <dd>Figma, HTML, CSS, Java</dd>
+            </div>
+            <div>
+              <dt>Type</dt>
+              <dd>Course project (CS 2535), team of five</dd>
+            </div>
+          </dl>
+
+          <!-- Not live yet: first iteration, AI document formatting still needs work. Uncomment if a public link or demo exists later:
+          <p class="cs-header__actions">
+            <a class="button" href="https://example.com" target="_blank" rel="noopener">View project<span class="visually-hidden"> (opens in new tab)</span></a>
+          </p>
+          -->
+        </div>
+      </header>
+
+      <!-- Hero image (16:9) -->
+      <div class="cs-hero">
+        <img src="../images/oakland/hero.jpg" alt="The Your Documents dashboard, listing uploaded PDFs with their date, size, and compliance status" width="2400" height="1350">
+      </div>
+
+      <div class="container container--text">
+
+        <section class="cs-section reveal" aria-labelledby="problem">
+          <h2 id="problem">The Problem</h2>
+          <p>Under the Americans with Disabilities Act, the City of Oakland has to make the documents it produces accessible by following the Web Content Accessibility Guidelines (WCAG). The city was doing this by hand, which took a lot of time and effort and left room for human error, and it had a backlog of more than 40,000 documents.</p>
+          <p>The accessibility tools we found were all commercial products, and none followed WCAG to the government’s standards. Without a better option, people with disabilities can’t access documents they need.</p>
+          <p>The goal: a free, easy-to-use website where staff upload a document, and AI fixes what it can and flags what it can’t, so they can check that the result is accessible.</p>
+        </section>
+
+        <section class="cs-section reveal" aria-labelledby="context">
+          <h2 id="context">Context &amp; Constraints</h2>
+          <p>This was a course project for CS 2535 at Northeastern, with the City of Oakland as our client. Anh Nguyen was our principal investigator and Professor Miguel Fuentes-Cabrera was our mentor. I worked alongside Anthony Bazhenov, Sun Choi, Audrey Tung, and Dani Luo. I created the website’s design system and designed most of its screens, and helped with minor pieces of the backend logic.</p>
+          <ul>
+            <li>We targeted WCAG level AA. The stricter AAA level mostly doesn’t apply to the text documents we were fixing.</li>
+            <li>The city couldn’t give us pairs of inaccessible and fixed documents to train on, and none existed publicly, so the team generated synthetic training data with AI.</li>
+            <li>We had one semester, so we narrowed our focus to PDFs and the most common accessibility issues.</li>
+            <li>The website itself had to be accessible, and usable from any device.</li>
+          </ul>
+        </section>
+
+        <section class="cs-section reveal" aria-labelledby="process">
+          <h2 id="process">Process</h2>
+          <p>The team split the work between the AI pipeline and the website. My focus was the website’s interface.</p>
+
+          <div class="cs-subsection">
+            <h3>1. Designing the interface</h3>
+            <p>I built the website’s design system and used it to design every screen except the document viewer: sign-in and registration, the dashboard where staff upload, list, and delete documents, settings, and password reset. A teammate designed the document viewer, which shows the converted document beside a sidebar report of what changed and what still needs a person’s review. Because the tool exists to make documents accessible, the interface had to meet the same standard. [PLACEHOLDER: Your key design decisions, e.g. how you laid out the report or made the upload flow clear.]</p>
+            <figure class="cs-figure">
+              <img src="../images/oakland/process-contrast.jpg" alt="The dashboard side by side in default mode and in high contrast mode, where controls gain outlines and borders" width="1440" height="466" loading="lazy">
+              <figcaption>The dashboard in default and high contrast mode. Staff can switch modes from the top bar or in settings.</figcaption>
+            </figure>
+          </div>
+
+          <div class="cs-subsection">
+            <h3>2. How the conversion works</h3>
+            <p>Behind the interface, the team fine-tuned two OpenAI models. The first reads an inaccessible document and writes a remediation plan: each issue, how severe it is, which guideline it breaks, and how to fix it. The second takes the document and that plan and produces the accessible version. Typical fixes include adding alt text to images (WCAG 1.1.1), not relying on color alone to carry information (1.4.1), raising text contrast (1.4.3), and tagging list-like content as real lists for screen readers (1.3.1).</p>
+          </div>
+        </section>
+
+        <section class="cs-section reveal" aria-labelledby="outcome">
+          <h2 id="outcome">Outcome</h2>
+          <p>We delivered a first iteration. The frontend is functional: staff can upload a PDF and review the automated fixes and flagged issues in a report. The tool isn’t live yet because the AI’s document formatting wasn’t finalized and needs more iteration.</p>
+          <div class="cs-callout">
+            <p>Splitting the AI’s job into two steps, first a remediation plan and then the corrected document, gave more precise, guideline-aware results than fixing documents directly.</p>
+          </div>
+          <p>Our biggest lesson was to scope realistically from the start. Narrowing to PDFs mid-semester let us ship something stable instead of something broad and unfinished. I enjoyed this project enough that it’s why I want to keep working on accessibility in tech.</p>
+        </section>
+
+        <nav class="cs-footer-nav" aria-label="Case study">
+          <a href="../index.html">Back to home</a>
+          <a class="cs-next" href="nus.html">
+            <span class="cs-next__label">Next project</span>
+            <span class="cs-next__title">FitCheck</span>
+          </a>
+        </nav>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- ============ SHARED FOOTER (keep in sync across all pages) ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Teuku Dakari</p>
+      <ul>
+        <li><a href="mailto:dakari.t@northeastern.edu">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/dakarit">LinkedIn</a></li>
+        <li><a href="https://github.com/dakarit">GitHub</a></li>
+        <li><a href="../assets/resume.pdf">Resume (PDF)</a></li>
+      </ul>
+    </div>
+  </footer>
+  <!-- ============ /SHARED FOOTER ============ -->
+  <script src="../js/reveal.js" defer></script>
+</body>
+</html>
