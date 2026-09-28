@@ -1,70 +1,53 @@
-# UI/UX Portfolio
+# dakari.dev
 
-A static HTML/CSS portfolio site. No framework, no build step, no dependencies.
+The portfolio of **Teuku Dakari**, a UI/UX designer and computer science student at Northeastern University.
 
-## Structure
+**Live site: [dakari.dev](https://dakari.dev)**
+
+![The dakari.dev home page](docs/preview.jpg)
+
+## Case studies
+
+| Project | What it is | My role |
+|---|---|---|
+| [Melasma Clinic by Dr. Tompi](https://dakari.dev/projects/clinic.html) | The first website for a new chain of dermatology clinics in Indonesia | Website designer and developer |
+| [City of Oakland: AI Document Accessibility Converter](https://dakari.dev/projects/oakland.html) | A tool that turns city documents into WCAG-compliant versions | UI designer and front-end developer, design system |
+| [FitCheck](https://dakari.dev/projects/nus.html) | A fashion super-app concept, First Prize at the NUS School of Computing summer workshop | Team lead, Virtual Wardrobe, design system |
+
+## Built with
+
+- Plain HTML and CSS, with one small JavaScript file for the scroll fade-ins. No framework and no build step.
+- [Fraunces](https://fonts.google.com/specimen/Fraunces) for headings and [DM Sans](https://fonts.google.com/specimen/DM+Sans) for body text.
+- Hosted on [Vercel](https://vercel.com), which redeploys on every push to `main`.
+- Built with help from Claude Code.
+
+## Design notes
+
+- **Accessible by default.** All text meets WCAG AA contrast, keyboard focus is always visible, headings follow a logical order, and every image has alt text.
+- **Respects reduced motion.** If "Reduce motion" is turned on, all transitions and fade-ins are switched off.
+- **One set of tokens.** Colors, type sizes, spacing (on an 8px scale), and motion all live as CSS variables at the top of `css/styles.css`.
+- **Readable line lengths.** Body text is capped at about 75 characters per line.
+
+## Project structure
 
 ```
 .
-├── index.html              # Home: intro, project grid, about
-├── 404.html                # Not-found page (used automatically by Vercel & Netlify)
-├── favicon.svg             # TD monogram (switches to a dark tile in dark-mode browsers)
-├── apple-touch-icon.png    # Home-screen icon for iPhone/iPad
-├── css/
-│   └── styles.css          # All styles. Colors, type, spacing, motion are variables at the top.
-├── js/
-│   └── reveal.js           # Fades case study sections in on scroll (the only JS on the site)
-├── projects/
-│   ├── clinic.html         # Case study 1 — Melasma skincare clinic
-│   ├── oakland.html        # Case study 2 — City of Oakland accessibility converter
-│   └── nus.html            # Case study 3 — NUS workshop (lighter treatment)
-├── images/
-│   ├── og-image.png        # 1200×630 link-preview image (name card; swap for your own if you like)
-│   ├── clinic/             # Put real images for each project here
-│   ├── oakland/
-│   └── nus/
-└── assets/
-    └── resume.pdf          # ← ADD THIS. The Resume links point here.
+├── index.html            # Home page: intro, selected work, about
+├── projects/             # Case study pages
+│   ├── clinic.html
+│   ├── oakland.html
+│   └── nus.html          # FitCheck
+├── 404.html
+├── css/styles.css        # All styles and design tokens
+├── js/reveal.js          # Scroll fade-ins for case study sections
+├── images/               # Covers, hero images, and process figures per project
+├── assets/               # Resume and certificate PDFs
+└── docs/preview.jpg      # Screenshot used in this README
 ```
 
-## Swapping in real content
+## Run it locally
 
-1. **Edit copy** directly in the HTML files. Case study pages share the same section structure.
-2. **Contact links** (already filled in from your resume): email, LinkedIn and GitHub live in the
-   footer on every page (marked with `SHARED FOOTER` comments). Change them with find-and-replace across files.
-3. **Resume:** `assets/resume.pdf` is your resume. Replace that file whenever you update it.
-4. **Images:** put files in `images/<project>/` and update the `src`. Each `<img>` has a comment
-   suggesting a filename and aspect ratio:
-   | Slot | Aspect ratio | Suggested size |
-   |---|---|---|
-   | Home card cover | 4:3 | 1200×900 |
-   | Case study hero | 16:9 | 2400×1350 |
-   | Process figure | any (16:10 shown) | 1440px wide |
-   | Headshot | 1:1 | 400×400 |
-
-   Also update the `width`/`height` attributes to match your image (prevents layout shift) and write a real `alt`.
-   Card cover images use `alt=""` on purpose — the card title already describes the link.
-5. **Live links:** the clinic page links to melasmaclinicbydrtompi.com. Oakland and NUS have
-   commented-out buttons you can enable if a public link or prototype becomes available.
-
-### Retheming
-
-Everything visual is driven by CSS variables at the top of `css/styles.css`.
-Note there are two accent tokens: `--color-accent` (#C1673B) for decorative lines/highlights and
-`--color-accent-strong` (#A4522B) for link text and buttons — the lighter terracotta is only ~3.5:1
-on the cream background, so text uses the darker shade to meet WCAG AA (4.5:1).
-
-### Fonts
-
-- **Fraunces** (serif), used for page titles and section headings (`h1`, `h2`)
-- **DM Sans** (sans-serif), used for everything else
-
-Both load from Google Fonts via the `<link>` tags in each page's `<head>`. To swap a font, change the
-Google Fonts URL on every page and update `--font-serif` / `--font-sans` at the top of `css/styles.css`.
-
-## Preview locally
-
-Just open `index.html` in a browser. Or run a local server:
+No install needed. Open `index.html` in a browser, or start a local server from the project folder:
 
 ```bash
 python3 -m http.server 8000
@@ -72,47 +55,12 @@ python3 -m http.server 8000
 
 Then visit http://localhost:8000.
 
-## Deploy
+## Credits
 
-### 1. Push to GitHub
+- **FitCheck** was designed with Li Ka Kit, Ji Caitong, and Chen Xiangning.
+- **The City of Oakland project** was built with Anthony Bazhenov, Sun Choi, Audrey Tung, and Dani Luo, with Anh Nguyen as principal investigator and Professor Miguel Fuentes-Cabrera as mentor.
+- Screenshots of client and team projects belong to their respective owners.
 
-Create an empty repo on GitHub (no README), then:
+## License
 
-```bash
-git init
-git add .
-git commit -m "Initial portfolio scaffold"
-git branch -M main
-git remote add origin https://github.com/<your-username>/<repo-name>.git
-git push -u origin main
-```
-
-### 2a. Vercel
-
-1. Go to [vercel.com/new](https://vercel.com/new) and sign in with GitHub.
-2. Import your repo.
-3. Framework preset: **Other**. Leave build command and output directory empty.
-4. Click **Deploy**.
-
-### 2b. Netlify
-
-1. Go to [app.netlify.com](https://app.netlify.com) → **Add new site** → **Import an existing project** → GitHub.
-2. Pick your repo.
-3. Leave build command empty; publish directory: `.` (or leave blank).
-4. Click **Deploy**.
-
-Either way, every push to `main` redeploys automatically, and you can add a custom domain in the project's domain settings.
-
-### 3. Domain
-
-The site is served at **https://dakari.dev**. Link-preview tags (`og:url`, `og:image`) on every page point there,
-so if the domain ever changes, find-and-replace `https://dakari.dev` across the HTML files. You can test previews
-with LinkedIn's [Post Inspector](https://www.linkedin.com/post-inspector/).
-
-## Craft details (for reference)
-
-- **Hover:** links and buttons fade color over 200ms; project card images scale to 1.02×.
-- **Focus:** keyboard focus shows a terracotta ring (mouse clicks don't). On project cards the ring wraps the whole card.
-- **Scroll reveal:** case study sections fade up 8px as they enter the viewport. If JavaScript is off, content just shows normally.
-- **Reduced motion:** if someone has "Reduce motion" turned on in their OS, all transitions, scaling and fade-ins are switched off.
-- Motion timing lives in `--duration` / `--ease` at the top of `styles.css`.
+The site's code is free to look through and learn from. The written content, images, and resume are © Teuku Dakari (and, for project screenshots, their respective owners) and may not be reused without permission.
