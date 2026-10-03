@@ -1,0 +1,788 @@
+/* ==========================================================================
+   Poster home page (prototype)
+   Printed modernist poster world: paper, ink, one vermilion accent,
+   type as image, photo cutouts against flat shapes.
+   Self-contained: the home page loads only this stylesheet.
+   ========================================================================== */
+
+:root {
+  /* Color */
+  --paper: #EEE7DA;
+  --paper-deep: #E4DCCB;
+  --ink: #1A1714;
+  --ink-soft: #4A433C;       /* secondary text, 8:1 on paper */
+  --rule: #CFC5B3;
+  --vermilion: #D9452B;      /* shapes and highlights only */
+  --vermilion-text: #B23A22; /* links and small accents, 4.8:1 on paper */
+  --navy: #12406F;           /* Melasma Clinic poster */
+  --green: #1D6B47;          /* City of Oakland poster */
+
+  /* Type */
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "DM Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+
+  /* Spacing, 8px scale */
+  --s1: 8px;
+  --s2: 16px;
+  --s3: 24px;
+  --s4: 32px;
+  --s5: 40px;
+  --s6: 48px;
+  --s8: 64px;
+  --s12: 96px;
+  --s16: 128px;
+
+  --wide: 1240px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scrollbar-color: var(--rule) transparent;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Paper grain over everything, like ink on stock */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3, p, ul, figure {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--vermilion-text);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 200ms ease;
+}
+
+a:hover {
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--vermilion-text);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: #F2C9BC;
+  color: var(--ink);
+}
+
+p,
+li {
+  text-wrap: pretty;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--s2);
+  top: -100px;
+  z-index: 60;
+  padding: var(--s1) var(--s2);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.skip-link:focus {
+  top: var(--s2);
+  color: var(--paper);
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 0 var(--s4);
+}
+
+/* Header
+   ========================================================================== */
+
+.site-header {
+  position: relative;
+  z-index: 2;
+  border-bottom: 1px solid var(--rule);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s2);
+  min-height: 72px;
+}
+
+.site-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 100%;
+  font-size: 17px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-nav ul {
+  display: flex;
+  gap: var(--s3);
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  color: var(--vermilion-text);
+  text-decoration: underline;
+}
+
+/* Hero: a poster of me
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero .wrap {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) minmax(260px, 320px);
+  align-items: end;
+  gap: var(--s5);
+  min-height: min(820px, calc(100svh - 72px));
+  padding-top: var(--s6);
+}
+
+/* The vertical name, set like "JUMP" */
+.hero__name {
+  align-self: stretch;
+  display: flex;
+  align-items: flex-end;
+  /* Rotated 180deg, so top padding sits visually at the bottom: stand on the rules */
+  padding-top: calc(var(--s16) + var(--s2));
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 62%;
+  font-size: clamp(132px, min(15.5vw, 27svh), 228px);
+  line-height: 0.78;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  user-select: none;
+}
+
+.hero__art {
+  position: relative;
+  align-self: stretch;
+  min-height: 560px;
+}
+
+.hero__circle {
+  position: absolute;
+  left: 50%;
+  top: 12%;
+  width: min(440px, 82%);
+  aspect-ratio: 1;
+  translate: -50% 0;
+  border-radius: 50%;
+  background: var(--vermilion);
+  filter: url(#rough);
+}
+
+.hero__photo {
+  position: absolute;
+  left: 50%;
+  bottom: var(--s16);
+  width: min(470px, 92%);
+  translate: -44% 0;
+  z-index: 1;
+}
+
+/* Stacked rules the figure stands on, like "One step at a time" */
+.hero__steps {
+  position: absolute;
+  left: -50vw;
+  right: -50vw;
+  bottom: 0;
+  height: var(--s16);
+  background: repeating-linear-gradient(to bottom, var(--ink) 0 1.5px, transparent 1.5px 16px);
+  opacity: 0.85;
+}
+
+.hero__info {
+  position: relative;
+  z-index: 1;
+  padding-bottom: calc(var(--s16) + var(--s5));
+}
+
+.hero__rule {
+  width: var(--s6);
+  height: 3px;
+  margin-bottom: var(--s3);
+  background: var(--ink);
+}
+
+.hero__info h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 100%;
+  font-size: 40px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.hero__statement {
+  margin-top: var(--s2);
+  color: var(--ink-soft);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.hero__availability {
+  display: flex;
+  align-items: center;
+  gap: var(--s1);
+  margin-top: var(--s3);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.hero__availability::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--vermilion);
+}
+
+/* Tiny printer's credit on the edge of the poster */
+.hero__credit {
+  position: absolute;
+  right: var(--s4);
+  top: var(--s6);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  writing-mode: vertical-rl;
+}
+
+/* One authored moment: the poster assembles like a screen print */
+@media (prefers-reduced-motion: no-preference) {
+  .hero__circle {
+    animation: print-circle 900ms var(--ease-out) 100ms both;
+  }
+
+  .hero__name {
+    animation: print-name 1000ms var(--ease-out) 250ms both;
+  }
+
+  .hero__photo {
+    animation: print-photo 900ms var(--ease-out) 550ms both;
+  }
+
+  .hero__info,
+  .hero__steps {
+    animation: print-fade 700ms var(--ease-out) 800ms both;
+  }
+}
+
+@keyframes print-circle {
+  from { opacity: 0; scale: 0.7; }
+}
+
+@keyframes print-name {
+  from { clip-path: inset(0 0 100% 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes print-photo {
+  from { opacity: 0; transform: translateY(32px); }
+}
+
+@keyframes print-fade {
+  from { opacity: 0; }
+}
+
+/* Section headings
+   ========================================================================== */
+
+.section {
+  padding: var(--s16) 0;
+}
+
+.section__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s3);
+  margin-bottom: var(--s12);
+  padding-bottom: var(--s3);
+  border-bottom: 2px solid var(--ink);
+}
+
+.section__head h2 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 75%;
+  font-size: clamp(48px, 6vw, 80px);
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+}
+
+.section__count {
+  margin-left: auto;
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+/* Work: each project is a poster
+   ========================================================================== */
+
+.work-list {
+  display: grid;
+  gap: var(--s16);
+  padding: 0;
+  list-style: none;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: center;
+  gap: var(--s4);
+}
+
+.project .poster {
+  grid-column: 1 / span 6;
+}
+
+.project__info {
+  grid-column: 8 / span 5;
+}
+
+.project:nth-child(even) .poster {
+  grid-column: 7 / span 6;
+  grid-row: 1;
+}
+
+.project:nth-child(even) .project__info {
+  grid-column: 1 / span 5;
+  grid-row: 1;
+}
+
+.project__info h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 100%;
+  font-size: 32px;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.project__info h3 a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.project__info h3 a:hover {
+  color: var(--vermilion-text);
+}
+
+.project__desc {
+  margin-top: var(--s2);
+  color: var(--ink-soft);
+  font-size: 17px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
+  margin-top: var(--s3);
+  padding: 0;
+  list-style: none;
+}
+
+.tag {
+  padding: 2px 10px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Hand-inked underline for the main call to action */
+.read-more {
+  display: inline-block;
+  margin-top: var(--s4);
+  padding-bottom: 6px;
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 8' preserveAspectRatio='none'%3E%3Cpath d='M1 5.5 C 40 2.5, 80 6.5, 120 3.8 S 180 5.2, 199 3' fill='none' stroke='%23D9452B' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") bottom left / 100% 8px no-repeat;
+}
+
+.read-more:hover {
+  color: var(--vermilion-text);
+}
+
+/* The poster itself */
+.poster {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  container-type: inline-size;
+  background: var(--paper-deep);
+  outline: 1px solid rgba(26, 23, 20, 0.12);
+  outline-offset: -1px;
+}
+
+.poster__shape,
+.poster__img,
+.poster__title,
+.poster__meta {
+  position: absolute;
+}
+
+.poster__shape {
+  filter: url(#rough);
+  transition: transform 500ms var(--ease-out);
+}
+
+.poster__img {
+  border: 1px solid var(--ink);
+  transition: transform 500ms var(--ease-out);
+}
+
+.poster__title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 62%;
+  font-size: 15cqw;
+  line-height: 0.8;
+  color: var(--ink);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.poster__meta {
+  font-size: max(11px, 2.6cqw);
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.project:hover .poster__shape {
+  transform: translate(-2.5%, 2%) rotate(-4deg);
+}
+
+.project:hover .poster__img {
+  transform: translateY(-1.5%);
+}
+
+/* Melasma Clinic: navy square, desktop screenshot */
+.poster--clinic .poster__shape {
+  top: 7%;
+  right: 7%;
+  width: 66%;
+  aspect-ratio: 1;
+  background: var(--navy);
+}
+
+.poster--clinic .poster__img {
+  left: 20%;
+  bottom: 17%;
+  width: 74%;
+}
+
+.poster--clinic .poster__title {
+  left: 5%;
+  bottom: 5%;
+}
+
+.poster--clinic .poster__meta {
+  right: 6%;
+  bottom: 5%;
+  text-align: right;
+}
+
+/* City of Oakland: green bar, dashboard screenshot */
+.poster--oakland .poster__shape {
+  top: 0;
+  bottom: 0;
+  left: 54%;
+  width: 24%;
+  background: var(--green);
+}
+
+.poster--oakland .poster__img {
+  left: 7%;
+  top: 34%;
+  width: 70%;
+}
+
+.poster--oakland .poster__title {
+  right: 5%;
+  top: 5%;
+  transform: none;
+}
+
+.poster--oakland .poster__meta {
+  left: 7%;
+  top: 6%;
+}
+
+/* FitCheck: vermilion circle, two phone screens */
+.poster--fitcheck .poster__shape {
+  top: 9%;
+  left: 12%;
+  width: 76%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--vermilion);
+}
+
+.poster--fitcheck .poster__img {
+  width: 30%;
+  border-radius: 7cqw;
+}
+
+.poster--fitcheck .poster__img--a {
+  left: 22%;
+  top: 22%;
+}
+
+.poster--fitcheck .poster__img--b {
+  left: 50%;
+  top: 31%;
+}
+
+.poster--fitcheck .poster__title {
+  left: 5%;
+  bottom: 5%;
+}
+
+.poster--fitcheck .poster__meta {
+  right: 6%;
+  bottom: 5%;
+  text-align: right;
+}
+
+/* About
+   ========================================================================== */
+
+.about {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--s4);
+}
+
+.about .section__head {
+  grid-column: 1 / -1;
+  margin-bottom: var(--s4);
+}
+
+.about__text {
+  grid-column: 5 / span 7;
+  max-width: 36em;
+  font-size: 18px;
+}
+
+.about__text p + p {
+  margin-top: var(--s2);
+}
+
+/* Footer
+   ========================================================================== */
+
+.site-footer {
+  padding: var(--s6) 0;
+  border-top: 2px solid var(--ink);
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.site-footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.site-footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3);
+  padding: 0;
+  list-style: none;
+}
+
+/* Responsive
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .hero .wrap {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .hero__info {
+    grid-column: 1 / -1;
+    padding-bottom: var(--s8);
+  }
+
+  .hero__art {
+    min-height: 520px;
+  }
+
+  .project,
+  .project:nth-child(even) {
+    grid-template-columns: 1fr;
+  }
+
+  .project .poster,
+  .project__info,
+  .project:nth-child(even) .poster,
+  .project:nth-child(even) .project__info {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .project .poster {
+    max-width: 560px;
+  }
+
+  .about__text {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .wrap {
+    padding: 0 var(--s2);
+  }
+
+  .hero .wrap {
+    grid-template-columns: 1fr;
+    gap: 0;
+    min-height: 0;
+    padding-top: var(--s4);
+  }
+
+  /* On phones the name runs across the top instead of up the side */
+  .hero__name {
+    writing-mode: horizontal-tb;
+    transform: none;
+    padding-top: 0;
+    font-size: 30vw;
+    line-height: 0.82;
+  }
+
+  .hero__art {
+    min-height: 380px;
+  }
+
+  .hero__circle {
+    top: 6%;
+    width: 78%;
+  }
+
+  .hero__photo {
+    width: 86%;
+    bottom: var(--s8);
+  }
+
+  .hero__steps {
+    height: var(--s8);
+  }
+
+  .hero__credit {
+    display: none;
+  }
+
+  .hero__info {
+    padding: var(--s5) 0 var(--s8);
+  }
+
+  .hero__info h1 {
+    font-size: 34px;
+  }
+
+  .section {
+    padding: var(--s12) 0;
+  }
+
+  .section__head {
+    margin-bottom: var(--s8);
+  }
+
+  .section__count {
+    display: none;
+  }
+
+  .work-list {
+    gap: var(--s12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .project:hover .poster__shape,
+  .project:hover .poster__img {
+    transform: none;
+  }
+}
