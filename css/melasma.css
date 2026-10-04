@@ -93,15 +93,15 @@
   position: relative;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 5px;
+  gap: 0;
   aspect-ratio: 16 / 10;
+  border: 1px solid var(--ink);
+  box-shadow: 0 18px 34px -20px rgba(26, 23, 20, 0.55);
 }
 
 .strip {
   background-image: url("../images/melasma/home-en.webp");
   background-size: 600% 100%;
-  border: 1px solid var(--ink);
-  box-shadow: 0 16px 30px -18px rgba(26, 23, 20, 0.5);
 }
 
 .strip:nth-child(1) { background-position: 0% 0; }
@@ -113,6 +113,8 @@
 
 /* Fragments slide together into the finished homepage */
 @media (prefers-reduced-motion: no-preference) {
+  /* Strips arrive apart, then close the gaps and gain their frame as one image */
+  .strips { animation: strips-join 2000ms var(--ease-out) both; }
   .strip { animation: strip-in 1100ms var(--ease-out) both; }
   .strip:nth-child(1) { --from: -18%; animation-delay: 200ms; }
   .strip:nth-child(2) { --from: 14%;  animation-delay: 280ms; }
@@ -128,6 +130,11 @@
 
 @keyframes strip-in {
   from { opacity: 0; transform: translateY(var(--from)); }
+}
+
+@keyframes strips-join {
+  0%, 70% { gap: 6px; border-color: transparent; box-shadow: none; }
+  100% { gap: 0; }
 }
 
 @keyframes stamp-dot {
@@ -208,8 +215,10 @@
 }
 
 .mc-h2 {
-  display: inline-grid;
+  display: inline-block;
   margin-bottom: var(--s5);
+  padding-bottom: 12px;
+  border-bottom: 3px solid var(--mc-orange);
   font-family: var(--font-display);
   font-weight: 900;
   font-stretch: 75%;
@@ -218,35 +227,18 @@
   letter-spacing: -0.01em;
 }
 
-.mc-h2__id,
-.mc-h3__id {
-  display: block;
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 2px solid var(--mc-orange);
-  font-family: var(--font-body);
-  font-style: italic;
-  font-weight: 400;
-  font-stretch: 100%;
-  font-size: 16px;
-  line-height: 1.2;
-  letter-spacing: 0;
-  color: var(--ink-soft);
-}
 
 .mc-h3 {
-  display: inline-grid;
+  display: inline-block;
   margin-bottom: var(--s3);
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--mc-orange);
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 26px;
   line-height: 1.15;
 }
 
-.mc-h3__id {
-  font-size: 14px;
-  border-top-width: 1px;
-}
 
 .mc-step {
   margin-top: var(--s12);
@@ -477,6 +469,21 @@
   margin-top: 0;
 }
 
+/* Outcome: the after column mirrors the before card */
+.mc-after {
+  display: grid;
+  justify-items: start;
+  gap: var(--s4);
+}
+
+.mc-after .deco {
+  margin-top: 0;
+}
+
+.mc-after .mc-btn {
+  margin-top: 0;
+}
+
 /* Outcome: a deco frame, the Deadlock thread */
 .deco {
   position: relative;
@@ -512,9 +519,6 @@
   color: var(--mc-navy);
 }
 
-.mc-outcome-text {
-  margin-top: var(--s6);
-}
 
 /* Next project */
 .next {
@@ -573,7 +577,6 @@
     font-size: 23vw;
   }
 
-  .strips { gap: 3px; }
   .mc-section { padding: var(--s8) 0; }
   .mc-before { padding: var(--s4); rotate: 0deg; }
   .deco { padding: var(--s5) var(--s3); }
