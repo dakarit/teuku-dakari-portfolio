@@ -94,6 +94,8 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   aspect-ratio: 16 / 10;
+  /* One shadow that follows every strip, moving or landed */
+  filter: drop-shadow(0 14px 16px rgba(26, 23, 20, 0.3));
 }
 
 /* The finished screenshot as one piece: covers the hairline seams between strips */
@@ -103,13 +105,17 @@
   inset: 0;
   background: url("../images/melasma/home-en.webp") center / 100% 100% no-repeat;
   border: 1px solid var(--ink);
-  box-shadow: 0 18px 34px -20px rgba(26, 23, 20, 0.55);
 }
 
 .strip {
   background-image: url("../images/melasma/home-en.webp");
   background-size: 600% 100%;
+  /* Each strip carries its piece of the outer frame while it moves */
+  border-block: 1px solid var(--ink);
 }
+
+.strip:first-child { border-left: 1px solid var(--ink); }
+.strip:last-child { border-right: 1px solid var(--ink); }
 
 .strip:nth-child(1) { background-position: 0% 0; }
 .strip:nth-child(2) { background-position: 20% 0; }
