@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <script>document.documentElement.classList.add("js")</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Melasma Clinic by Dr. Tompi - Teuku Dakari</title>
   <meta name="description" content="Case study: designing and building the first website for Melasma Clinic by Dr. Tompi, a new chain of dermatology clinics across Indonesia.">
 
-  <meta name="theme-color" content="#F6F0E8">
+  <meta name="theme-color" content="#EEE7DA">
 
   <!-- Link previews (LinkedIn, Slack, iMessage…). -->
   <meta property="og:type" content="article">
@@ -24,15 +23,23 @@
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap">
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap">
+  <link rel="stylesheet" href="../css/poster.css">
+  <link rel="stylesheet" href="../css/melasma.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
   <!-- ============ SHARED HEADER (keep in sync across all pages) ============ -->
   <header class="site-header">
-    <div class="container">
+    <div class="wrap">
       <a class="site-name" href="../index.html">Teuku Dakari</a>
       <nav class="site-nav" aria-label="Main">
         <ul>
@@ -48,107 +55,159 @@
   <main id="main">
     <article>
 
-      <!-- Case study header -->
-      <header class="cs-header">
-        <div class="container container--text">
-          <h1>Melasma Clinic by Dr. Tompi</h1>
-          <p class="cs-header__summary">Designing and building the first website for Melasma Clinic, a new chain of dermatology clinics across Indonesia, from the clinic’s ideas to the live site.</p>
+      <!-- Hero: the homepage, cut into strips that come together -->
+      <header class="mc-hero">
+        <div class="wrap">
+          <p class="mc-hero__name" aria-hidden="true">MELASMA</p>
 
-          <dl class="cs-meta">
-            <div>
-              <dt>Role</dt>
-              <dd>Website designer and developer</dd>
+          <div class="mc-art">
+            <div class="mc-art__square" aria-hidden="true"></div>
+            <div class="strips" role="img" aria-label="The Melasma Clinic by Dr. Tompi homepage, led by a grid of patient before-and-after photos">
+              <span class="strip"></span><span class="strip"></span><span class="strip"></span><span class="strip"></span><span class="strip"></span><span class="strip"></span>
             </div>
-            <div>
-              <dt>Timeline</dt>
-              <dd>Summer 2026 (May–Aug)</dd>
-            </div>
-            <div>
-              <dt>Tools</dt>
-              <dd>Figma, HTML, CSS, Claude Code</dd>
-            </div>
-            <div>
-              <dt>Type</dt>
-              <dd>Client work</dd>
-            </div>
-          </dl>
+            <div class="mc-art__dot" aria-hidden="true"></div>
+          </div>
 
-          <p class="cs-header__actions">
-            <a class="button" href="https://melasmaclinicbydrtompi.com/en/" target="_blank" rel="noopener">Visit live site<span class="visually-hidden"> (opens in new tab)</span></a>
-          </p>
+          <div class="mc-info">
+            <div>
+              <h1>Melasma Clinic by Dr. Tompi</h1>
+              <p class="mc-info__summary">Designing and building the first website for Melasma Clinic, a new chain of dermatology clinics across Indonesia, from the clinic’s ideas to the live site.</p>
+              <a class="mc-btn" href="https://melasmaclinicbydrtompi.com/en/" target="_blank" rel="noopener">Visit live site<span class="visually-hidden"> (opens in new tab)</span></a>
+            </div>
+            <dl class="mc-meta">
+              <div><dt>Role</dt><dd>Website designer and developer</dd></div>
+              <div><dt>Timeline</dt><dd>Summer 2026 (May–Aug)</dd></div>
+              <div><dt>Tools</dt><dd>Figma, HTML, CSS, Claude Code</dd></div>
+              <div><dt>Type</dt><dd>Client work</dd></div>
+            </dl>
+          </div>
         </div>
       </header>
 
-      <!-- Hero image (16:9) -->
-      <div class="cs-hero">
-        <img src="../images/clinic/hero.jpg" alt="The Melasma Clinic by Dr. Tompi homepage on desktop and on a phone, led by a grid of patient before-and-after photos" width="2400" height="1350">
-      </div>
+      <div class="wrap">
 
-      <div class="container container--text">
-
-        <section class="cs-section reveal" aria-labelledby="problem">
-          <h2 id="problem">The Problem</h2>
-          <p>Dr. Tompi is a plastic surgeon based in Jakarta with clinics across Indonesia. His new chain, Melasma Clinic, didn’t have a website yet, and relied only on social media to advertise, with patients booking through WhatsApp.</p>
-          <p>Since the new clinics focus on dermatology rather than plastic surgery, Melasma Clinic needed its own website to show potential patients what services it offers and give them an easier way to book, while still leading them to WhatsApp at the end for final scheduling with the clinic’s admin.</p>
-          <p>Dr. Tompi also wanted to reach an international audience, as the new clinics are in cities easily accessible from Singapore and Malaysia. However, the content on Melasma Clinic’s Instagram and TikTok was mostly in Indonesian, so the website had to appeal to English speakers as well.</p>
-          <p>How might we show potential patients, both in Indonesia and abroad, what Melasma Clinic can do for them, and make booking as easy as possible?</p>
+        <section class="mc-section" aria-labelledby="problem">
+          <p class="mc-marker" aria-hidden="true">BEFORE</p>
+          <h2 class="mc-h2" id="problem">The Problem <span class="mc-h2__id" lang="id">Masalah</span></h2>
+          <div class="mc-split">
+            <div class="mc-text">
+              <p>Dr. Tompi is a plastic surgeon based in Jakarta with clinics across Indonesia. His new chain, Melasma Clinic, didn’t have a website yet, and relied only on social media to advertise, with patients booking through WhatsApp.</p>
+              <p>Since the new clinics focus on dermatology rather than plastic surgery, Melasma Clinic needed its own website to show potential patients what services it offers and give them an easier way to book, while still leading them to WhatsApp at the end for final scheduling with the clinic’s admin.</p>
+              <p>Dr. Tompi also wanted to reach an international audience, as the new clinics are in cities easily accessible from Singapore and Malaysia. However, the content on Melasma Clinic’s Instagram and TikTok was mostly in Indonesian, so the website had to appeal to English speakers as well.</p>
+              <p>How might we show potential patients, both in Indonesia and abroad, what Melasma Clinic can do for them, and make booking as easy as possible?</p>
+            </div>
+            <p class="mc-before" aria-hidden="true"><span>No website yet.</span> Just social media, and bookings through WhatsApp.</p>
+          </div>
         </section>
 
-        <section class="cs-section reveal" aria-labelledby="context">
-          <h2 id="context">Context &amp; Constraints</h2>
-          <p>Melasma Clinic by Dr. Tompi is a new chain of dermatology clinics in Indonesia. I took the clinic’s ideas for its website and turned them into full page designs, which I then implemented myself. The site needed to support patient bookings and present the clinic’s services.</p>
-          <ul>
-            <li>Most of the clinic’s patients are currently Indonesian, but the new locations are meant to appeal to the wider Southeast Asian market, so the site needed to work in both Indonesian and English.</li>
-            <li>I had the summer of 2026 to finish the entire website, and I was responsible for everything except the content, which was provided by the clinic’s marketing team.</li>
-            <li>Since the marketing team updates the site’s content themselves, I set up a content workflow with them so they could edit copy while keeping the design system consistent.</li>
-          </ul>
+        <section class="mc-section" aria-labelledby="context">
+          <h2 class="mc-h2" id="context">Context &amp; Constraints <span class="mc-h2__id" lang="id">Konteks &amp; Batasan</span></h2>
+          <div class="mc-split">
+          <div class="mc-text">
+            <p>Melasma Clinic by Dr. Tompi is a new chain of dermatology clinics in Indonesia. I took the clinic’s ideas for its website and turned them into full page designs, which I then implemented myself. The site needed to support patient bookings and present the clinic’s services.</p>
+            <ul>
+              <li>Most of the clinic’s patients are currently Indonesian, but the new locations are meant to appeal to the wider Southeast Asian market, so the site needed to work in both Indonesian and English.</li>
+              <li>I had the summer of 2026 to finish the entire website, and I was responsible for everything except the content, which was provided by the clinic’s marketing team.</li>
+              <li>Since the marketing team updates the site’s content themselves, I set up a content workflow with them so they could edit copy while keeping the design system consistent.</li>
+            </ul>
+          </div>
+          <aside class="locations" aria-label="Melasma Clinic locations">
+            <p class="locations__title">Six clinics, one booking flow</p>
+            <ul>
+              <li>Pekanbaru</li><li>Semarang</li><li>Batam</li><li>Balikpapan</li><li>Lampung</li><li>Solo</li>
+            </ul>
+          </aside>
+          </div>
         </section>
 
-        <section class="cs-section reveal" aria-labelledby="process">
-          <h2 id="process">Process</h2>
-          <p>Throughout the project, I followed the same loop: I used Claude Code to ideate and iterate on ideas, roughly created the chosen direction in Figma, got approval from either the marketing team or Dr. Tompi, and then built it in HTML and CSS.</p>
+        <section class="mc-section" aria-labelledby="process">
+          <h2 class="mc-h2" id="process">Process <span class="mc-h2__id" lang="id">Proses</span></h2>
+          <div class="mc-text"><p>Throughout the project, I followed the same loop: I used Claude Code to ideate and iterate on ideas, roughly created the chosen direction in Figma, got approval from either the marketing team or Dr. Tompi, and then built it in HTML and CSS.</p></div>
 
-          <div class="cs-subsection">
-            <h3>1. Understanding what the clinic wanted</h3>
-            <p>I met with Dr. Tompi and the marketing team to understand what they wanted from the website. After multiple meetings, I put together a moodboard and a list of inspirations to draw from. From those, we settled on blue and white as the main colors with orange accents, and a feel that was premium, refined, and clean, while still being modern and new.</p>
+          <div class="mc-step">
+            <h3 class="mc-h3">1. Understanding what the clinic wanted <span class="mc-h3__id" lang="id">Memahami keinginan klinik</span></h3>
+            <div class="mc-split">
+            <div class="mc-text"><p>I met with Dr. Tompi and the marketing team to understand what they wanted from the website. After multiple meetings, I put together a moodboard and a list of inspirations to draw from. From those, we settled on blue and white as the main colors with orange accents, and a feel that was premium, refined, and clean, while still being modern and new.</p></div>
+            <div class="brief" aria-label="The agreed design direction">
+              <ul class="brief__swatches">
+                <li><span style="background:#054B84"></span>Blue</li>
+                <li><span style="background:#FFFFFF"></span>White</li>
+                <li><span style="background:#F26822"></span>Orange</li>
+              </ul>
+              <ul class="brief__words">
+                <li>Premium</li><li>Refined</li><li>Clean</li><li>Modern</li>
+              </ul>
+            </div>
+            </div>
           </div>
 
-          <div class="cs-subsection">
-            <h3>2. Designing the website</h3>
-            <p>With that direction in mind, I made the website’s design clean and minimal, using sans-serif fonts to add a modern touch to a design that might otherwise not feel new enough. Readability and simplicity were also important. I kept things from getting too fancy so that potential patients could get to what they want to know as fast as possible.</p>
-            <p>One unique request from Dr. Tompi was to not use a hero image of him on the home page. Many clinics, especially in Indonesia where private medical practices are very common, feature their main doctor as the face of the clinic, and Dr. Tompi is a particularly big name in Indonesian plastic surgery. However, he doesn’t practice at Melasma Clinic. He owns, manages, and visits it, so he didn’t want to use his likeness as the face of the website. He wanted the results to speak for themselves instead, which is where the home page’s before-and-after grid comes in, drawing patients straight to what the clinic can do for them. On top of that, Dr. Tompi isn’t nearly as well known in the wider Southeast Asian market, so results would matter more than his name when appealing to Singaporean and Malaysian patients.</p>
-            <figure class="cs-figure">
-              <img src="../images/clinic/process-services.jpg" alt="The Services and Treatments page, with category tabs and treatment cards in the clinic's blue, white, and orange" width="1440" height="954" loading="lazy">
+          <div class="mc-step">
+            <h3 class="mc-h3">2. Designing the website <span class="mc-h3__id" lang="id">Merancang situs web</span></h3>
+            <div class="mc-split">
+            <div class="mc-text">
+              <p>With that direction in mind, I made the website’s design clean and minimal, using sans-serif fonts to add a modern touch to a design that might otherwise not feel new enough. Readability and simplicity were also important. I kept things from getting too fancy so that potential patients could get to what they want to know as fast as possible.</p>
+              <p>One unique request from Dr. Tompi was to not use a hero image of him on the home page. Many clinics, especially in Indonesia where private medical practices are very common, feature their main doctor as the face of the clinic, and Dr. Tompi is a particularly big name in Indonesian plastic surgery. However, he doesn’t practice at Melasma Clinic. He owns, manages, and visits it, so he didn’t want to use his likeness as the face of the website. He wanted the results to speak for themselves instead, which is where the home page’s before-and-after grid comes in, drawing patients straight to what the clinic can do for them. On top of that, Dr. Tompi isn’t nearly as well known in the wider Southeast Asian market, so results would matter more than his name when appealing to Singaporean and Malaysian patients.</p>
+            </div>
+            <p class="mc-quote" aria-hidden="true">Let the results speak for themselves.</p>
+            </div>
+            <figure class="mc-figure">
+              <img src="../images/melasma/services.webp" alt="The Services and Treatments page, with category tabs and treatment cards in the clinic's blue, white, and orange" width="1600" height="1000" loading="lazy">
               <figcaption>The Services &amp; Treatments page, sorted into categories so patients can quickly find the treatment they’re looking for.</figcaption>
             </figure>
           </div>
 
-          <div class="cs-subsection">
-            <h3>3. Building the site and booking flow</h3>
-            <p>Once each design was approved, I built it in HTML and CSS, with both Indonesian and English versions of the site. For booking, the Book button opens a list of the clinic’s locations, and each one leads straight to that clinic’s WhatsApp, so patients can find their nearest clinic and finish scheduling with the admin the same way they already did.</p>
-            <figure class="cs-figure">
-              <img src="../images/clinic/process-booking.jpg" alt="The Book menu open, showing six clinic locations, each linking to WhatsApp" width="1440" height="777" loading="lazy">
+          <div class="mc-step">
+            <h3 class="mc-h3">3. Building the site and booking flow <span class="mc-h3__id" lang="id">Membangun situs dan alur pemesanan</span></h3>
+            <div class="mc-text"><p>Once each design was approved, I built it in HTML and CSS, with both Indonesian and English versions of the site. For booking, the Book button opens a list of the clinic’s locations, and each one leads straight to that clinic’s WhatsApp, so patients can find their nearest clinic and finish scheduling with the admin the same way they already did.</p></div>
+            <div class="mc-pair">
+              <figure class="mc-figure lang-switch">
+                <div class="lang-switch__controls" role="group" aria-label="Homepage language" hidden>
+                  <button type="button" aria-pressed="true" data-lang="en">EN</button>
+                  <button type="button" aria-pressed="false" data-lang="id">ID</button>
+                </div>
+                <div class="lang-switch__frame">
+                  <img data-lang="en" src="../images/melasma/home-en.webp" alt="The homepage in English" width="1600" height="1000" loading="lazy">
+                  <img data-lang="id" src="../images/melasma/home-id.webp" alt="The homepage in Indonesian" width="1600" height="1000" loading="lazy" hidden>
+                </div>
+                <figcaption>The same homepage in English and Indonesian. Switch between them above.</figcaption>
+              </figure>
+              <figure class="mc-figure">
+                <img src="../images/melasma/home-mobile.webp" alt="The homepage on a phone" width="780" height="1688" loading="lazy">
+                <figcaption>The homepage on a phone.</figcaption>
+              </figure>
+            </div>
+            <figure class="mc-figure">
+              <img src="../images/melasma/booking.webp" alt="The Book menu open, showing six clinic locations, each linking to WhatsApp" width="1100" height="606" loading="lazy">
               <figcaption>The Book menu lists each clinic location, and every one leads to that clinic’s WhatsApp for final scheduling.</figcaption>
             </figure>
           </div>
         </section>
 
-        <section class="cs-section reveal" aria-labelledby="outcome">
-          <h2 id="outcome">Outcome</h2>
-          <p>The website is now live at <a href="https://melasmaclinicbydrtompi.com/en/">melasmaclinicbydrtompi.com</a>, and Dr. Tompi is happy with it overall. The handoff is complete, and the marketing team can now manage the website on their own.</p>
-          <div class="cs-callout">
+        <section class="mc-section" aria-labelledby="outcome">
+          <p class="mc-marker mc-marker--after" aria-hidden="true">AFTER</p>
+          <h2 class="mc-h2" id="outcome">Outcome <span class="mc-h2__id" lang="id">Hasil</span></h2>
+          <div class="mc-text"><p>The website is now live at <a href="https://melasmaclinicbydrtompi.com/en/">melasmaclinicbydrtompi.com</a>, and Dr. Tompi is happy with it overall. The handoff is complete, and the marketing team can now manage the website on their own.</p></div>
+          <div class="deco">
             <p>Melasma Clinic went from relying only on social media to having its own bilingual website, with a booking flow that still ends in WhatsApp.</p>
           </div>
-          <p>This project showed me a big hole in my design process, which was its organization. There were many times when I felt lost about what to do next, which the NUS UI/UX workshop I took later that summer helped with, as it taught me the proper UI/UX design process.</p>
-          <p>It was also my first time working with a client completely on my own, with no one else on the project. I had to translate Dr. Tompi’s and the marketing team’s ideas into actual designs, balance feedback from both of them, and get approval before building anything, since I was responsible for both the design and the code. It taught me how to communicate with a client and keep them involved, so that the final website matched what they had in mind.</p>
+          <div class="mc-text mc-outcome-text">
+            <p>This project showed me a big hole in my design process, which was its organization. There were many times when I felt lost about what to do next, which the NUS UI/UX workshop I took later that summer helped with, as it taught me the proper UI/UX design process.</p>
+            <p>It was also my first time working with a client completely on my own, with no one else on the project. I had to translate Dr. Tompi’s and the marketing team’s ideas into actual designs, balance feedback from both of them, and get approval before building anything, since I was responsible for both the design and the code. It taught me how to communicate with a client and keep them involved, so that the final website matched what they had in mind.</p>
+          </div>
         </section>
 
-        <nav class="cs-footer-nav" aria-label="Case study">
-          <a href="../index.html">Back to home</a>
-          <a class="cs-next" href="oakland.html">
-            <span class="cs-next__label">Next project</span>
-            <span class="cs-next__title">City of Oakland</span>
+        <nav class="next" aria-label="Next project">
+          <a class="poster poster--oakland" href="oakland.html" tabindex="-1" aria-hidden="true">
+            <span class="poster__shape"></span>
+            <img class="poster__img" src="../images/poster/oakland.webp" alt="" width="1200" height="473" loading="lazy">
+            <span class="poster__title">OAKLAND</span>
+            <span class="poster__meta">Course project<br>2026</span>
           </a>
+          <div>
+            <p class="next__label">Next project</p>
+            <p class="next__title"><a href="oakland.html">City of Oakland</a></p>
+            <a class="read-more" href="../index.html">Back to home</a>
+          </div>
         </nav>
 
       </div>
@@ -157,7 +216,7 @@
 
   <!-- ============ SHARED FOOTER (keep in sync across all pages) ============ -->
   <footer class="site-footer">
-    <div class="container">
+    <div class="wrap">
       <p>&copy; 2026 Teuku Dakari</p>
       <ul>
         <li><a href="mailto:teukuomardakari@gmail.com">Email</a></li>
@@ -168,6 +227,22 @@
     </div>
   </footer>
   <!-- ============ /SHARED FOOTER ============ -->
-  <script src="../js/reveal.js" defer></script>
+  <script>
+    // EN / ID switch for the homepage figure; without JS, the English image simply shows
+    (function () {
+      var group = document.querySelector(".lang-switch__controls");
+      if (!group) return;
+      group.hidden = false;
+      var buttons = group.querySelectorAll("button");
+      var images = document.querySelectorAll(".lang-switch__frame img");
+      buttons.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var lang = btn.dataset.lang;
+          buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b === btn)); });
+          images.forEach(function (img) { img.hidden = img.dataset.lang !== lang; });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

@@ -352,8 +352,13 @@
   grid-column: 1 / span 6;
 }
 
-.pullquote {
+.pullquote,
+.split > .services,
+.split > .personas {
   grid-column: 8 / span 5;
+}
+
+.pullquote {
   font-family: var(--font-display);
   font-weight: 900;
   font-stretch: 75%;
@@ -370,10 +375,9 @@
 /* Research: two opposite personas as model cards */
 .personas {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--s3);
-  max-width: 760px;
-  margin-top: var(--s5);
+  margin-top: 0;
   padding: 0;
   list-style: none;
 }
@@ -419,6 +423,51 @@
   margin-top: var(--s2);
   font-size: 15px;
   color: var(--ink-soft);
+}
+
+/* Context: the four services */
+.services {
+  padding: var(--s4);
+  border: 1.5px solid var(--ink);
+  background: var(--label);
+}
+
+.services__title {
+  margin-bottom: var(--s3);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 75%;
+  font-size: 34px;
+  line-height: 1;
+}
+
+.services ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s2);
+  padding: 0;
+  list-style: none;
+}
+
+.services__item {
+  position: relative;
+  min-height: 92px;
+  padding: var(--s2);
+  border: 1.5px solid var(--ink);
+  border-radius: 10px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.services__item--mine {
+  background: var(--yellow);
+}
+
+.services__item span {
+  display: block;
+  margin-top: var(--s1);
+  font-size: 13px;
+  font-weight: 500;
 }
 
 /* Design system: the care label */
@@ -769,7 +818,8 @@
   .split { grid-template-columns: minmax(0, 1fr); }
   .collage { grid-column: 1; width: 100%; max-width: 720px; }
   .hangtag-wrap { grid-column: 1; max-width: 520px; }
-  .split > .lb-text, .pullquote { grid-column: 1; }
+  .split > .lb-text, .pullquote, .split > .services, .split > .personas { grid-column: 1; }
+  .split { row-gap: var(--s5); }
   .care { grid-template-columns: 1fr; }
   .care-label { max-width: 360px; }
   .decisions { grid-template-columns: 1fr 1fr; }
