@@ -65,17 +65,6 @@
   filter: url(#rough);
 }
 
-.mc-art__dot {
-  position: absolute;
-  right: 3%;
-  bottom: -5%;
-  width: 9%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--mc-orange);
-  filter: url(#rough);
-  z-index: 2;
-}
 
 .strips {
   position: relative;
@@ -124,7 +113,6 @@
   .strip:nth-child(5) { --from: -14%; animation-delay: 520ms; }
   .strip:nth-child(6) { --from: 10%;  animation-delay: 600ms; }
   .mc-art__square { animation: print-circle 900ms var(--ease-out) 60ms both; }
-  .mc-art__dot { animation: stamp-dot 500ms var(--ease-out) 1300ms both; }
   .mc-info { animation: print-fade 700ms var(--ease-out) 900ms both; }
 }
 
@@ -588,4 +576,13 @@
     grid-template-columns: minmax(0, 1fr);
     gap: var(--s4);
   }
+}
+
+/* One full-width moment to break the side-by-side rhythm */
+.mc-figure--wide {
+  margin-top: var(--s6);
+}
+
+.mc-figure--wide img {
+  width: 100%;
 }

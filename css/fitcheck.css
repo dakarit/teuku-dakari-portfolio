@@ -796,3 +796,10 @@
   .next { grid-template-columns: 1fr; }
   .rail__item { flex-basis: 180px; }
 }
+
+/* One full-width moment: the question the Virtual Wardrobe answers */
+.pullquote--wide {
+  margin-bottom: var(--s6);
+  font-size: clamp(56px, 8vw, 120px);
+  line-height: 0.9;
+}

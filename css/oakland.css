@@ -557,3 +557,14 @@ html.hc .oak-statement {
     font-size: clamp(52px, min(5.6vw, 11svh), 96px);
   }
 }
+
+/* One full-width moment: the outcome's key finding, set large */
+.oak-callout--wide {
+  margin: 0 0 var(--s6);
+}
+
+.oak-callout--wide p {
+  padding: var(--s6) var(--s5);
+  font-size: clamp(26px, 3vw, 40px);
+  line-height: 1.15;
+}
