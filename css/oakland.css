@@ -14,8 +14,8 @@
   --pat-diag: repeating-linear-gradient(45deg, var(--oak) 0 3px, transparent 3px 10px);
   --pat-stripe: repeating-linear-gradient(0deg, var(--oak) 0 3px, transparent 3px 10px);
   --pat-dots: radial-gradient(var(--oak) 1.8px, transparent 2.1px) 0 0 / 10px 10px;
-  --pat-grid: linear-gradient(var(--oak) 1.5px, transparent 1.5px) 0 0 / 12px 12px,
-              linear-gradient(90deg, var(--oak) 1.5px, transparent 1.5px) 0 0 / 12px 12px;
+  --pat-grid: linear-gradient(var(--oak) 1.5px, transparent 1.5px) 0 0 / 10px 10px,
+              linear-gradient(90deg, var(--oak) 1.5px, transparent 1.5px) 0 0 / 10px 10px;
 }
 
 /* High contrast mode: the whole page, like the tool's own toggle
@@ -282,7 +282,8 @@ html.hc .only-default {
 }
 
 .band {
-  height: 22px;
+  /* 20px inside the rules: whole rows of every 10px pattern */
+  height: 23px;
   margin-bottom: var(--s4);
   border-block: 1.5px solid var(--oak);
 }
