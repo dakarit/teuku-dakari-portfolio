@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <style>
-    rect { fill: #C1673B; }
-    text { fill: #F6F0E8; }
+    rect { fill: #D9452B; }
+    text { fill: #EEE7DA; }
     @media (prefers-color-scheme: dark) {
-      rect { fill: #2B2622; }
-      text { fill: #E08A5C; }
+      rect { fill: #EEE7DA; }
+      text { fill: #1A1714; }
     }
   </style>
   <rect width="32" height="32" rx="7"/>
-  <text x="16" y="22.5" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="17" letter-spacing="-0.5">TD</text>
+  <text x="16" y="22.5" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="17" letter-spacing="-0.5">TD</text>
 </svg>

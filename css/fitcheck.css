@@ -72,6 +72,20 @@
 }
 
 
+/* The title lives on the cover, like a magazine masthead */
+.cover__title {
+  position: absolute;
+  left: var(--s5);
+  top: var(--s5);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 100%;
+  font-size: clamp(56px, 7vw, 104px);
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+}
+
 .cover__phones {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -100,7 +114,7 @@
 
 .hangtag {
   position: relative;
-  padding: var(--s8) var(--s4) var(--s4);
+  padding: var(--s6) var(--s4) var(--s4);
   border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.78);
@@ -133,8 +147,12 @@
 }
 
 .hangtag__summary {
-  margin-top: var(--s2);
-  color: var(--ink-soft);
+  /* Clears the First Prize seal in the corner */
+  margin-top: var(--s3);
+  padding-right: var(--s6);
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.5;
 }
 
 .hangtag dl {
@@ -210,6 +228,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .cover { animation: print-fade 700ms var(--ease-out) both; }
+  .cover__title { animation: rise 800ms var(--ease-out) 200ms both; }
   .phone { animation: rise 900ms var(--ease-out) both; }
   .phone:nth-child(1) { animation-delay: 350ms; }
   .phone:nth-child(2) { animation-delay: 450ms; }
@@ -746,7 +765,7 @@
 @media (max-width: 1080px) {
   .lb-hero .wrap,
   .split { grid-template-columns: minmax(0, 1fr); }
-  .cover { grid-column: 1; min-height: 0; }
+  .cover { grid-column: 1; min-height: 0; padding-top: calc(var(--s5) + 100px); }
   .cover__phones { padding-right: 0; }
   .hangtag-wrap { grid-column: 1; grid-row: 2; max-width: 520px; margin-top: calc(var(--s8) * -1); margin-left: var(--s4); }
   .split > .lb-text, .pullquote, .split > .services, .split > .personas { grid-column: 1; }
@@ -764,7 +783,9 @@
   .phone { border-radius: 12px 12px 0 0; }
   .phone:nth-child(2) { margin-bottom: var(--s3); }
   .hangtag-wrap { margin: calc(var(--s5) * -1) var(--s2) 0; }
-  .hangtag h1 { font-size: 44px; }
+  .cover__title { left: var(--s3); top: var(--s3); font-size: 48px; }
+  .cover { padding-top: calc(var(--s3) + 64px); }
+  .hangtag__summary { padding-right: 0; margin-top: var(--s5); }
   .sticker { width: 88px; font-size: 16px; right: -6px; }
   .lb-section { padding: var(--s8) 0; }
   .woven { font-size: 22px; }

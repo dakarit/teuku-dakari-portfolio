@@ -5,21 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page not found - Teuku Dakari</title>
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#F6F0E8">
+  <meta name="theme-color" content="#EEE7DA">
   <!-- Root-relative paths (/...) because this page is served at whatever URL was missing -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap">
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
+  <link rel="stylesheet" href="/css/poster.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
   <!-- ============ SHARED HEADER (keep in sync across all pages) ============ -->
   <header class="site-header">
-    <div class="container">
+    <div class="wrap">
       <a class="site-name" href="/">Teuku Dakari</a>
       <nav class="site-nav" aria-label="Main">
         <ul>
@@ -34,20 +41,24 @@
 
   <main id="main">
     <section class="not-found" aria-labelledby="not-found-title">
-      <div class="container container--text">
-        <h1 id="not-found-title">Page not found</h1>
-        <p class="cs-header__summary">The link may be out of date, or the address may have a typo.</p>
-        <p class="not-found__actions">
-          <a class="button" href="/">Back to home</a>
-          <a href="/#work">See my work</a>
-        </p>
+      <div class="wrap not-found__wrap">
+        <p class="not-found__code" aria-hidden="true">404</p>
+        <div class="not-found__body">
+          <div class="not-found__circle" aria-hidden="true"></div>
+          <h1 id="not-found-title">Page not found</h1>
+          <p>The link may be out of date, or the address may have a typo.</p>
+          <p class="not-found__actions">
+            <a class="ink-btn" href="/">Back to home</a>
+            <a class="read-more" href="/#work">See my work</a>
+          </p>
+        </div>
       </div>
     </section>
   </main>
 
   <!-- ============ SHARED FOOTER (keep in sync across all pages) ============ -->
   <footer class="site-footer">
-    <div class="container">
+    <div class="wrap">
       <p>&copy; 2026 Teuku Dakari</p>
       <ul>
         <li><a href="mailto:teukuomardakari@gmail.com">Email</a></li>
