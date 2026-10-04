@@ -567,3 +567,25 @@
   .deco { padding: var(--s5) var(--s3); }
   .next { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Desktop: art and title side by side, so the whole hero fits the first screen */
+@media (min-width: 961px) {
+  .mc-hero .wrap {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    grid-template-areas: "art info";
+    align-items: center;
+    column-gap: var(--s8);
+    min-height: calc(100svh - 72px);
+    padding-top: var(--s5);
+    padding-bottom: var(--s5);
+  }
+
+  .mc-art {
+    max-width: none;
+  }
+
+  .mc-info {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s4);
+  }
+}
