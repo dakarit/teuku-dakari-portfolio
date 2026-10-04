@@ -408,6 +408,22 @@ html.hc .oak-statement {
   margin-top: var(--s6);
 }
 
+.oak-figure--side {
+  margin-top: 0;
+}
+
+.oak-split > .oak-callout {
+  margin-top: 0;
+}
+
+.oak-art__note {
+  position: absolute;
+  left: 8%;
+  bottom: -28px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
 .oak-figure img {
   width: 100%;
   border: 1.5px solid var(--ink);

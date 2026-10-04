@@ -10,27 +10,21 @@
   --fc-red: #D92D20;    /* destructive red */
   --fc-tint: #E4E9FF;   /* soft blue tint */
   --label: #FFFFFF;
-
-  /* This page steps into FitCheck's palette */
-  --paper: #FAFAFB;      /* FitCheck's canvas white */
-  --paper-deep: #F1F3F9;
-  --ink: #0B1330;
-  --ink-soft: #4A5168;   /* 7.5:1 on canvas */
-  --rule: #DCE0EA;
-  --vermilion-text: #2A4FFF; /* links in FitCheck blue, 5.5:1 on canvas */
+  --fc-surface: #F3F4F8; /* cool panel behind screenshots */
 
   --radius-card: 18px;
   --shadow-card: 0 1px 2px rgba(11, 19, 48, 0.06), 0 12px 32px -12px rgba(11, 19, 48, 0.18);
 }
 
-/* Crisp, not printed: no paper grain on this page */
-.fc-page::after {
-  display: none;
-}
 
 .lb-text {
   max-width: 36em;
   font-size: 17px;
+}
+
+.lb-text a,
+.hangtag__actions a:not(.btn) {
+  color: #2A4FFF;
 }
 
 .lb-text p + p,
@@ -68,7 +62,6 @@
   grid-row: 1;
   position: relative;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   align-items: end;
   gap: var(--s3);
   min-height: 600px;
@@ -78,18 +71,6 @@
   overflow: hidden;
 }
 
-.cover__name {
-  align-self: start;
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-stretch: 62%;
-  font-size: clamp(72px, 8.4vw, 124px);
-  line-height: 0.8;
-  color: #fff;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  user-select: none;
-}
 
 .cover__phones {
   display: grid;
@@ -229,7 +210,6 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .cover { animation: print-fade 700ms var(--ease-out) both; }
-  .cover__name { animation: print-name 900ms var(--ease-out) 200ms both; }
   .phone { animation: rise 900ms var(--ease-out) both; }
   .phone:nth-child(1) { animation-delay: 350ms; }
   .phone:nth-child(2) { animation-delay: 450ms; }
@@ -563,7 +543,7 @@
 .decision__shot {
   margin-bottom: var(--s3);
   padding: var(--s3) var(--s3) 0;
-  background: var(--paper-deep);
+  background: var(--fc-surface);
   overflow: hidden;
   aspect-ratio: 4 / 5;
 }
@@ -780,7 +760,6 @@
 @media (max-width: 640px) {
   .lb-hero .wrap { padding-top: var(--s4); padding-bottom: var(--s8); gap: var(--s4); }
   .cover { padding: var(--s3) var(--s3) 0; gap: var(--s2); border-radius: 22px; }
-  .cover__name { font-size: 56px; }
   .cover__phones { gap: 10px; }
   .phone { border-radius: 12px 12px 0 0; }
   .phone:nth-child(2) { margin-bottom: var(--s3); }

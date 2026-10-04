@@ -69,9 +69,10 @@
 
           <div class="oak-art">
             <div class="oak-art__bar" aria-hidden="true"></div>
-            <img class="only-default" src="../images/oakland/dashboard.webp" alt="The Your Documents dashboard, listing PDFs with their date, size, and compliance status" width="1600" height="667">
+            <img class="only-default" src="../images/oakland/dashboard.webp" alt="The Your Documents dashboard, listing sample PDFs with their date, size, and compliance status" width="1600" height="667">
             <img class="only-hc" src="../images/oakland/dashboard-hc.webp" alt="The Your Documents dashboard in high contrast mode" width="1600" height="667">
             <img class="oak-art__login" src="../images/oakland/login.webp" alt="The sign-in screen" width="1600" height="1000">
+            <p class="oak-art__note">Dashboard shown with sample documents.</p>
           </div>
 
           <div class="oak-info">
@@ -148,29 +149,23 @@
                 <p>I built the website’s design system and used it to design every screen except the document viewer, including sign-in and registration, the dashboard where staff upload, list, and delete documents, settings, and password reset. I then implemented my screens in HTML and CSS. The document viewer, which shows the converted document next to a sidebar report of what changed and what still needs a person’s review, was designed and built by a teammate.</p>
                 <p>We wanted the website to feel familiar to the City of Oakland’s employees, which is why the design system closely follows the city’s main website, keeping the same colors and a similar style of clean, readable sans-serif fonts. We also wanted it to be as simple as possible to see which documents you have and whether they’ve been fully converted or still need manual fixes, so each document’s name and compliance status are the first things you see on the dashboard. Since accessibility was such an important part of this project, our website had to be accessible too, which is why the high contrast toggle sits in the top bar of every page instead of being buried in a settings menu. Given more time, this would have grown into a full accessibility menu so that anyone could use the website, regardless of the accommodations they need.</p>
               </div>
-              <aside class="oak-card" aria-label="Screens I designed">
-                <p class="oak-card__title">Screens I designed</p>
-                <ul>
-                  <li>Sign-in and registration</li>
-                  <li>Document dashboard</li>
-                  <li>Settings, including accessibility</li>
-                  <li>Password reset</li>
-                  <li class="is-muted">Document viewer, by a teammate</li>
-                </ul>
-              </aside>
+              <figure class="oak-figure oak-figure--side">
+                <img src="../images/oakland/settings.webp" alt="The Settings page's Accessibility tab, with a high contrast mode checkbox" width="1600" height="722" loading="lazy">
+                <figcaption>Settings has its own Accessibility tab, so high contrast is also there for anyone who looks for it.</figcaption>
+              </figure>
             </div>
             <figure class="oak-figure">
               <div class="compare">
                 <div>
                   <span class="compare__label">Default</span>
-                  <img src="../images/oakland/dashboard.webp" alt="The dashboard in default mode" width="1600" height="667" loading="lazy">
+                  <img src="../images/oakland/dashboard.webp" alt="The dashboard in default mode, with sample documents" width="1600" height="667" loading="lazy">
                 </div>
                 <div>
                   <span class="compare__label">High contrast</span>
-                  <img src="../images/oakland/dashboard-hc.webp" alt="The dashboard in high contrast mode, where controls gain outlines and borders" width="1600" height="667" loading="lazy">
+                  <img src="../images/oakland/dashboard-hc.webp" alt="The dashboard in high contrast mode, with sample documents, where controls gain outlines and borders" width="1600" height="667" loading="lazy">
                 </div>
               </div>
-              <figcaption>The dashboard in default and high contrast mode. Staff can switch between the two from the top bar or in settings.</figcaption>
+              <figcaption>The dashboard in default and high contrast mode. Staff can switch between the two from the top bar or in settings. The documents shown are sample data.</figcaption>
             </figure>
           </div>
 
@@ -205,16 +200,8 @@
               <p>We delivered a first iteration of the website. The frontend is functional, allowing staff to upload a PDF and review the automated fixes and flagged issues in a report. However, the tool isn’t live yet, as the AI’s document formatting wasn’t finalized and still needs more iteration.</p>
               <p>Our biggest lesson was the importance of scoping realistically from the start. Narrowing our focus to PDFs mid-semester allowed us to produce something stable rather than something broad but unfinished. Personally, I enjoyed this project enough that it’s the reason I want to keep working on accessibility in tech.</p>
             </div>
-            <aside class="oak-card status" aria-label="Project status">
-              <p class="oak-card__title">Where it stands</p>
-              <ul>
-                <li>Frontend: functional</li>
-                <li>Upload, fixes, and report: working</li>
-                <li class="is-pending">AI document formatting: needs more iteration</li>
-              </ul>
-            </aside>
+            <div class="oak-callout"><p>We found that splitting the AI’s job into two steps, first creating a remediation plan and then the corrected document, led to more precise, guideline-aware results than fixing the documents directly.</p></div>
           </div>
-          <div class="oak-callout"><p>We found that splitting the AI’s job into two steps, first creating a remediation plan and then the corrected document, led to more precise, guideline-aware results than fixing the documents directly.</p></div>
         </section>
 
         <nav class="next" aria-label="Next project">

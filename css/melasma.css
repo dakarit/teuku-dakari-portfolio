@@ -37,33 +37,21 @@
 
 .mc-hero .wrap {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   grid-template-areas:
-    "name art"
-    "name info";
+    "art"
+    "info";
   column-gap: var(--s5);
   row-gap: var(--s6);
   padding-top: var(--s8);
   padding-bottom: var(--s12);
 }
 
-.mc-hero__name {
-  grid-area: name;
-  align-self: start;
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-stretch: 62%;
-  font-size: clamp(96px, 11vw, 168px);
-  line-height: 0.78;
-  color: var(--ink);
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  user-select: none;
-}
 
 .mc-art {
   grid-area: art;
   position: relative;
+  max-width: 960px;
   padding: 7% 0 0 7%;
 }
 
@@ -137,7 +125,6 @@
   .strip:nth-child(6) { --from: 10%;  animation-delay: 600ms; }
   .mc-art__square { animation: print-circle 900ms var(--ease-out) 60ms both; }
   .mc-art__dot { animation: stamp-dot 500ms var(--ease-out) 1300ms both; }
-  .mc-hero__name { animation: print-name 1000ms var(--ease-out) 150ms both; }
   .mc-info { animation: print-fade 700ms var(--ease-out) 900ms both; }
 }
 
@@ -336,15 +323,6 @@
   background: var(--mc-orange);
 }
 
-/* Step 2: a pull quote beside the text */
-.mc-quote {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-stretch: 75%;
-  font-size: clamp(40px, 4.4vw, 60px);
-  line-height: 0.95;
-  color: var(--mc-navy);
-}
 
 /* Step 1: the agreed direction as a brief card */
 .brief {
@@ -398,6 +376,10 @@
 }
 
 /* Figures */
+.mc-figure--side {
+  margin-top: 0;
+}
+
 .mc-figure {
   margin-top: var(--s6);
 }
@@ -574,16 +556,11 @@
 @media (max-width: 640px) {
   .mc-hero .wrap {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "name" "art" "info";
+    grid-template-areas: "art" "info";
     row-gap: var(--s5);
     padding-top: var(--s4);
   }
 
-  .mc-hero__name {
-    writing-mode: horizontal-tb;
-    transform: none;
-    font-size: 23vw;
-  }
 
   .mc-section { padding: var(--s8) 0; }
   .mc-before { padding: var(--s4); rotate: 0deg; }

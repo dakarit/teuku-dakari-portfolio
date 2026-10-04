@@ -23,7 +23,7 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Gloock&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
   <link rel="preload" as="image" href="images/poster/headshot.webp" type="image/webp">
   <link rel="stylesheet" href="css/poster.css">
 </head>
@@ -69,17 +69,15 @@
 
         <div class="hero__info">
           <div class="hero__rule" aria-hidden="true"></div>
-          <h1 id="intro-title">Teuku Dakari</h1>
+          <h1 id="intro-title" class="nameplate">Teuku Dakari</h1>
           <p class="hero__statement">UI/UX designer and computer science student at Northeastern University, focused on making technology easier for everyone to use.</p>
           <p class="hero__availability">Available for co-op, January–June 2027</p>
-          <div class="hero__contact">
-            <a class="ink-btn" href="assets/resume.pdf">Resume</a>
-            <div class="email-line">
-              <a href="mailto:teukuomardakari@gmail.com">teukuomardakari@gmail.com</a>
-              <button class="copy-btn" type="button" data-copy="teukuomardakari@gmail.com" hidden>Copy</button>
-            </div>
-            <p class="hero__links"><a href="https://www.linkedin.com/in/dakarit">LinkedIn</a><a href="https://github.com/dakarit">GitHub</a></p>
-          </div>
+          <ul class="tags-dl" aria-label="Contact">
+            <li><a class="dtag dtag--primary" href="assets/resume.pdf"><span class="dtag__box" aria-hidden="true"></span><span class="dtag__text">Resume</span></a></li>
+            <li><a class="dtag" href="mailto:teukuomardakari@gmail.com"><span class="dtag__box" aria-hidden="true"></span><span class="dtag__text">Email</span></a></li>
+            <li><a class="dtag" href="https://www.linkedin.com/in/dakarit"><span class="dtag__box" aria-hidden="true"></span><span class="dtag__text">LinkedIn</span></a></li>
+            <li><a class="dtag" href="https://github.com/dakarit"><span class="dtag__box" aria-hidden="true"></span><span class="dtag__text">GitHub</span></a></li>
+          </ul>
         </div>
 
         <p class="hero__credit" aria-hidden="true">Portfolio 2026, dakari.dev</p>
@@ -91,7 +89,6 @@
       <div class="wrap">
         <div class="section__head">
           <h2 id="work-title">Selected work</h2>
-          <p class="section__count">Three projects</p>
         </div>
 
         <ul class="work-list">
