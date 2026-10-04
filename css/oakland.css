@@ -180,16 +180,6 @@ html.hc .only-default {
 .codes span:nth-child(2) { background: var(--pat-diag); -webkit-background-clip: text; background-clip: text; }
 .codes span:nth-child(4) { background: var(--pat-dots); -webkit-background-clip: text; background-clip: text; }
 
-.codes small {
-  margin-top: var(--s2);
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-stretch: 100%;
-  font-size: 13px;
-  line-height: 1.4;
-  color: var(--ink-soft);
-  letter-spacing: 0;
-}
 
 .oak-art {
   grid-area: art;
@@ -443,48 +433,6 @@ html.hc .oak-statement {
   font-size: 14px;
 }
 
-/* The chart wipes from inaccessible to accessible as it scrolls into view */
-.wipe {
-  position: relative;
-  max-width: 860px;
-  aspect-ratio: 1200 / 752;
-  border: 1.5px solid var(--ink);
-  background: #fff;
-}
-
-.wipe img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border: 0;
-}
-
-.wipe__after {
-  clip-path: inset(0 0 0 0);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .js-wipe .wipe__after {
-    clip-path: inset(0 100% 0 0);
-    transition: clip-path 1400ms var(--ease-out);
-  }
-
-  .js-wipe .wipe.is-visible .wipe__after {
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-.wipe-labels {
-  max-width: 860px;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: var(--s1);
-  font-weight: 600;
-  font-size: 14px;
-}
-
 /* Outcome callout framed by the diagonal pattern */
 .oak-callout {
   margin-top: var(--s5);
@@ -549,7 +497,6 @@ html.hc .oak-statement {
     font-size: 19vw;
   }
 
-  .codes small { display: none; }
   .oak-section { padding: var(--s8) 0; }
   .compare { grid-template-columns: 1fr; }
   .next { grid-template-columns: minmax(0, 1fr); }

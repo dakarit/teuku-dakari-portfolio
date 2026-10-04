@@ -46,6 +46,7 @@
         <ul>
           <li><a href="#work">Work</a></li>
           <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
           <li><a href="assets/resume.pdf">Resume</a></li>
         </ul>
       </nav>
@@ -71,6 +72,14 @@
           <h1 id="intro-title">Teuku Dakari</h1>
           <p class="hero__statement">UI/UX designer and computer science student at Northeastern University, focused on making technology easier for everyone to use.</p>
           <p class="hero__availability">Available for co-op, January–June 2027</p>
+          <div class="hero__contact">
+            <a class="ink-btn" href="assets/resume.pdf">Resume</a>
+            <div class="email-line">
+              <a href="mailto:teukuomardakari@gmail.com">teukuomardakari@gmail.com</a>
+              <button class="copy-btn" type="button" data-copy="teukuomardakari@gmail.com" hidden>Copy</button>
+            </div>
+            <p class="hero__links"><a href="https://www.linkedin.com/in/dakarit">LinkedIn</a><a href="https://github.com/dakarit">GitHub</a></p>
+          </div>
         </div>
 
         <p class="hero__credit" aria-hidden="true">Portfolio 2026, dakari.dev</p>
@@ -168,6 +177,27 @@
       </div>
     </section>
 
+    <!-- Contact: the closing poster -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact__wrap">
+        <h2 class="contact__word" id="contact-title">Contact</h2>
+        <div class="contact__body">
+          <div class="contact__shape" aria-hidden="true"></div>
+          <a class="contact__email" href="mailto:teukuomardakari@gmail.com" aria-label="Email teukuomardakari@gmail.com">teukuomardakari<span>@gmail.com</span></a>
+          <div class="contact__info">
+            <div class="hero__rule" aria-hidden="true"></div>
+            <p>I’m looking for a UI/UX design or front-end development co-op for January–June 2027.</p>
+            <button class="copy-btn copy-btn--big" type="button" data-copy="teukuomardakari@gmail.com" hidden>Copy email</button>
+            <ul class="contact__links">
+              <li><a href="assets/resume.pdf">Resume (PDF)</a></li>
+              <li><a href="https://www.linkedin.com/in/dakarit">LinkedIn</a></li>
+              <li><a href="https://github.com/dakarit">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- ============ SHARED FOOTER (keep in sync across all pages) ============ -->
@@ -183,5 +213,21 @@
     </div>
   </footer>
   <!-- ============ /SHARED FOOTER ============ -->
+  <script>
+    // Copy-email buttons; hidden without JS, where the mailto link still works
+    (function () {
+      if (!navigator.clipboard) return;
+      document.querySelectorAll(".copy-btn").forEach(function (btn) {
+        var label = btn.textContent;
+        btn.hidden = false;
+        btn.addEventListener("click", function () {
+          navigator.clipboard.writeText(btn.dataset.copy).then(function () {
+            btn.textContent = "Copied";
+            setTimeout(function () { btn.textContent = label; }, 1800);
+          });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

@@ -306,6 +306,62 @@ li {
   background: var(--vermilion);
 }
 
+/* Contact row in the hero */
+.hero__contact {
+  display: grid;
+  justify-items: start;
+  gap: var(--s2);
+  margin-top: var(--s4);
+  padding-top: var(--s3);
+  border-top: 1px solid var(--rule);
+}
+
+.ink-btn {
+  display: inline-block;
+  padding: 10px 26px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: background-color 200ms ease;
+}
+
+.ink-btn:hover {
+  background: var(--vermilion-text);
+  color: #fff;
+}
+
+.email-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+}
+
+.copy-btn {
+  padding: 3px 12px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: 500 13px/1.4 var(--font-body);
+  cursor: pointer;
+}
+
+.copy-btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.hero__links {
+  display: flex;
+  gap: var(--s3);
+  font-size: 15px;
+}
+
 /* Tiny printer's credit on the edge of the poster */
 .hero__credit {
   position: absolute;
@@ -787,6 +843,97 @@ li {
   margin-top: var(--s2);
 }
 
+/* Contact: the closing poster
+   ========================================================================== */
+
+.contact {
+  overflow-x: clip;
+  padding: var(--s12) 0 var(--s16);
+}
+
+.contact__wrap {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--s6);
+  align-items: end;
+}
+
+.contact__word {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 62%;
+  font-size: clamp(110px, 13vw, 190px);
+  line-height: 0.78;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.contact__body {
+  position: relative;
+  display: grid;
+  gap: var(--s6);
+}
+
+.contact__shape {
+  position: absolute;
+  right: 4%;
+  top: -10%;
+  width: min(380px, 42%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--vermilion);
+  filter: url(#rough);
+}
+
+.contact__email {
+  position: relative;
+  display: block;
+  padding-top: var(--s8);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 62%;
+  font-size: clamp(56px, 9.6vw, 150px);
+  line-height: 0.86;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.contact__email span {
+  display: block;
+}
+
+.contact__email:hover {
+  color: var(--vermilion-text);
+}
+
+.contact__info {
+  position: relative;
+  display: grid;
+  justify-items: start;
+  gap: var(--s2);
+  max-width: 420px;
+  font-size: 17px;
+}
+
+.copy-btn--big {
+  padding: 8px 20px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3);
+  padding: 0;
+  list-style: none;
+  font-weight: 600;
+}
+
 /* Footer
    ========================================================================== */
 
@@ -853,6 +1000,34 @@ li {
 }
 
 @media (max-width: 600px) {
+  .site-nav ul {
+    gap: 14px;
+  }
+
+  .site-nav a {
+    font-size: 13px;
+  }
+
+  .site-name {
+    font-size: 15px;
+    white-space: nowrap;
+  }
+
+  .contact__wrap {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contact__word {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 28vw;
+  }
+
+  .contact__email {
+    padding-top: var(--s4);
+    font-size: 15vw;
+  }
+
   .wrap {
     padding: 0 var(--s2);
   }

@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8">
   <script>
-    // Apply saved high contrast choice before first paint, and enable the scroll wipe
+    // Apply saved high contrast choice before first paint
     try { if (localStorage.getItem("portfolio-hc") === "true") document.documentElement.classList.add("hc"); } catch (e) {}
-    document.documentElement.classList.add("js-wipe");
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AI Document Accessibility Converter, City of Oakland - Teuku Dakari</title>
@@ -50,6 +49,7 @@
         <ul>
           <li><a href="../index.html#work" aria-current="true">Work</a></li>
           <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
           <li><a href="../assets/resume.pdf">Resume</a></li>
         </ul>
       </nav>
@@ -65,7 +65,6 @@
         <div class="wrap">
           <p class="codes" aria-hidden="true">
             <span>1.1.1</span><span>1.4.1</span><span>1.4.3</span><span>1.3.1</span>
-            <small>WCAG criteria the tool<br>fixes most often</small>
           </p>
 
           <div class="oak-art">
@@ -179,10 +178,15 @@
             <h3 class="oak-h3">2. How the conversion works</h3>
             <div class="oak-text"><p>Behind the interface, the team fine-tuned two OpenAI models. The first model reads an inaccessible document and creates a remediation plan, listing each issue, how severe it is, which guideline it breaks, and how to fix it. The second model then takes in both the document and the plan to produce the accessible version. Some common fixes include adding alt text to images (WCAG 1.1.1), making sure information isn’t conveyed by color alone (1.4.1), increasing text contrast (1.4.3), and turning list-like content into properly tagged lists for screen readers (1.3.1).</p></div>
             <figure class="oak-figure">
-              <div class="wipe-labels" aria-hidden="true"><span>Before</span><span>After</span></div>
-              <div class="wipe">
-                <img src="../images/oakland/chart-before.webp" alt="A bar chart that relies on color alone, with low-contrast labels" width="1200" height="752" loading="lazy">
-                <img class="wipe__after" src="../images/oakland/chart-after.webp" alt="The same chart made accessible, with a unique pattern on each bar, value labels, and higher contrast" width="1200" height="727" loading="lazy">
+              <div class="compare">
+                <div>
+                  <span class="compare__label">Before</span>
+                  <img src="../images/oakland/chart-before.webp" alt="A bar chart that relies on color alone, with low-contrast labels" width="1200" height="760" loading="lazy">
+                </div>
+                <div>
+                  <span class="compare__label">After</span>
+                  <img src="../images/oakland/chart-after.webp" alt="The same chart made accessible, with a unique pattern on each bar, value labels, and higher contrast" width="1200" height="760" loading="lazy">
+                </div>
               </div>
               <figcaption>An example from our team’s poster: a chart that relies on color alone, and the accessible version with patterns, value labels, and stronger contrast. The patterns on this page come from that chart.</figcaption>
             </figure>
@@ -264,15 +268,6 @@
           try { localStorage.setItem("portfolio-hc", String(root.classList.contains("hc"))); } catch (e) {}
           sync();
         });
-      }
-      // Chart wipe: reveal the accessible version when it scrolls into view
-      var wipe = document.querySelector(".wipe");
-      if (wipe && "IntersectionObserver" in window) {
-        new IntersectionObserver(function (entries, obs) {
-          entries.forEach(function (e) { if (e.isIntersecting) { wipe.classList.add("is-visible"); obs.disconnect(); } });
-        }, { threshold: 0.5 }).observe(wipe);
-      } else if (wipe) {
-        wipe.classList.add("is-visible");
       }
     })();
   </script>
