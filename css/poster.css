@@ -184,7 +184,9 @@ li {
   text-decoration: underline;
 }
 
-/* Hero: a poster of me
+/* Hero: a character-select composition
+   Text on the left, a big cropped portrait bleeding off the right,
+   name and tags laid low over the art.
    ========================================================================== */
 
 .hero {
@@ -194,105 +196,57 @@ li {
 
 .hero .wrap {
   position: relative;
+  z-index: 1;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) minmax(260px, 320px);
-  align-items: end;
-  gap: var(--s5);
-  min-height: min(820px, calc(100svh - 72px));
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  column-gap: var(--s6);
+  min-height: min(880px, calc(100svh - 72px));
   padding-top: var(--s6);
 }
 
-/* The vertical name, set like "JUMP" */
-.hero__name {
-  align-self: stretch;
-  display: flex;
-  align-items: flex-end;
-  /* Rotated 180deg, so top padding sits visually at the bottom: stand on the rules */
-  padding-top: calc(var(--s16) + var(--s2));
+.hero__text {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  padding-bottom: calc(var(--s16) + var(--s4));
+}
+
+.hero__lead {
   font-family: var(--font-display);
   font-weight: 900;
-  font-stretch: 62%;
-  font-size: clamp(132px, min(15.5vw, 27svh), 228px);
-  line-height: 0.78;
+  font-stretch: 75%;
+  font-size: clamp(40px, 4.2vw, 64px);
+  line-height: 0.96;
   letter-spacing: -0.01em;
-  color: var(--ink);
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  user-select: none;
+  text-wrap: balance;
 }
 
-.hero__art {
-  position: relative;
-  align-self: stretch;
-  min-height: 560px;
+.nowrap {
+  white-space: nowrap;
 }
 
-.hero__circle {
-  position: absolute;
-  left: 50%;
-  top: 12%;
-  width: min(440px, 82%);
-  aspect-ratio: 1;
-  translate: -50% 0;
-  border-radius: 50%;
-  background: var(--vermilion);
-  filter: url(#rough);
-}
-
-.hero__photo {
-  position: absolute;
-  left: 50%;
-  bottom: var(--s16);
-  width: min(470px, 92%);
-  translate: -44% 0;
-  z-index: 1;
-}
-
-/* Stacked rules the figure stands on, like "One step at a time" */
-.hero__steps {
-  position: absolute;
-  left: -50vw;
-  right: -50vw;
-  bottom: 0;
-  height: var(--s16);
-  background: repeating-linear-gradient(to bottom, var(--ink) 0 1.5px, transparent 1.5px 16px);
-  opacity: 0.85;
-}
-
-.hero__info {
-  position: relative;
-  z-index: 1;
-  padding-bottom: calc(var(--s16) + var(--s5));
-}
-
-.hero__rule {
-  width: var(--s6);
-  height: 3px;
-  margin-bottom: var(--s3);
-  background: var(--ink);
-}
-
-.hero__info h1 {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-stretch: 100%;
-  font-size: 40px;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-}
-
-.hero__statement {
+/* The second half of the headline sits on its own line, under a short vermilion rule */
+.hero__school {
+  display: block;
+  width: fit-content;
   margin-top: var(--s2);
+  padding-top: var(--s2);
+  border-top: 4px solid var(--vermilion);
+}
+
+.hero__about {
+  max-width: 30em;
+  margin-top: var(--s4);
   color: var(--ink-soft);
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: 17px;
+  line-height: 1.6;
 }
 
 .hero__availability {
   display: flex;
   align-items: center;
   gap: var(--s1);
-  margin-top: var(--s3);
+  margin-top: var(--s4);
   font-weight: 600;
   font-size: 15px;
 }
@@ -306,13 +260,64 @@ li {
   background: var(--vermilion);
 }
 
+.hero__art {
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  min-height: 640px;
+}
+
+.hero__circle {
+  position: absolute;
+  right: 6%;
+  top: 2%;
+  width: min(580px, 82%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--vermilion);
+  filter: url(#rough);
+}
+
+/* Big and cropped: bleeds off the right edge and down into the rules */
+.hero__photo {
+  position: absolute;
+  right: -16%;
+  bottom: 0;
+  height: 96%;
+  width: auto;
+  max-width: none;
+  z-index: 1;
+}
+
+/* Name and tags sit low over the art, on a paper backing so they stay legible */
+.hero__plate {
+  position: absolute;
+  left: 0;
+  bottom: calc(var(--s16) + var(--s1));
+  z-index: 2;
+  padding: var(--s2) var(--s3) var(--s3);
+  background: var(--paper);
+  box-shadow: 0 14px 30px -18px rgba(26, 23, 20, 0.45);
+}
+
+/* Stacked rules along the bottom, like "One step at a time" */
+.hero__steps {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--s16);
+  background: repeating-linear-gradient(to bottom, var(--ink) 0 1.5px, transparent 1.5px 16px);
+  opacity: 0.85;
+}
+
 /* Your name, set like a character-select title: a sharp display serif with one clean slice */
-.hero__info .nameplate {
+.nameplate {
   position: relative;
   font-family: "Gloock", Georgia, serif;
   font-weight: 400;
   font-stretch: 100%;
-  font-size: 54px;
+  font-size: clamp(48px, 5.2vw, 80px);
   line-height: 1;
   letter-spacing: -0.01em;
 }
@@ -335,7 +340,7 @@ li {
   display: flex;
   flex-wrap: nowrap;
   gap: 8px;
-  margin-top: var(--s4);
+  margin-top: var(--s3);
   padding: 0;
   list-style: none;
 }
@@ -404,32 +409,21 @@ li {
   100% { transform: translateY(0); }
 }
 
-/* Tiny printer's credit on the edge of the poster */
-.hero__credit {
-  position: absolute;
-  right: var(--s4);
-  top: var(--s6);
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  color: var(--ink-soft);
-  writing-mode: vertical-rl;
-}
-
 /* One authored moment: the poster assembles like a screen print */
 @media (prefers-reduced-motion: no-preference) {
   .hero__circle {
     animation: print-circle 900ms var(--ease-out) 100ms both;
   }
 
-  .hero__name {
-    animation: print-name 1000ms var(--ease-out) 250ms both;
-  }
-
   .hero__photo {
-    animation: print-photo 900ms var(--ease-out) 550ms both;
+    animation: print-photo 900ms var(--ease-out) 350ms both;
   }
 
-  .hero__info,
+  .hero__plate {
+    animation: print-photo 800ms var(--ease-out) 650ms both;
+  }
+
+  .hero__text,
   .hero__steps {
     animation: print-fade 700ms var(--ease-out) 800ms both;
   }
@@ -846,30 +840,6 @@ li {
   color: #AFC0FF;
 }
 
-/* About
-   ========================================================================== */
-
-.about {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: var(--s4);
-}
-
-.about .section__head {
-  grid-column: 1 / -1;
-  margin-bottom: var(--s4);
-}
-
-.about__text {
-  grid-column: 5 / span 7;
-  max-width: 36em;
-  font-size: 18px;
-}
-
-.about__text p + p {
-  margin-top: var(--s2);
-}
-
 /* Contact: the closing poster
    ========================================================================== */
 
@@ -987,20 +957,54 @@ li {
 /* Responsive
    ========================================================================== */
 
-@media (max-width: 960px) {
+@media (max-width: 900px) {
   .hero .wrap {
-    grid-template-columns: auto minmax(0, 1fr);
-  }
-
-  .hero__info {
-    grid-column: 1 / -1;
-    padding-bottom: var(--s8);
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    row-gap: var(--s5);
   }
 
   .hero__art {
-    min-height: 520px;
+    grid-column: 1;
+    min-height: 600px;
   }
 
+  .hero__text {
+    grid-column: 1;
+    grid-row: 2;
+    padding-bottom: calc(var(--s16) + var(--s5));
+  }
+
+  .hero__photo {
+    right: -6%;
+  }
+
+  /* Stacked: the rules move up under the portrait so it still stands on them */
+  .hero__steps {
+    display: none;
+  }
+
+  .hero__art::after {
+    content: "";
+    position: absolute;
+    left: -50vw;
+    right: -50vw;
+    bottom: 0;
+    height: var(--s12);
+    background: repeating-linear-gradient(to bottom, var(--ink) 0 1.5px, transparent 1.5px 16px);
+    opacity: 0.85;
+  }
+
+  .hero__text {
+    padding-bottom: var(--s4);
+  }
+
+  .hero__plate {
+    bottom: calc(var(--s12) - var(--s2));
+  }
+}
+
+@media (max-width: 960px) {
   .project,
   .project:nth-child(even) {
     grid-template-columns: 1fr;
@@ -1018,9 +1022,6 @@ li {
     max-width: 560px;
   }
 
-  .about__text {
-    grid-column: 1 / -1;
-  }
 }
 
 @media (max-width: 600px) {
@@ -1047,49 +1048,39 @@ li {
   }
 
   .hero .wrap {
-    grid-template-columns: 1fr;
-    gap: 0;
-    min-height: 0;
-    padding-top: var(--s4);
-  }
-
-  /* On phones the name runs across the top instead of up the side */
-  .hero__name {
-    writing-mode: horizontal-tb;
-    transform: none;
-    padding-top: 0;
-    font-size: 30vw;
-    line-height: 0.82;
+    padding-top: var(--s3);
   }
 
   .hero__art {
-    min-height: 380px;
+    min-height: 470px;
   }
 
   .hero__circle {
-    top: 6%;
-    width: 78%;
+    top: 4%;
+    right: 2%;
+    width: 84%;
   }
 
   .hero__photo {
-    width: 86%;
-    bottom: var(--s8);
+    right: -14%;
+    height: 92%;
   }
 
-  .hero__steps {
+  .hero__plate {
+    bottom: calc(var(--s8) - var(--s2));
+    padding: 12px 14px 16px;
+  }
+
+  .hero__art::after {
     height: var(--s8);
   }
 
-  .hero__credit {
-    display: none;
+  .hero__text {
+    padding-bottom: 0;
   }
 
-  .hero__info {
-    padding: var(--s5) 0 var(--s8);
-  }
-
-  .hero__info h1 {
-    font-size: 34px;
+  .hero__lead {
+    font-size: 36px;
   }
 
   .section {

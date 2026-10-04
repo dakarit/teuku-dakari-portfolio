@@ -45,7 +45,6 @@
       <nav class="site-nav" aria-label="Main">
         <ul>
           <li><a href="#work">Work</a></li>
-          <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="assets/resume.pdf">Resume</a></li>
         </ul>
@@ -59,29 +58,27 @@
     <!-- Hero: a poster of me -->
     <section class="hero" aria-labelledby="intro-title">
       <div class="wrap">
-        <p class="hero__name" aria-hidden="true">DAKARI</p>
-
         <div class="hero__art">
           <div class="hero__circle" aria-hidden="true"></div>
           <img class="hero__photo" src="images/poster/headshot.webp" alt="Portrait of Teuku Dakari in a cap and light shirt, looking to the side" width="643" height="715" fetchpriority="high">
-          <div class="hero__steps" aria-hidden="true"></div>
+          <div class="hero__plate">
+            <h1 id="intro-title" class="nameplate">Teuku Dakari</h1>
+            <ul class="tags-dl" aria-label="Contact">
+              <li><a class="dtag dtag--primary" href="assets/resume.pdf"><span class="dtag__box" aria-hidden="true"></span><span class="dtag__text">Resume</span></a></li>
+              <li><a class="dtag" href="mailto:teukuomardakari@gmail.com"><span class="dtag__box" aria-hidden="true"></span><span class="dtag__text">Email</span></a></li>
+              <li><a class="dtag" href="https://www.linkedin.com/in/dakarit"><span class="dtag__box" aria-hidden="true"></span><span class="dtag__text">LinkedIn</span></a></li>
+              <li><a class="dtag" href="https://github.com/dakarit"><span class="dtag__box" aria-hidden="true"></span><span class="dtag__text">GitHub</span></a></li>
+            </ul>
+          </div>
         </div>
 
-        <div class="hero__info">
-          <div class="hero__rule" aria-hidden="true"></div>
-          <h1 id="intro-title" class="nameplate">Teuku Dakari</h1>
-          <p class="hero__statement">UI/UX designer and computer science student at Northeastern University, focused on making technology easier for everyone to use.</p>
+        <div class="hero__text">
+          <p class="hero__lead">UI/UX Designer &amp; <span class="nowrap">Front-End Developer</span> <span class="visually-hidden">|</span> <span class="hero__school">CS @ Northeastern</span></p>
+          <p class="hero__about">I’m graduating in 2029, and I’m interested in both programming and UI/UX design. I’ve worked on both sides of the design handoff. I’ve designed in Figma, including at an NUS workshop I took part in, and as a software engineering intern at Sekolahmu, I turned designers’ work into production Flutter code for its mobile app.</p>
           <p class="hero__availability">Available for co-op, January–June 2027</p>
-          <ul class="tags-dl" aria-label="Contact">
-            <li><a class="dtag dtag--primary" href="assets/resume.pdf"><span class="dtag__box" aria-hidden="true"></span><span class="dtag__text">Resume</span></a></li>
-            <li><a class="dtag" href="mailto:teukuomardakari@gmail.com"><span class="dtag__box" aria-hidden="true"></span><span class="dtag__text">Email</span></a></li>
-            <li><a class="dtag" href="https://www.linkedin.com/in/dakarit"><span class="dtag__box" aria-hidden="true"></span><span class="dtag__text">LinkedIn</span></a></li>
-            <li><a class="dtag" href="https://github.com/dakarit"><span class="dtag__box" aria-hidden="true"></span><span class="dtag__text">GitHub</span></a></li>
-          </ul>
         </div>
-
-        <p class="hero__credit" aria-hidden="true">Portfolio 2026, dakari.dev</p>
       </div>
+      <div class="hero__steps" aria-hidden="true"></div>
     </section>
 
     <!-- Work: each project is a poster -->
@@ -162,17 +159,6 @@
     </section>
 
     <!-- About -->
-    <section class="section" id="about" aria-labelledby="about-title">
-      <div class="wrap about">
-        <div class="section__head">
-          <h2 id="about-title">About</h2>
-        </div>
-        <div class="about__text">
-          <p>I’m a computer science student at Northeastern University, graduating in 2029, and I design interfaces that make technology easier to use. I’m interested in both programming and UI/UX design, and have experience with both.</p>
-        <p>I’ve worked on both sides of the design handoff. I’ve designed in Figma, including at an NUS workshop I took part in, and as a software engineering intern at Sekolahmu, I turned designers’ work into production Flutter code for its mobile app. I’m looking for a UI/UX design or front-end development co-op for January–June 2027.</p>
-        </div>
-      </div>
-    </section>
 
     <!-- Contact: the closing poster -->
     <section class="contact" id="contact" aria-labelledby="contact-title">
