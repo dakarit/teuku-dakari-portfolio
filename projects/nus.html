@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <script>document.documentElement.classList.add("js")</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FitCheck, NUS UI/UX Workshop - Teuku Dakari</title>
   <meta name="description" content="Case study: FitCheck, a mobile app concept that won First Prize at the NUS School of Computing UI/UX summer workshop.">
 
-  <meta name="theme-color" content="#F6F0E8">
+  <meta name="theme-color" content="#EEE7DA">
 
   <!-- Link previews (LinkedIn, Slack, iMessage…). -->
   <meta property="og:type" content="article">
@@ -24,15 +23,24 @@
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap">
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Kalam&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&text=Aafitchek&display=swap">
+  <link rel="stylesheet" href="../css/poster.css">
+  <link rel="stylesheet" href="../css/fitcheck.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
   <!-- ============ SHARED HEADER (keep in sync across all pages) ============ -->
   <header class="site-header">
-    <div class="container">
+    <div class="wrap">
       <a class="site-name" href="../index.html">Teuku Dakari</a>
       <nav class="site-nav" aria-label="Main">
         <ul>
@@ -48,117 +56,217 @@
   <main id="main">
     <article>
 
-      <!-- Case study header -->
-      <header class="cs-header">
-        <div class="container container--text">
-          <h1>FitCheck</h1>
-          <p class="cs-header__summary">A fashion super-app concept that won First Prize at the National University of Singapore’s School of Computing summer workshop, where I designed the Virtual Wardrobe and created the design system for our team of four.</p>
+      <!-- Hero: a lookbook spread -->
+      <header class="lb-hero">
+        <div class="wrap">
+          <div class="collage">
+            <div class="collage__block collage__block--yellow" aria-hidden="true"></div>
+            <div class="collage__block collage__block--red" aria-hidden="true"></div>
+            <div class="collage__block collage__block--blue" aria-hidden="true"></div>
+            <div class="barcode" aria-hidden="true"></div>
+            <p class="collage__code" aria-hidden="true">FC / 07.26</p>
+            <p class="collage__name" aria-hidden="true">FITCHECK</p>
+            <img class="phone phone--1" src="../images/fitcheck/home.webp" alt="FitCheck's Creativity Center home screen" width="520" height="1125">
+            <img class="phone phone--2" src="../images/fitcheck/wardrobe.webp" alt="The Virtual Wardrobe, a grid of clothing items with tags and favorites" width="520" height="1125">
+            <img class="phone phone--3" src="../images/fitcheck/market.webp" alt="The FitCheck Marketplace, with filters like Pairs with my wardrobe" width="520" height="1125">
+          </div>
 
-          <dl class="cs-meta">
-            <div>
-              <dt>Role</dt>
-              <dd>Team lead, Virtual Wardrobe, design system</dd>
+          <div class="hangtag-wrap">
+            <p class="sticker" aria-hidden="true">First<br>Prize</p>
+            <div class="hangtag">
+              <h1>FitCheck</h1>
+              <p class="hangtag__summary">A fashion super-app concept that won First Prize at the National University of Singapore’s School of Computing summer workshop, where I designed the Virtual Wardrobe and created the design system for our team of four.</p>
+              <dl>
+                <div><dt>Role</dt><dd>Team lead, Virtual Wardrobe, design system</dd></div>
+                <div><dt>Timeline</dt><dd>July 2026 (one month)</dd></div>
+                <div><dt>Tools</dt><dd>Figma, Maze</dd></div>
+                <div><dt>Recognition</dt><dd>First Prize</dd></div>
+              </dl>
+              <div class="hangtag__actions">
+                <a class="btn" href="https://www.figma.com/proto/b9Adcl0N2yXYHbVpYsxegp/Fitcheck-Designs?page-id=865%3A2&amp;node-id=725-72&amp;p=f&amp;m=draw&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;starting-point-node-id=725%3A72&amp;show-proto-sidebar=0&amp;t=Y2bTqY3LODWqlm0p-1" target="_blank" rel="noopener">View Figma prototype<span class="visually-hidden"> (opens in new tab)</span></a>
+                <a href="https://lily-result-827.notion.site/FitCheck-Portfolio-a94e68e877ea826fbd7a01c9a41c502e" target="_blank" rel="noopener">Read the full project documentation<span class="visually-hidden"> (opens in new tab)</span></a>
+              </div>
             </div>
-            <div>
-              <dt>Timeline</dt>
-              <dd>July 2026 (one month)</dd>
-            </div>
-            <div>
-              <dt>Tools</dt>
-              <dd>Figma, Maze</dd>
-            </div>
-            <div>
-              <dt>Recognition</dt>
-              <dd>First Prize</dd>
-            </div>
-          </dl>
-
-          <p class="cs-header__actions">
-            <a class="button" href="https://www.figma.com/proto/b9Adcl0N2yXYHbVpYsxegp/Fitcheck-Designs?page-id=865%3A2&amp;node-id=725-72&amp;p=f&amp;m=draw&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;starting-point-node-id=725%3A72&amp;show-proto-sidebar=0&amp;t=Y2bTqY3LODWqlm0p-1" target="_blank" rel="noopener">View Figma prototype<span class="visually-hidden"> (opens in new tab)</span></a>
-            <a href="https://lily-result-827.notion.site/FitCheck-Portfolio-a94e68e877ea826fbd7a01c9a41c502e" target="_blank" rel="noopener">Read the full project documentation<span class="visually-hidden"> (opens in new tab)</span></a>
-          </p>
+          </div>
         </div>
       </header>
 
-      <!-- Hero image (16:9) -->
-      <div class="cs-hero">
-        <img src="../images/nus/hero.jpg" alt="Four FitCheck screens: welcome, the Creativity Center home screen, wardrobe, and marketplace" width="2400" height="1350">
-      </div>
+      <div class="wrap">
 
-      <div class="container container--text">
-
-        <section class="cs-section reveal" aria-labelledby="problem">
-          <h2 id="problem">The Problem</h2>
-          <p>Young people currently manage their wardrobes, outfit decisions, shopping, resale, and fashion inspiration across disconnected tools. This makes it difficult to use what they already own, make confident fashion decisions, and develop a consistent personal style.</p>
-          <p>FitCheck brings it all into one app by connecting four services: a Virtual Wardrobe, an Outfit Designer, a Marketplace for buying and reselling, and Outfit Sharing.</p>
-          <p>The service I designed, the Virtual Wardrobe, focuses on a narrower problem. People own more clothes than they actually use, and without a clear picture of what’s in their closet, they default to the same few outfits, forget items they already bought, and struggle to answer a basic question: what do I actually have, and what should I wear?</p>
-        </section>
-
-        <section class="cs-section reveal" aria-labelledby="context">
-          <h2 id="context">Context &amp; Constraints</h2>
-          <p>FitCheck was our group project for <em>Designing Interactive Interfaces: UI/UX in the Digital World</em>, an intensive course in the NUS School of Computing Summer Workshop in Singapore. I led our team of four, working alongside Li Ka Kit, Ji Caitong, and Chen Xiangning. I designed the Virtual Wardrobe, created the design system used across the whole app, and took part in all of the group work, including research, the ecosystem map, and testing.</p>
-          <ul>
-            <li>We only had one month for the entire project, from research to the final showcase, so our research and testing had to be small but efficient.</li>
-            <li>Our primary users are teenagers and young adults, whose interest in fashion can vary heavily, from people who only dress for the occasion to people who live and breathe fashion. As such, we needed to design for both, as well as secondary users like content creators and clothing resellers.</li>
-            <li>The four services also had to feel like one continuous experience rather than separate apps.</li>
-          </ul>
-        </section>
-
-        <section class="cs-section reveal" aria-labelledby="process">
-          <h2 id="process">Process</h2>
-
-          <div class="cs-subsection">
-            <h3>1. Research</h3>
-            <p>Due to our one-month timeline, we had to keep our research small while getting as much out of it as possible. As such, we conducted four semi-structured interviews with a stratified sample, ranging from people who only dress for the occasion to people who decide what to wear every single day. Since fashion is inherently a form of creative expression, we needed qualitative data, which is why we chose interviews so that we could directly ask people about their fashion habits. We went in with a list of questions, but some were only asked when they applied, such as follow-up questions about thrifting only being asked if the interviewee actually thrifted.</p>
-            <p>From there, we clustered our findings into an affinity diagram and created two personas designed to be polar opposites: Alex, who doesn’t care too much about fashion and only wants to be styled for relevant occasions, and Sam, who wants to make a career out of fashion. This let our personas cover our entire primary user base while also dipping into the secondary ones. Our personas then helped us figure out how the app should flow, which we mapped out in a user journey map for Alex.</p>
+        <section class="lb-section" aria-labelledby="problem">
+          <h2 class="woven" id="problem">The Problem</h2>
+          <div class="split">
+            <div class="lb-text">
+              <p>Young people currently manage their wardrobes, outfit decisions, shopping, resale, and fashion inspiration across disconnected tools. This makes it difficult to use what they already own, make confident fashion decisions, and develop a consistent personal style.</p>
+              <p>FitCheck brings it all into one app by connecting four services: a Virtual Wardrobe, an Outfit Designer, a Marketplace for buying and reselling, and Outfit Sharing.</p>
+              <p>The service I designed, the Virtual Wardrobe, focuses on a narrower problem. People own more clothes than they actually use, and without a clear picture of what’s in their closet, they default to the same few outfits, forget items they already bought, and struggle to answer a basic question: what do I actually have, and what should I wear?</p>
+            </div>
+            <p class="pullquote" aria-hidden="true">What do I actually <em>have</em>, and what should I <em>wear?</em></p>
           </div>
+        </section>
 
-          <div class="cs-subsection">
-            <h3>2. Design system</h3>
-            <p>I created the design system for the whole app, built around a calm, photo-first interface that keeps the focus on the user’s clothes.</p>
+        <section class="lb-section" aria-labelledby="context">
+          <h2 class="woven" id="context">Context &amp; Constraints</h2>
+          <div class="lb-text">
+            <p>FitCheck was our group project for <em>Designing Interactive Interfaces: UI/UX in the Digital World</em>, an intensive course in the NUS School of Computing Summer Workshop in Singapore. I led our team of four, working alongside Li Ka Kit, Ji Caitong, and Chen Xiangning. I designed the Virtual Wardrobe, created the design system used across the whole app, and took part in all of the group work, including research, the ecosystem map, and testing.</p>
             <ul>
-              <li><strong>Accessible color.</strong> Every color is documented with its WCAG contrast ratio, such as navy text at 18.3:1 and the accent blue at 5.74:1. We kept the palette to a few key colors so the clothes wouldn’t be overshadowed by a busy visual design. Blue and white are both neutral colors in fashion, so they don’t clash with anything. Pretty much everyone owns something blue, like a pair of jeans, and white really lets the clothing shine. Red is reserved for destructive actions like deleting, to stay consistent with other apps.</li>
-              <li><strong>Three tiers of tokens.</strong> Primitives feed into semantic tokens, which then feed into components. This means a rebrand only needs to be edited in one place.</li>
-              <li><strong>Glass vs. crisp.</strong> Translucent, blurred “glass” is reserved for navigation and controls, while content like cards and forms stays solid. This gives the interface a lighter feel and a clearer sense of depth, and since it mirrors iOS’s Liquid Glass, the app feels native to the platform.</li>
-              <li><strong>One type family.</strong> We used Manrope in six sizes. Its geometric, slightly rounded style feels approachable rather than corporate, and its wide range of weights gives us a full type hierarchy from a single font family.</li>
+              <li>We only had one month for the entire project, from research to the final showcase, so our research and testing had to be small but efficient.</li>
+              <li>Our primary users are teenagers and young adults, whose interest in fashion can vary heavily, from people who only dress for the occasion to people who live and breathe fashion. As such, we needed to design for both, as well as secondary users like content creators and clothing resellers.</li>
+              <li>The four services also had to feel like one continuous experience rather than separate apps.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="lb-section" aria-labelledby="process">
+          <h2 class="woven" id="process">Process</h2>
+
+          <div class="lb-step">
+            <h3 class="step-label"><span class="step-label__no" aria-hidden="true">1</span> Research</h3>
+            <div class="lb-text">
+              <p>Due to our one-month timeline, we had to keep our research small while getting as much out of it as possible. As such, we conducted four semi-structured interviews with a stratified sample, ranging from people who only dress for the occasion to people who decide what to wear every single day. Since fashion is inherently a form of creative expression, we needed qualitative data, which is why we chose interviews so that we could directly ask people about their fashion habits. We went in with a list of questions, but some were only asked when they applied, such as follow-up questions about thrifting only being asked if the interviewee actually thrifted.</p>
+              <p>From there, we clustered our findings into an affinity diagram and created two personas designed to be polar opposites. This let our personas cover our entire primary user base while also dipping into the secondary ones. Our personas then helped us figure out how the app should flow, which we mapped out in a user journey map for Alex.</p>
+            </div>
+            <ul class="personas" aria-label="Personas">
+              <li class="persona"><h4>Alex</h4><p>Doesn’t care too much about fashion and only wants to be styled for relevant occasions.</p></li>
+              <li class="persona persona--sam"><h4>Sam</h4><p>Wants to make a career out of fashion.</p></li>
             </ul>
           </div>
 
-          <div class="cs-subsection">
-            <h3>3. Designing the Virtual Wardrobe</h3>
-            <p>Each design decision was based on what our interviewees told us.</p>
-            <ul>
-              <li><strong>Fast cataloging.</strong> “I would not spend hours photographing and entering every item I own.” To make adding an item as quick as possible, an AI camera scan fills in its category, brand, size, and condition in seconds. Entering details manually uses the exact same form, so typing it in yourself is always an option.</li>
-              <li><strong>Deciding what to wear.</strong> “I mainly wear the same few clothes because they are easier to find.” Users can mark their favorite pieces so they show up first in the wardrobe, and they can virtually try on any item straight from the grid rather than digging through their closet.</li>
-              <li><strong>Surfacing forgotten items.</strong> “I sometimes forget that I already own a similar item.” A one-tap “Mark as Worn” button builds a wear history, and item cards flag pieces that haven’t been worn in a while so they don’t get lost in the grid.</li>
+          <div class="lb-step">
+            <h3 class="step-label"><span class="step-label__no" aria-hidden="true">2</span> Design system</h3>
+            <div class="care">
+              <figure class="care-label" aria-label="FitCheck design system summary, styled as a clothing care label">
+                <p class="care-label__brand" aria-hidden="true">fitcheck</p>
+                <div class="care-label__row">
+                  <p class="care-label__heading">COLOR, WITH CONTRAST ON WHITE</p>
+                  <ul class="swatches">
+                    <li><span aria-hidden="true" style="background:#0B1330"></span> Ink / Navy 18.3:1</li>
+                    <li><span aria-hidden="true" style="background:#2A4FFF"></span> Accent Blue 5.74:1</li>
+                    <li><span aria-hidden="true" style="background:#D92D20"></span> Destructive Red 4.83:1</li>
+                    <li><span aria-hidden="true" style="background:#FFFFFF"></span> Canvas White</li>
+                  </ul>
+                </div>
+                <div class="care-label__row care-label__type">
+                  <span class="care-label__aa" aria-hidden="true">Aa</span>
+                  <span>Manrope, six sizes from ExtraBold 20 to Medium 11</span>
+                </div>
+                <div class="care-label__row">
+                  <p class="care-label__heading">TOKENS</p>
+                  <p class="tiers"><span>Primitives</span><i aria-hidden="true"></i><span>Semantics</span><i aria-hidden="true"></i><span>Usage</span></p>
+                </div>
+                <div class="care-label__row">
+                  <p class="care-label__heading">SURFACES</p>
+                  <p>Glass for controls, crisp for content</p>
+                </div>
+                <p class="care-label__foot" aria-hidden="true">DESIGNED IN FIGMA</p>
+              </figure>
+              <div class="lb-text">
+                <p>I created the design system for the whole app, built around a calm, photo-first interface that keeps the focus on the user’s clothes.</p>
+                <ul>
+                  <li><strong>Accessible color.</strong> Every color is documented with its WCAG contrast ratio, such as navy text at 18.3:1 and the accent blue at 5.74:1. We kept the palette to a few key colors so the clothes wouldn’t be overshadowed by a busy visual design. Blue and white are both neutral colors in fashion, so they don’t clash with anything. Pretty much everyone owns something blue, like a pair of jeans, and white really lets the clothing shine. Red is reserved for destructive actions like deleting, to stay consistent with other apps.</li>
+                  <li><strong>Three tiers of tokens.</strong> Primitives feed into semantic tokens, which then feed into components. This means a rebrand only needs to be edited in one place.</li>
+                  <li><strong>Glass vs. crisp.</strong> Translucent, blurred “glass” is reserved for navigation and controls, while content like cards and forms stays solid. This gives the interface a lighter feel and a clearer sense of depth, and since it mirrors iOS’s Liquid Glass, the app feels native to the platform.</li>
+                  <li><strong>One type family.</strong> We used Manrope in six sizes. Its geometric, slightly rounded style feels approachable rather than corporate, and its wide range of weights gives us a full type hierarchy from a single font family.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="lb-step">
+            <h3 class="step-label"><span class="step-label__no" aria-hidden="true">3</span> Designing the Virtual Wardrobe</h3>
+            <div class="lb-text"><p>Each design decision was based on what our interviewees told us.</p></div>
+            <ul class="decisions">
+              <li class="decision">
+                <div class="decision__shot">
+                  <img src="../images/fitcheck/review.webp" alt="The Review Details screen, with name, category, and brand filled in by AI from a photo" width="520" height="1125" loading="lazy">
+                  <svg class="ink-note" viewBox="0 0 400 500" aria-hidden="true">
+                    <path d="M58 92 C 70 62, 330 58, 346 86 C 360 112, 90 128, 60 108 C 48 98, 66 80, 96 76"/>
+                    <path d="M40 445 C 22 360, 22 220, 52 128 M 42 140 L 52 126 L 62 140"/>
+                    <text x="20" y="478" stroke="#E4DCCB" stroke-width="6" paint-order="stroke">AI fills it in, you just check</text>
+                  </svg>
+                </div>
+                <h4>Fast cataloging</h4>
+                <blockquote>“I would not spend hours photographing and entering every item I own.”</blockquote>
+                <p>To make adding an item as quick as possible, an AI camera scan fills in its category, brand, size, and condition in seconds. Entering details manually uses the exact same form, so typing it in yourself is always an option.</p>
+              </li>
+              <li class="decision">
+                <div class="decision__shot">
+                  <img src="../images/fitcheck/wardrobe.webp" alt="The wardrobe grid, where starred favorite pieces appear first" width="520" height="1125" loading="lazy">
+                  <svg class="ink-note" viewBox="0 0 400 500" aria-hidden="true">
+                    <path d="M168 246 C 168 216, 222 214, 224 242 C 226 270, 176 274, 170 250 C 168 238, 186 226, 204 228"/>
+                    <path d="M40 445 C 30 380, 80 290, 158 258 M 142 256 L 159 257 L 152 272"/>
+                    <text x="20" y="478" stroke="#E4DCCB" stroke-width="6" paint-order="stroke">favorites float to the top</text>
+                  </svg>
+                </div>
+                <h4>Deciding what to wear</h4>
+                <blockquote>“I mainly wear the same few clothes because they are easier to find.”</blockquote>
+                <p>Users can mark their favorite pieces so they show up first in the wardrobe, and they can virtually try on any item straight from the grid rather than digging through their closet.</p>
+              </li>
+              <li class="decision">
+                <div class="decision__shot decision__shot--crop">
+                  <img src="../images/fitcheck/wardrobe-notworn.webp" alt="A Denim Jacket item card with a Not worn 46d badge" width="238" height="315" loading="lazy">
+                  <svg class="ink-note" viewBox="0 0 400 500" aria-hidden="true">
+                    <path d="M36 98 C 40 68, 220 64, 226 96 C 232 128, 52 136, 40 110 C 34 96, 60 84, 90 82"/>
+                    <path d="M200 440 C 260 380, 280 220, 230 132 M 222 148 L 230 130 L 242 146"/>
+                    <text x="96" y="478" stroke="#E4DCCB" stroke-width="6" paint-order="stroke">flags forgotten pieces</text>
+                  </svg>
+                </div>
+                <h4>Surfacing forgotten items</h4>
+                <blockquote>“I sometimes forget that I already own a similar item.”</blockquote>
+                <p>A one-tap “Mark as Worn” button builds a wear history, and item cards flag pieces that haven’t been worn in a while so they don’t get lost in the grid.</p>
+              </li>
             </ul>
-            <figure class="cs-figure">
-              <img src="../images/nus/process-wardrobe.jpg" alt="Adding an item in FitCheck: the Scan Item camera screen, the Review Details screen with AI-filled fields, and the wardrobe grid with a Not worn 46d badge" width="1440" height="900" loading="lazy">
-              <figcaption>Adding an item to the wardrobe. After scanning it and checking the AI-filled details, the item shows up in the wardrobe grid, where favorites and a “Not worn” badge help you decide what to wear.</figcaption>
+
+            <figure class="rail-figure">
+              <div class="rail" tabindex="0" role="region" aria-label="FitCheck screens, scroll sideways to browse">
+                <div class="rail__item"><img src="../images/fitcheck/scan.webp" alt="Scan Item: the camera frames a shirt to add it to the wardrobe" width="520" height="1125" loading="lazy"><span>Scan an item</span></div>
+                <div class="rail__item"><img src="../images/fitcheck/review.webp" alt="Review Details: AI-filled fields to check before saving" width="520" height="1125" loading="lazy"><span>Check the AI details</span></div>
+                <div class="rail__item"><img src="../images/fitcheck/wardrobe.webp" alt="The wardrobe grid with the new item saved" width="520" height="1125" loading="lazy"><span>Your wardrobe</span></div>
+                <div class="rail__item"><img src="../images/fitcheck/market.webp" alt="The Marketplace, filtered to pieces that pair with your wardrobe" width="520" height="1125" loading="lazy"><span>Marketplace</span></div>
+                <div class="rail__item"><img src="../images/fitcheck/home.webp" alt="The Creativity Center home screen" width="520" height="1125" loading="lazy"><span>Home</span></div>
+              </div>
+              <figcaption class="rail__caption">Adding an item to the wardrobe, then seeing how it connects to the rest of the app. Scroll sideways to flick through the rail.</figcaption>
             </figure>
           </div>
 
-          <div class="cs-subsection">
-            <h3>4. Prototyping and testing</h3>
-            <p>We built FitCheck into an interactive, testable prototype in Figma. <a href="https://www.figma.com/proto/b9Adcl0N2yXYHbVpYsxegp/Fitcheck-Designs?page-id=865%3A2&amp;node-id=725-72&amp;p=f&amp;m=draw&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;starting-point-node-id=725%3A72&amp;show-proto-sidebar=0&amp;t=Y2bTqY3LODWqlm0p-1" target="_blank" rel="noopener">Try the prototype<span class="visually-hidden"> (opens in new tab)</span></a>.</p>
-            <p>Before the final iteration, we ran a lightweight heuristic review alongside an unmoderated usability study in Maze. Due to our one-month timeline, the study was less about large-scale research and more about getting familiar with usability testing and catching real problems. Participants completed four realistic tasks, such as adding an item to their wardrobe, without being shown the intended path, and then freely explored the app so we could see what naturally caught their attention.</p>
+          <div class="lb-step">
+            <h3 class="step-label"><span class="step-label__no" aria-hidden="true">4</span> Prototyping and testing</h3>
+            <div class="lb-text">
+              <p>We built FitCheck into an interactive, testable prototype in Figma. <a href="https://www.figma.com/proto/b9Adcl0N2yXYHbVpYsxegp/Fitcheck-Designs?page-id=865%3A2&amp;node-id=725-72&amp;p=f&amp;m=draw&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;starting-point-node-id=725%3A72&amp;show-proto-sidebar=0&amp;t=Y2bTqY3LODWqlm0p-1" target="_blank" rel="noopener">Try the prototype<span class="visually-hidden"> (opens in new tab)</span></a>.</p>
+              <p>Before the final iteration, we ran a lightweight heuristic review alongside an unmoderated usability study in Maze. Due to our one-month timeline, the study was less about large-scale research and more about getting familiar with usability testing and catching real problems. Participants completed four realistic tasks, such as adding an item to their wardrobe, without being shown the intended path, and then freely explored the app so we could see what naturally caught their attention.</p>
+            </div>
+            <ol class="tickets" aria-label="The four Maze tasks">
+              <li class="ticket"><span class="ticket__no" aria-hidden="true">01</span>Add an item to your wardrobe</li>
+              <li class="ticket"><span class="ticket__no" aria-hidden="true">02</span>Create an outfit</li>
+              <li class="ticket"><span class="ticket__no" aria-hidden="true">03</span>Recreate a shared look</li>
+              <li class="ticket"><span class="ticket__no" aria-hidden="true">04</span>Create and share an outfit post</li>
+            </ol>
           </div>
         </section>
 
-        <section class="cs-section reveal" aria-labelledby="outcome">
-          <h2 id="outcome">Outcome</h2>
-          <p>FitCheck won First Prize at the workshop’s final showcase. <a href="../assets/nus-first-prize-certificate.pdf">View the certificate (PDF)</a></p>
-          <div class="cs-callout">
-            <p>Building the Maze study helped us think beyond static screens and define what successful interaction actually means. It also showed us where our prototype needed clearer feedback and more complete navigation.</p>
+        <section class="lb-section" aria-labelledby="outcome">
+          <h2 class="woven" id="outcome">Outcome</h2>
+          <div class="outcome">
+            <p class="sticker" aria-hidden="true">First<br>Prize</p>
+            <div class="lb-text">
+              <p>FitCheck won First Prize at the workshop’s final showcase. <a href="../assets/nus-first-prize-certificate.pdf">View the certificate (PDF)</a></p>
+              <p class="lb-callout">Building the Maze study helped us think beyond static screens and define what successful interaction actually means. It also showed us where our prototype needed clearer feedback and more complete navigation.</p>
+            </div>
           </div>
         </section>
 
-        <nav class="cs-footer-nav" aria-label="Case study">
-          <a href="../index.html">Back to home</a>
-          <a class="cs-next" href="clinic.html">
-            <span class="cs-next__label">Next project</span>
-            <span class="cs-next__title">Melasma Clinic by Dr. Tompi</span>
+        <nav class="next" aria-label="Next project">
+          <a class="poster poster--clinic" href="clinic.html" tabindex="-1" aria-hidden="true">
+            <span class="poster__shape"></span>
+            <img class="poster__img" src="../images/poster/clinic.webp" alt="" width="1200" height="743" loading="lazy">
+            <span class="poster__title">MELASMA</span>
+            <span class="poster__meta">Client work<br>2026</span>
           </a>
+          <div>
+            <p class="next__label">Next project</p>
+            <p class="next__title"><a href="clinic.html">Melasma Clinic by Dr. Tompi</a></p>
+            <a class="read-more" href="../index.html">Back to home</a>
+          </div>
         </nav>
 
       </div>
@@ -167,7 +275,7 @@
 
   <!-- ============ SHARED FOOTER (keep in sync across all pages) ============ -->
   <footer class="site-footer">
-    <div class="container">
+    <div class="wrap">
       <p>&copy; 2026 Teuku Dakari</p>
       <ul>
         <li><a href="mailto:teukuomardakari@gmail.com">Email</a></li>
@@ -178,6 +286,5 @@
     </div>
   </footer>
   <!-- ============ /SHARED FOOTER ============ -->
-  <script src="../js/reveal.js" defer></script>
 </body>
 </html>

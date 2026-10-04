@@ -1,0 +1,815 @@
+/* ==========================================================================
+   FitCheck case study: "Lookbook"
+   A fashion zine spread inside the poster world. Loads after poster.css.
+   ========================================================================== */
+
+:root {
+  --fc-blue: #2A4FFF;   /* FitCheck accent blue, sampled from the app */
+  --fc-navy: #0B1330;   /* FitCheck ink/navy */
+  --fc-red: #D92D20;    /* destructive red */
+  --yellow: #E8B62C;    /* collage yellow */
+  --label: #FBF8F2;     /* satin care-label white */
+  --font-hand: "Kalam", "Bradley Hand", cursive;
+}
+
+.lb-text {
+  max-width: 36em;
+  font-size: 17px;
+}
+
+.lb-text p + p,
+.lb-text p + ul,
+.lb-text ul + p {
+  margin-top: var(--s2);
+}
+
+.lb-text ul {
+  padding-left: var(--s3);
+}
+
+.lb-text li + li {
+  margin-top: var(--s1);
+}
+
+/* Hero: a lookbook spread
+   ========================================================================== */
+
+.lb-hero {
+  overflow-x: clip;
+}
+
+.lb-hero .wrap {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--s4);
+  align-items: center;
+  padding-top: var(--s8);
+  padding-bottom: var(--s12);
+}
+
+.collage {
+  grid-column: 1 / span 7;
+  position: relative;
+  aspect-ratio: 1 / 1.02;
+}
+
+.collage > * {
+  position: absolute;
+}
+
+.collage__block {
+  filter: url(#rough);
+}
+
+.collage__block--yellow {
+  left: 9%;
+  top: 0;
+  width: 60%;
+  height: 72%;
+  background: var(--yellow);
+}
+
+.collage__block--red {
+  right: 0;
+  top: 46%;
+  width: 36%;
+  height: 34%;
+  background: var(--vermilion);
+}
+
+.collage__block--blue {
+  left: 9%;
+  bottom: 2%;
+  width: 18%;
+  aspect-ratio: 1;
+  background: var(--fc-blue);
+}
+
+.collage__name {
+  left: -1%;
+  top: 4%;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 62%;
+  font-size: clamp(64px, 9vw, 128px);
+  line-height: 0.8;
+  color: var(--ink);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  user-select: none;
+  z-index: 3;
+}
+
+.phone {
+  width: 31%;
+  border: 1px solid var(--ink);
+  border-radius: 7%/3.2%;
+  box-shadow: 0 18px 32px -14px rgba(26, 23, 20, 0.45);
+}
+
+.phone--1 { left: 17%; top: 10%; rotate: -5deg; z-index: 1; }
+.phone--2 { left: 40%; top: 18%; rotate: 2deg; z-index: 2; }
+.phone--3 { left: 66%; top: 3%; rotate: 6deg; z-index: 1; }
+
+.barcode {
+  right: 1%;
+  top: 2%;
+  width: 9%;
+  height: 34%;
+  background: repeating-linear-gradient(to bottom,
+    var(--ink) 0 2px, transparent 2px 4px,
+    var(--ink) 4px 5px, transparent 5px 8px,
+    var(--ink) 8px 11px, transparent 11px 13px);
+  z-index: 0;
+}
+
+.collage__code {
+  right: 1%;
+  top: 38%;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+
+/* The hang tag holds the title and details */
+.hangtag {
+  grid-column: 9 / span 4;
+  position: relative;
+  padding: var(--s8) var(--s4) var(--s4);
+  background: var(--label);
+  border: 1.5px solid var(--ink);
+  clip-path: polygon(14% 0, 86% 0, 100% 8%, 100% 100%, 0 100%, 0 8%);
+  transform-origin: 50% 0;
+}
+
+.hangtag::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  translate: -50% 0;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  background: var(--paper);
+}
+
+.hangtag h1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 100%;
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.hangtag__summary {
+  margin-top: var(--s2);
+  color: var(--ink-soft);
+}
+
+.hangtag dl {
+  margin: var(--s3) 0 0;
+  border-top: 1px solid var(--ink);
+}
+
+.hangtag dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s2);
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+  font-size: 14px;
+}
+
+.hangtag dt {
+  color: var(--ink-soft);
+}
+
+.hangtag dd {
+  margin: 0;
+  font-weight: 600;
+  text-align: right;
+}
+
+.hangtag__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  margin-top: var(--s4);
+}
+
+.btn {
+  display: block;
+  padding: 12px var(--s3);
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 200ms ease;
+}
+
+.btn:hover {
+  background: var(--fc-blue);
+  color: #fff;
+}
+
+.hangtag__actions a:not(.btn) {
+  font-size: 15px;
+  text-align: center;
+}
+
+/* "First Prize" price-tag sticker */
+.sticker {
+  position: absolute;
+  top: -18px;
+  right: -22px;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 112px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--vermilion);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 75%;
+  font-size: 20px;
+  line-height: 0.95;
+  text-align: center;
+  rotate: 12deg;
+  filter: url(#rough);
+}
+
+.hangtag-wrap {
+  grid-column: 8 / span 5;
+  position: relative;
+  padding-right: var(--s3);
+}
+
+.hangtag-wrap .hangtag {
+  grid-column: auto;
+}
+
+/* Hero assembles like a collage being pasted down */
+@media (prefers-reduced-motion: no-preference) {
+  .collage__block { animation: paste-block 800ms var(--ease-out) both; }
+  .collage__block--yellow { animation-delay: 80ms; }
+  .collage__block--red { animation-delay: 200ms; }
+  .collage__block--blue { animation-delay: 300ms; }
+  .collage__name { animation: print-name 900ms var(--ease-out) 250ms both; }
+  .phone { animation: drop-phone 900ms var(--ease-out) both; }
+  .phone--1 { animation-delay: 420ms; }
+  .phone--2 { animation-delay: 520ms; }
+  .phone--3 { animation-delay: 620ms; }
+  .hangtag { animation: swing-tag 1200ms var(--ease-out) 500ms both; }
+  .sticker { animation: stamp 500ms var(--ease-out) 1300ms both; }
+}
+
+@keyframes paste-block {
+  from { opacity: 0; scale: 0.92; }
+}
+
+@keyframes drop-phone {
+  from { opacity: 0; translate: 0 -40px; }
+}
+
+@keyframes swing-tag {
+  0% { opacity: 0; transform: rotate(-9deg); }
+  45% { opacity: 1; transform: rotate(4deg); }
+  75% { transform: rotate(-1.5deg); }
+  100% { transform: rotate(0); }
+}
+
+@keyframes stamp {
+  from { opacity: 0; scale: 1.6; }
+}
+
+/* Section labels: woven clothing labels
+   ========================================================================== */
+
+.lb-section {
+  padding: var(--s12) 0;
+}
+
+.woven {
+  display: inline-block;
+  margin-bottom: var(--s5);
+  padding: 12px 22px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 100%;
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  outline: 1px dashed rgba(238, 231, 218, 0.7);
+  outline-offset: -6px;
+  rotate: -1deg;
+}
+
+.step-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: var(--s3);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.step-label__no {
+  display: grid;
+  place-items: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 6px;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.lb-step {
+  margin-top: var(--s12);
+}
+
+/* Problem: an editorial pull quote */
+.split {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--s4);
+  align-items: start;
+}
+
+.split > .lb-text {
+  grid-column: 1 / span 6;
+}
+
+.pullquote {
+  grid-column: 8 / span 5;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 75%;
+  font-size: clamp(40px, 4.6vw, 64px);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+
+.pullquote em {
+  font-style: normal;
+  background: linear-gradient(transparent 62%, var(--yellow) 62% 92%, transparent 92%);
+}
+
+/* Research: two opposite personas as model cards */
+.personas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s3);
+  max-width: 760px;
+  margin-top: var(--s5);
+  padding: 0;
+  list-style: none;
+}
+
+.persona {
+  position: relative;
+  padding: var(--s4);
+  border: 1.5px solid var(--ink);
+  background: var(--paper-deep);
+  overflow: hidden;
+}
+
+.persona::after {
+  content: "";
+  position: absolute;
+  right: -30px;
+  top: -30px;
+  width: 120px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--yellow);
+  filter: url(#rough);
+}
+
+.persona--sam::after {
+  background: var(--vermilion);
+}
+
+.persona h4 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 75%;
+  font-size: 56px;
+  line-height: 0.9;
+}
+
+.persona p {
+  position: relative;
+  z-index: 1;
+  margin-top: var(--s2);
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+
+/* Design system: the care label */
+.care {
+  display: grid;
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  gap: var(--s8);
+  align-items: start;
+}
+
+.care-label {
+  position: relative;
+  padding: var(--s6) var(--s4) var(--s4);
+  background: var(--label);
+  color: var(--fc-navy);
+  border-radius: 0 0 22px 22px;
+  outline: 1px dashed rgba(11, 19, 48, 0.4);
+  outline-offset: -8px;
+  box-shadow: 0 14px 30px -18px rgba(26, 23, 20, 0.5);
+  font-size: 13px;
+}
+
+/* Folded seam at the top of the label */
+.care-label::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 22px;
+  background: linear-gradient(#E9E4DA, var(--label));
+  border-bottom: 1px solid rgba(11, 19, 48, 0.15);
+}
+
+.care-label__brand {
+  font-family: "Manrope", var(--font-body);
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.care-label__row {
+  padding: var(--s2) 0;
+  border-top: 1px solid rgba(11, 19, 48, 0.15);
+}
+
+.care-label__row:first-of-type {
+  margin-top: var(--s2);
+}
+
+.care-label__heading {
+  margin-bottom: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.swatches {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.swatches li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.25;
+}
+
+.swatches span[aria-hidden] {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(11, 19, 48, 0.2);
+}
+
+.care-label__type {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.care-label__aa {
+  font-family: "Manrope", var(--font-body);
+  font-weight: 800;
+  font-size: 44px;
+  line-height: 1;
+}
+
+.tiers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tiers span {
+  padding: 2px 8px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+}
+
+.tiers i {
+  width: 10px;
+  height: 1px;
+  background: currentColor;
+}
+
+.care-label__foot {
+  margin-top: var(--s2);
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+/* Wardrobe: design decisions as product cards with hand-inked notes */
+.decisions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s4);
+  margin-top: var(--s6);
+  padding: 0;
+  list-style: none;
+}
+
+.decision__shot {
+  position: relative;
+  margin-bottom: var(--s3);
+  padding: var(--s3) var(--s3) 0;
+  background: var(--paper-deep);
+  border: 1.5px solid var(--ink);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+
+.decision__shot img {
+  width: 78%;
+  margin: 0 auto;
+  border: 1px solid var(--ink);
+  border-radius: 16px 16px 0 0;
+}
+
+.decision__shot--crop img {
+  width: 92%;
+  margin-top: var(--s4);
+  border-radius: 12px;
+}
+
+.ink-note {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.ink-note path {
+  fill: none;
+  stroke: var(--vermilion);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ink-note text {
+  font-family: var(--font-hand);
+  font-size: 22px;
+  fill: var(--vermilion-text);
+}
+
+.decision h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1.15;
+}
+
+.decision blockquote {
+  margin: var(--s2) 0 0;
+  padding-left: var(--s2);
+  border-left: 2px solid var(--yellow);
+  font-style: italic;
+  font-size: 15px;
+}
+
+.decision p {
+  margin-top: var(--s2);
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+
+/* The wardrobe rail: flick through screens like hangers */
+.rail-figure {
+  margin-top: var(--s12);
+}
+
+.rail {
+  position: relative;
+  display: flex;
+  gap: var(--s5);
+  padding: var(--s6) var(--s4) var(--s4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+
+/* The rod */
+.rail::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: max(100%, 1500px);
+  height: 6px;
+  border-radius: 3px;
+  background: var(--ink);
+}
+
+.rail__item {
+  position: relative;
+  flex: 0 0 220px;
+  scroll-snap-align: center;
+}
+
+/* Hanger hook */
+.rail__item::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -42px;
+  width: 22px;
+  height: 34px;
+  translate: -50% 0;
+  border: 2px solid var(--ink);
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+}
+
+.rail__item img {
+  border: 1px solid var(--ink);
+  border-radius: 18px;
+  transform-origin: 50% -40px;
+  transition: rotate 500ms var(--ease-out);
+}
+
+.rail__item:hover img {
+  rotate: -2.5deg;
+}
+
+.rail__item figcaption,
+.rail__caption {
+  margin-top: var(--s1);
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.rail__item span {
+  display: block;
+  margin-top: var(--s1);
+  font-size: 13px;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+/* Testing: four fitting-room tickets */
+.tickets {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--s3);
+  margin-top: var(--s5);
+  padding: 0;
+  list-style: none;
+}
+
+.ticket {
+  position: relative;
+  padding: var(--s3) var(--s3) var(--s4);
+  background: var(--label);
+  border: 1.5px solid var(--ink);
+  font-weight: 500;
+  /* Punched notches on both sides */
+  -webkit-mask: radial-gradient(circle 9px at 0 50%, transparent 98%, #000) left / 51% 100% no-repeat,
+                radial-gradient(circle 9px at 100% 50%, transparent 98%, #000) right / 51% 100% no-repeat;
+          mask: radial-gradient(circle 9px at 0 50%, transparent 98%, #000) left / 51% 100% no-repeat,
+                radial-gradient(circle 9px at 100% 50%, transparent 98%, #000) right / 51% 100% no-repeat;
+}
+
+.ticket__no {
+  display: block;
+  margin-bottom: var(--s2);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 75%;
+  font-size: 44px;
+  line-height: 0.9;
+  color: var(--fc-blue);
+}
+
+/* Outcome */
+.outcome {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--s8);
+  align-items: center;
+}
+
+.outcome .sticker {
+  position: static;
+  width: 200px;
+  font-size: 38px;
+  rotate: -8deg;
+  animation: none;
+}
+
+.lb-callout {
+  margin-top: var(--s4);
+  padding: var(--s4);
+  background: var(--yellow);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3;
+  filter: none;
+}
+
+/* Next project */
+.next {
+  display: grid;
+  grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+  gap: var(--s6);
+  align-items: center;
+  padding: var(--s12) 0;
+  border-top: 2px solid var(--ink);
+}
+
+.next__label {
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+.next__title {
+  margin-top: var(--s1);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 75%;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 0.95;
+}
+
+.next__title a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.next__title a:hover {
+  color: var(--vermilion-text);
+}
+
+/* Responsive
+   ========================================================================== */
+
+@media (max-width: 1080px) {
+  /* Single column: twelve tracks plus their gaps don't fit on small screens */
+  .lb-hero .wrap,
+  .split { grid-template-columns: minmax(0, 1fr); }
+  .collage { grid-column: 1; width: 100%; max-width: 720px; }
+  .hangtag-wrap { grid-column: 1; max-width: 520px; }
+  .split > .lb-text, .pullquote { grid-column: 1; }
+  .care { grid-template-columns: 1fr; }
+  .care-label { max-width: 360px; }
+  .decisions { grid-template-columns: 1fr 1fr; }
+  .tickets { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 640px) {
+  .lb-hero .wrap { padding-top: var(--s4); padding-bottom: var(--s8); gap: var(--s6); }
+  .hangtag-wrap { padding-right: 0; }
+  .hangtag h1 { font-size: 44px; }
+  .sticker { width: 92px; font-size: 17px; right: -8px; }
+  .lb-section { padding: var(--s8) 0; }
+  .woven { font-size: 22px; }
+  .personas, .decisions { grid-template-columns: 1fr; }
+  .tickets { grid-template-columns: 1fr; }
+  .outcome { grid-template-columns: 1fr; gap: var(--s4); }
+  .outcome .sticker { width: 150px; font-size: 28px; }
+  .next { grid-template-columns: 1fr; }
+  .rail__item { flex-basis: 180px; }
+}
