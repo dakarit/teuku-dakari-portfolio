@@ -1,0 +1,556 @@
+/* ==========================================================================
+   City of Oakland case study: "Public Notice"
+   A 1930s civic print. The decoration comes from the project itself:
+   our accessible chart swapped color for texture, so this page does too.
+   Includes a working high contrast mode. Loads after poster.css.
+   ========================================================================== */
+
+:root {
+  --oak: #1B7A4A;        /* the tool's green, sampled from its top bar */
+  --oak-text: #1B7A4A;   /* 5.3:1 on paper */
+  --notice: #F7F3EA;
+
+  /* Patterns from the accessible chart */
+  --pat-diag: repeating-linear-gradient(45deg, var(--oak) 0 3px, transparent 3px 10px);
+  --pat-stripe: repeating-linear-gradient(0deg, var(--oak) 0 3px, transparent 3px 10px);
+  --pat-dots: radial-gradient(var(--oak) 1.8px, transparent 2.1px) 0 0 / 10px 10px;
+  --pat-grid: linear-gradient(var(--oak) 1.5px, transparent 1.5px) 0 0 / 12px 12px,
+              linear-gradient(90deg, var(--oak) 1.5px, transparent 1.5px) 0 0 / 12px 12px;
+}
+
+/* High contrast mode: the whole page, like the tool's own toggle
+   ========================================================================== */
+
+html.hc {
+  --paper: #FFFFFF;
+  --paper-deep: #FFFFFF;
+  --notice: #FFFFFF;
+  --ink: #000000;
+  --ink-soft: #000000;
+  --rule: #000000;
+  --oak: #000000;
+  --oak-text: #000000;
+  --vermilion-text: #000000;
+}
+
+html.hc body::after {
+  display: none;
+}
+
+html.hc a {
+  text-decoration-thickness: 2px;
+}
+
+html.hc .oak-card,
+html.hc .oak-figure img,
+html.hc .oak-statement {
+  border-width: 2px;
+}
+
+.only-hc {
+  display: none !important;
+}
+
+html.hc .only-hc {
+  display: block !important;
+}
+
+html.hc .only-default {
+  display: none !important;
+}
+
+/* The toggle */
+.hc-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: var(--s4);
+  padding: 8px 16px 8px 8px;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  background: var(--notice);
+  color: var(--ink);
+  font: 600 15px/1.2 var(--font-body);
+  cursor: pointer;
+}
+
+.hc-toggle__track {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--rule);
+  transition: background-color 200ms ease;
+}
+
+.hc-toggle__track::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--ink);
+  transition: translate 200ms var(--ease-out);
+}
+
+.hc-toggle[aria-pressed="true"] .hc-toggle__track {
+  background: var(--ink);
+}
+
+.hc-toggle[aria-pressed="true"] .hc-toggle__track::after {
+  translate: 20px 0;
+}
+
+.hc-toggle__hint {
+  margin-top: var(--s1);
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+/* Text
+   ========================================================================== */
+
+.oak-text {
+  max-width: 36em;
+  font-size: 17px;
+}
+
+.oak-text p + p,
+.oak-text p + ul,
+.oak-text ul + p {
+  margin-top: var(--s2);
+}
+
+.oak-text ul {
+  padding-left: var(--s3);
+}
+
+.oak-text li + li {
+  margin-top: var(--s1);
+}
+
+/* Hero: a civic notice
+   ========================================================================== */
+
+.oak-hero {
+  overflow-x: clip;
+}
+
+.oak-hero .wrap {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas:
+    "codes art"
+    "codes info";
+  column-gap: var(--s6);
+  row-gap: var(--s6);
+  padding-top: var(--s8);
+  padding-bottom: var(--s12);
+}
+
+/* The WCAG criteria our fixes addressed, set as type */
+.codes {
+  grid-area: codes;
+  display: grid;
+  align-content: start;
+  gap: 4px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 62%;
+  font-size: clamp(64px, 8.4vw, 124px);
+  line-height: 0.86;
+  letter-spacing: -0.01em;
+  user-select: none;
+}
+
+.codes span {
+  color: var(--ink);
+}
+
+.codes span:nth-child(2),
+.codes span:nth-child(4) {
+  color: transparent;
+  -webkit-background-clip: text;
+          background-clip: text;
+}
+
+.codes span:nth-child(2) { background: var(--pat-diag); -webkit-background-clip: text; background-clip: text; }
+.codes span:nth-child(4) { background: var(--pat-dots); -webkit-background-clip: text; background-clip: text; }
+
+.codes small {
+  margin-top: var(--s2);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-stretch: 100%;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  letter-spacing: 0;
+}
+
+.oak-art {
+  grid-area: art;
+  position: relative;
+  padding: 6% 0 8% 8%;
+}
+
+.oak-art__bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 26%;
+  background: var(--pat-stripe), var(--notice);
+  border: 1.5px solid var(--oak);
+}
+
+.oak-art__bar::after {
+  content: "";
+  position: absolute;
+  inset: 18% -40% auto auto;
+  width: 34%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--oak);
+  filter: url(#rough);
+}
+
+.oak-art img {
+  position: relative;
+  width: 100%;
+  border: 1.5px solid var(--ink);
+  box-shadow: 0 18px 34px -20px rgba(26, 23, 20, 0.55);
+}
+
+.oak-art__login {
+  position: absolute !important;
+  right: -3%;
+  bottom: 0;
+  width: 38% !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .codes span { animation: print-name 900ms var(--ease-out) both; }
+  .codes span:nth-child(1) { animation-delay: 100ms; }
+  .codes span:nth-child(2) { animation-delay: 200ms; }
+  .codes span:nth-child(3) { animation-delay: 300ms; }
+  .codes span:nth-child(4) { animation-delay: 400ms; }
+  .oak-art__bar { animation: print-fade 700ms var(--ease-out) 150ms both; }
+  .oak-art > img { animation: print-photo 900ms var(--ease-out) 450ms both; }
+  .oak-info { animation: print-fade 700ms var(--ease-out) 800ms both; }
+}
+
+.oak-info {
+  grid-area: info;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: var(--s6);
+  align-items: start;
+}
+
+.oak-info h1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 100%;
+  font-size: clamp(34px, 3.6vw, 48px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.oak-info__summary {
+  margin-top: var(--s2);
+  color: var(--ink-soft);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.oak-meta {
+  margin: 0;
+  border-top: 2px solid var(--ink);
+}
+
+.oak-meta div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s2);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 14px;
+}
+
+.oak-meta dt { color: var(--ink-soft); }
+.oak-meta dd { margin: 0; font-weight: 600; text-align: right; }
+
+/* Sections: each opens with its own pattern band
+   ========================================================================== */
+
+.oak-section {
+  padding: var(--s12) 0;
+}
+
+.band {
+  height: 22px;
+  margin-bottom: var(--s4);
+  border-block: 1.5px solid var(--oak);
+}
+
+.band--diag { background: var(--pat-diag); }
+.band--dots { background: var(--pat-dots); }
+.band--stripe { background: var(--pat-stripe); }
+.band--grid { background: var(--pat-grid); }
+
+.oak-h2 {
+  margin-bottom: var(--s5);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 75%;
+  font-size: clamp(44px, 5vw, 64px);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+
+.oak-h3 {
+  margin-bottom: var(--s3);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 1.15;
+}
+
+.oak-step {
+  margin-top: var(--s12);
+}
+
+.oak-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: var(--s8);
+  align-items: start;
+}
+
+/* Cards in the right column */
+.oak-card {
+  padding: var(--s4);
+  border: 1.5px solid var(--ink);
+  background: var(--notice);
+}
+
+.oak-card__title {
+  margin-bottom: var(--s3);
+  padding-bottom: var(--s2);
+  border-bottom: 2px solid var(--ink);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 75%;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.oak-card ul {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.oak-card li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  line-height: 1.35;
+}
+
+.oak-card li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  translate: 0 2px;
+  border: 1.5px solid var(--oak);
+  background: var(--pat-diag);
+}
+
+.oak-card li.is-muted {
+  color: var(--ink-soft);
+}
+
+.oak-card li.is-muted::before {
+  background: none;
+}
+
+.oak-card__small {
+  margin-top: var(--s3);
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.oak-statement {
+  padding: var(--s5);
+  background: var(--oak);
+  color: #fff;
+  border: 1.5px solid var(--oak);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(26px, 2.6vw, 34px);
+  line-height: 1.15;
+}
+
+html.hc .oak-statement {
+  color: #fff;
+}
+
+/* Status list in the outcome */
+.status li::before {
+  background: var(--oak) !important;
+  border-radius: 50%;
+}
+
+.status li.is-pending::before {
+  background: var(--pat-dots) !important;
+}
+
+/* Figures */
+.oak-figure {
+  margin-top: var(--s6);
+}
+
+.oak-figure img {
+  width: 100%;
+  border: 1.5px solid var(--ink);
+  background: #fff;
+}
+
+.oak-figure figcaption {
+  max-width: 40em;
+  margin-top: var(--s2);
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s4);
+}
+
+.compare__label {
+  display: block;
+  margin-bottom: var(--s1);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* The chart wipes from inaccessible to accessible as it scrolls into view */
+.wipe {
+  position: relative;
+  max-width: 860px;
+  aspect-ratio: 1200 / 752;
+  border: 1.5px solid var(--ink);
+  background: #fff;
+}
+
+.wipe img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border: 0;
+}
+
+.wipe__after {
+  clip-path: inset(0 0 0 0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .js-wipe .wipe__after {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 1400ms var(--ease-out);
+  }
+
+  .js-wipe .wipe.is-visible .wipe__after {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.wipe-labels {
+  max-width: 860px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--s1);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Outcome callout framed by the diagonal pattern */
+.oak-callout {
+  margin-top: var(--s5);
+  padding: 14px;
+  background: var(--pat-diag);
+  border: 1.5px solid var(--oak);
+}
+
+.oak-callout p {
+  padding: var(--s4);
+  background: var(--paper);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(20px, 2.1vw, 26px);
+  line-height: 1.3;
+}
+
+/* Next project */
+.next {
+  display: grid;
+  grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+  gap: var(--s6);
+  align-items: center;
+  padding: var(--s12) 0;
+  border-top: 2px solid var(--ink);
+}
+
+.next__label { color: var(--ink-soft); font-size: 14px; }
+
+.next__title {
+  margin-top: var(--s1);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 75%;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 0.95;
+}
+
+.next__title a { color: var(--ink); text-decoration: none; }
+.next__title a:hover { color: var(--vermilion-text); }
+
+/* Responsive
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .oak-info,
+  .oak-split { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .oak-hero .wrap {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "codes" "art" "info";
+    padding-top: var(--s4);
+    row-gap: var(--s5);
+  }
+
+  .codes {
+    grid-template-columns: repeat(2, auto);
+    justify-content: start;
+    column-gap: var(--s3);
+    font-size: 19vw;
+  }
+
+  .codes small { display: none; }
+  .oak-section { padding: var(--s8) 0; }
+  .compare { grid-template-columns: 1fr; }
+  .next { grid-template-columns: minmax(0, 1fr); }
+}

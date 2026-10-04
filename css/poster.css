@@ -530,19 +530,37 @@ li {
   transform: translateY(-1.5%);
 }
 
-/* Melasma Clinic: navy square, desktop screenshot */
+/* Each poster wears its case study's art direction */
+
+/* Melasma Clinic: navy square, the full-color homepage, the logo's orange dot */
+.poster--clinic {
+  background: #F2EEE6;
+}
+
 .poster--clinic .poster__shape {
-  top: 7%;
-  right: 7%;
+  top: 8%;
+  left: 18%;
   width: 66%;
   aspect-ratio: 1;
-  background: var(--navy);
+  background: #054B84;
 }
 
 .poster--clinic .poster__img {
-  left: 20%;
-  bottom: 17%;
-  width: 74%;
+  right: 7%;
+  top: 30%;
+  width: 72%;
+  box-shadow: 0 14px 26px -14px rgba(26, 23, 20, 0.5);
+}
+
+.poster__dot {
+  position: absolute;
+  right: 4%;
+  top: 60%;
+  width: 13%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #F26822;
+  filter: url(#rough);
 }
 
 .poster--clinic .poster__title {
@@ -556,19 +574,57 @@ li {
   text-align: right;
 }
 
-/* City of Oakland: green bar, dashboard screenshot */
+/* City of Oakland: a civic notice built from the accessible chart's patterns */
+.poster--oakland {
+  --oak: #1B7A4A;
+  background: #F7F3EA;
+}
+
 .poster--oakland .poster__shape {
   top: 0;
   bottom: 0;
-  left: 54%;
-  width: 24%;
-  background: var(--green);
+  left: 8%;
+  width: 22%;
+  background: repeating-linear-gradient(0deg, var(--oak) 0 3px, transparent 3px 10px);
+  border-inline: 1.5px solid var(--oak);
+  filter: none;
+}
+
+.poster__codes {
+  position: absolute;
+  left: 36%;
+  top: 6%;
+  display: grid;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 62%;
+  font-size: 13cqw;
+  line-height: 0.86;
+  color: var(--ink);
+}
+
+.poster__codes span:nth-child(2) {
+  color: transparent;
+  background: repeating-linear-gradient(45deg, var(--oak) 0 2px, transparent 2px 6px);
+  -webkit-background-clip: text;
+          background-clip: text;
 }
 
 .poster--oakland .poster__img {
-  left: 7%;
-  top: 34%;
-  width: 70%;
+  left: 14%;
+  top: 46%;
+  width: 80%;
+  box-shadow: 0 14px 26px -14px rgba(26, 23, 20, 0.5);
+}
+
+.poster__band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 6%;
+  background: repeating-linear-gradient(45deg, var(--oak) 0 3px, transparent 3px 9px);
+  border-top: 1.5px solid var(--oak);
 }
 
 .poster--oakland .poster__title {
@@ -578,33 +634,80 @@ li {
 }
 
 .poster--oakland .poster__meta {
-  left: 7%;
-  top: 6%;
+  left: 36%;
+  bottom: 9%;
 }
 
-/* FitCheck: vermilion circle, two phone screens */
+/* FitCheck: a lookbook collage */
+.poster--fitcheck {
+  background: #EFE8DA;
+}
+
 .poster--fitcheck .poster__shape {
-  top: 9%;
-  left: 12%;
-  width: 76%;
-  aspect-ratio: 1;
-  border-radius: 50%;
+  top: 8%;
+  left: 16%;
+  width: 56%;
+  height: 58%;
+  background: #E8B62C;
+}
+
+.poster__block {
+  position: absolute;
+  right: 6%;
+  top: 46%;
+  width: 34%;
+  height: 26%;
   background: var(--vermilion);
+  filter: url(#rough);
+}
+
+.poster__block--blue {
+  left: 16%;
+  right: auto;
+  top: auto;
+  bottom: 10%;
+  width: 15%;
+  height: auto;
+  aspect-ratio: 1;
+  background: #2A4FFF;
 }
 
 .poster--fitcheck .poster__img {
-  width: 30%;
-  border-radius: 7cqw;
+  width: 34%;
+  border-radius: 6cqw;
+  box-shadow: 0 14px 26px -14px rgba(26, 23, 20, 0.5);
 }
 
-.poster--fitcheck .poster__img--a {
-  left: 22%;
-  top: 22%;
+.poster--fitcheck .poster__img--a { left: 22%; top: 14%; rotate: -5deg; }
+.poster--fitcheck .poster__img--b { left: 50%; top: 22%; rotate: 5deg; }
+
+.poster__barcode {
+  position: absolute;
+  right: 6%;
+  top: 6%;
+  width: 10%;
+  height: 26%;
+  background: repeating-linear-gradient(to bottom, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 5px, transparent 5px 8px);
 }
 
-.poster--fitcheck .poster__img--b {
-  left: 50%;
-  top: 31%;
+.poster__sticker {
+  position: absolute;
+  right: 8%;
+  bottom: 18%;
+  display: grid;
+  place-items: center;
+  width: 22%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 75%;
+  font-size: 4.4cqw;
+  line-height: 0.95;
+  text-align: center;
+  rotate: 12deg;
 }
 
 .poster--fitcheck .poster__title {
@@ -613,9 +716,51 @@ li {
 }
 
 .poster--fitcheck .poster__meta {
-  right: 6%;
-  bottom: 5%;
-  text-align: right;
+  display: none;
+}
+
+.project:hover .poster__img--a { transform: translateY(-2%) rotate(-1deg); }
+.project:hover .poster__img--b { transform: translateY(-2%) rotate(1deg); }
+
+/* Project info, styled after each case study */
+.project--clinic .project__info h3 {
+  display: inline-block;
+  padding-bottom: 8px;
+  border-bottom: 3px solid #F26822;
+}
+
+.project--clinic .read-more {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 8' preserveAspectRatio='none'%3E%3Cpath d='M1 5.5 C 40 2.5, 80 6.5, 120 3.8 S 180 5.2, 199 3' fill='none' stroke='%23054B84' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+.project--oakland .project__info::before {
+  content: "";
+  display: block;
+  height: 16px;
+  margin-bottom: var(--s3);
+  border-block: 1.5px solid #1B7A4A;
+  background: radial-gradient(#1B7A4A 1.6px, transparent 1.9px) 0 0 / 9px 9px;
+}
+
+.project--oakland .read-more {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 8' preserveAspectRatio='none'%3E%3Cpath d='M1 5.5 C 40 2.5, 80 6.5, 120 3.8 S 180 5.2, 199 3' fill='none' stroke='%231B7A4A' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+.project--fitcheck .project__info h3 {
+  display: inline-block;
+  padding: 10px 18px;
+  background: var(--ink);
+  outline: 1px dashed rgba(238, 231, 218, 0.7);
+  outline-offset: -6px;
+  rotate: -1deg;
+}
+
+.project--fitcheck .project__info h3 a {
+  color: var(--paper);
+}
+
+.project--fitcheck .project__info h3 a:hover {
+  color: #E8B62C;
 }
 
 /* About

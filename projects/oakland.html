@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <script>document.documentElement.classList.add("js")</script>
+  <script>
+    // Apply saved high contrast choice before first paint, and enable the scroll wipe
+    try { if (localStorage.getItem("portfolio-hc") === "true") document.documentElement.classList.add("hc"); } catch (e) {}
+    document.documentElement.classList.add("js-wipe");
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AI Document Accessibility Converter, City of Oakland - Teuku Dakari</title>
   <meta name="description" content="Case study: designing and building the UI for a tool that converts City of Oakland documents into WCAG-compliant formats.">
 
-  <meta name="theme-color" content="#F6F0E8">
+  <meta name="theme-color" content="#EEE7DA">
 
   <!-- Link previews (LinkedIn, Slack, iMessage…). -->
   <meta property="og:type" content="article">
@@ -24,15 +28,23 @@
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap">
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap">
+  <link rel="stylesheet" href="../css/poster.css">
+  <link rel="stylesheet" href="../css/oakland.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
   <!-- ============ SHARED HEADER (keep in sync across all pages) ============ -->
   <header class="site-header">
-    <div class="container">
+    <div class="wrap">
       <a class="site-name" href="../index.html">Teuku Dakari</a>
       <nav class="site-nav" aria-label="Main">
         <ul>
@@ -48,99 +60,175 @@
   <main id="main">
     <article>
 
-      <!-- Case study header -->
-      <header class="cs-header">
-        <div class="container container--text">
-          <h1>City of Oakland: AI Document Accessibility Converter</h1>
-          <p class="cs-header__summary">A website where City of Oakland staff can upload a PDF and get back an accessible version, along with a report of every fix and flagged issue.</p>
-
-          <dl class="cs-meta">
-            <div>
-              <dt>Role</dt>
-              <dd>UI designer and front-end developer, design system</dd>
-            </div>
-            <div>
-              <dt>Timeline</dt>
-              <dd>Jan–Apr 2026</dd>
-            </div>
-            <div>
-              <dt>Tools</dt>
-              <dd>Figma, HTML, CSS, Java</dd>
-            </div>
-            <div>
-              <dt>Type</dt>
-              <dd>Course project (CS 2535), team of five</dd>
-            </div>
-          </dl>
-
-          <!-- Not live yet: first iteration, AI document formatting still needs work. Uncomment if a public link or demo exists later:
-          <p class="cs-header__actions">
-            <a class="button" href="https://example.com" target="_blank" rel="noopener">View project<span class="visually-hidden"> (opens in new tab)</span></a>
+      <!-- Hero: a civic notice -->
+      <header class="oak-hero">
+        <div class="wrap">
+          <p class="codes" aria-hidden="true">
+            <span>1.1.1</span><span>1.4.1</span><span>1.4.3</span><span>1.3.1</span>
+            <small>WCAG criteria the tool<br>fixes most often</small>
           </p>
-          -->
+
+          <div class="oak-art">
+            <div class="oak-art__bar" aria-hidden="true"></div>
+            <img class="only-default" src="../images/oakland/dashboard.webp" alt="The Your Documents dashboard, listing PDFs with their date, size, and compliance status" width="1600" height="667">
+            <img class="only-hc" src="../images/oakland/dashboard-hc.webp" alt="The Your Documents dashboard in high contrast mode" width="1600" height="667">
+            <img class="oak-art__login" src="../images/oakland/login.webp" alt="The sign-in screen" width="1600" height="1000">
+          </div>
+
+          <div class="oak-info">
+            <div>
+              <h1>City of Oakland: AI Document Accessibility Converter</h1>
+              <p class="oak-info__summary">A website where City of Oakland staff can upload a PDF and get back an accessible version, along with a report of every fix and flagged issue.</p>
+              <button class="hc-toggle" type="button" aria-pressed="false" hidden>
+                <span class="hc-toggle__track" aria-hidden="true"></span>
+                High contrast
+              </button>
+              <p class="hc-toggle__hint" hidden>This page has the same high contrast mode as the tool. Try it.</p>
+            </div>
+            <dl class="oak-meta">
+              <div><dt>Role</dt><dd>UI designer and front-end developer, design system</dd></div>
+              <div><dt>Timeline</dt><dd>Jan–Apr 2026</dd></div>
+              <div><dt>Tools</dt><dd>Figma, HTML, CSS, Java</dd></div>
+              <div><dt>Type</dt><dd>Course project (CS 2535), team of five</dd></div>
+            </dl>
+          </div>
         </div>
       </header>
 
-      <!-- Hero image (16:9) -->
-      <div class="cs-hero">
-        <img src="../images/oakland/hero.jpg" alt="The Your Documents dashboard, listing uploaded PDFs with their date, size, and compliance status" width="2400" height="1350">
-      </div>
+      <div class="wrap">
 
-      <div class="container container--text">
-
-        <section class="cs-section reveal" aria-labelledby="problem">
-          <h2 id="problem">The Problem</h2>
-          <p>Under the Americans with Disabilities Act (ADA), the City of Oakland is required to make the documents it produces follow the Web Content Accessibility Guidelines (WCAG). Up until now, they had been doing this manually, which takes a lot of time and energy and leaves room for human error, especially with a backlog of over 40,000 documents.</p>
-          <p>While looking into this, we found that the existing accessibility tools were all commercial products, and none of them followed WCAG to the government’s standards. Without a better option, a large group of people with disabilities can’t access documents they need in their daily lives.</p>
-          <p>Our goal was to create a free, easy-to-use website where staff can upload a document and have AI fix what it can, while flagging anything it can’t fix on its own, so that they can make sure the final document is accessible.</p>
+        <section class="oak-section" aria-labelledby="problem">
+          <div class="band band--diag" aria-hidden="true"></div>
+          <h2 class="oak-h2" id="problem">The Problem</h2>
+          <div class="oak-split">
+            <div class="oak-text">
+              <p>Under the Americans with Disabilities Act (ADA), the City of Oakland is required to make the documents it produces follow the Web Content Accessibility Guidelines (WCAG). Up until now, they had been doing this manually, which takes a lot of time and energy and leaves room for human error, especially with a backlog of over 40,000 documents.</p>
+              <p>While looking into this, we found that the existing accessibility tools were all commercial products, and none of them followed WCAG to the government’s standards. Without a better option, a large group of people with disabilities can’t access documents they need in their daily lives.</p>
+              <p>Our goal was to create a free, easy-to-use website where staff can upload a document and have AI fix what it can, while flagging anything it can’t fix on its own, so that they can make sure the final document is accessible.</p>
+            </div>
+            <p class="oak-statement" aria-hidden="true">Over 40,000 documents, all being made accessible by hand.</p>
+          </div>
         </section>
 
-        <section class="cs-section reveal" aria-labelledby="context">
-          <h2 id="context">Context &amp; Constraints</h2>
-          <p>This was a course project for CS 2535 at Northeastern, with the City of Oakland as our client. Anh Nguyen was our principal investigator, and Professor Miguel Fuentes-Cabrera was our mentor. I worked alongside Anthony Bazhenov, Sun Choi, Audrey Tung, and Dani Luo, where I created the website’s design system, designed and implemented most of its screens in HTML and CSS, and helped with minor pieces of the backend logic.</p>
-          <ul>
-            <li>We aimed for WCAG level AA, as the stricter AAA guidelines mostly don’t apply to the text documents we were working with.</li>
-            <li>The city couldn’t provide pairs of inaccessible and fixed documents for us to train on, and none existed publicly, so the team turned to AI to generate synthetic training data.</li>
-            <li>With only one semester, we narrowed our focus to PDFs and the most common accessibility issues.</li>
-            <li>The website itself also needed to be accessible and usable from any device.</li>
-          </ul>
+        <section class="oak-section" aria-labelledby="context">
+          <div class="band band--dots" aria-hidden="true"></div>
+          <h2 class="oak-h2" id="context">Context &amp; Constraints</h2>
+          <div class="oak-split">
+            <div class="oak-text">
+              <p>This was a course project for CS 2535 at Northeastern, with the City of Oakland as our client. Anh Nguyen was our principal investigator, and Professor Miguel Fuentes-Cabrera was our mentor. I worked alongside Anthony Bazhenov, Sun Choi, Audrey Tung, and Dani Luo, where I created the website’s design system, designed and implemented most of its screens in HTML and CSS, and helped with minor pieces of the backend logic.</p>
+              <ul>
+              <li>We aimed for WCAG level AA, as the stricter AAA guidelines mostly don’t apply to the text documents we were working with.</li>
+              <li>The city couldn’t provide pairs of inaccessible and fixed documents for us to train on, and none existed publicly, so the team turned to AI to generate synthetic training data.</li>
+              <li>With only one semester, we narrowed our focus to PDFs and the most common accessibility issues.</li>
+              <li>The website itself also needed to be accessible and usable from any device.</li>
+              </ul>
+            </div>
+            <aside class="oak-card" aria-label="Project team">
+              <p class="oak-card__title">A team of five</p>
+              <ul>
+                <li>Teuku Dakari, UI design and front end</li>
+                <li>Anthony Bazhenov</li>
+                <li>Sun Choi</li>
+                <li>Audrey Tung</li>
+                <li>Dani Luo</li>
+              </ul>
+              <p class="oak-card__small">Principal investigator: Anh Nguyen. Mentor: Professor Miguel Fuentes-Cabrera.</p>
+            </aside>
+          </div>
         </section>
 
-        <section class="cs-section reveal" aria-labelledby="process">
-          <h2 id="process">Process</h2>
-          <p>The team split the work between the AI pipeline and the website, with my focus being the website’s interface.</p>
+        <section class="oak-section" aria-labelledby="process">
+          <div class="band band--stripe" aria-hidden="true"></div>
+          <h2 class="oak-h2" id="process">Process</h2>
+          <div class="oak-text"><p>The team split the work between the AI pipeline and the website, with my focus being the website’s interface.</p></div>
 
-          <div class="cs-subsection">
-            <h3>1. Designing the interface</h3>
-            <p>I built the website’s design system and used it to design every screen except the document viewer, including sign-in and registration, the dashboard where staff upload, list, and delete documents, settings, and password reset. I then implemented my screens in HTML and CSS. The document viewer, which shows the converted document next to a sidebar report of what changed and what still needs a person’s review, was designed and built by a teammate.</p>
-            <p>We wanted the website to feel familiar to the City of Oakland’s employees, which is why the design system closely follows the city’s main website, keeping the same colors and a similar style of clean, readable sans-serif fonts. We also wanted it to be as simple as possible to see which documents you have and whether they’ve been fully converted or still need manual fixes, so each document’s name and compliance status are the first things you see on the dashboard. Since accessibility was such an important part of this project, our website had to be accessible too, which is why the high contrast toggle sits in the top bar of every page instead of being buried in a settings menu. Given more time, this would have grown into a full accessibility menu so that anyone could use the website, regardless of the accommodations they need.</p>
-            <figure class="cs-figure">
-              <img src="../images/oakland/process-contrast.jpg" alt="The dashboard side by side in default mode and in high contrast mode, where controls gain outlines and borders" width="1440" height="466" loading="lazy">
+          <div class="oak-step">
+            <h3 class="oak-h3">1. Designing the interface</h3>
+            <div class="oak-split">
+              <div class="oak-text">
+                <p>I built the website’s design system and used it to design every screen except the document viewer, including sign-in and registration, the dashboard where staff upload, list, and delete documents, settings, and password reset. I then implemented my screens in HTML and CSS. The document viewer, which shows the converted document next to a sidebar report of what changed and what still needs a person’s review, was designed and built by a teammate.</p>
+                <p>We wanted the website to feel familiar to the City of Oakland’s employees, which is why the design system closely follows the city’s main website, keeping the same colors and a similar style of clean, readable sans-serif fonts. We also wanted it to be as simple as possible to see which documents you have and whether they’ve been fully converted or still need manual fixes, so each document’s name and compliance status are the first things you see on the dashboard. Since accessibility was such an important part of this project, our website had to be accessible too, which is why the high contrast toggle sits in the top bar of every page instead of being buried in a settings menu. Given more time, this would have grown into a full accessibility menu so that anyone could use the website, regardless of the accommodations they need.</p>
+              </div>
+              <aside class="oak-card" aria-label="Screens I designed">
+                <p class="oak-card__title">Screens I designed</p>
+                <ul>
+                  <li>Sign-in and registration</li>
+                  <li>Document dashboard</li>
+                  <li>Settings, including accessibility</li>
+                  <li>Password reset</li>
+                  <li class="is-muted">Document viewer, by a teammate</li>
+                </ul>
+              </aside>
+            </div>
+            <figure class="oak-figure">
+              <div class="compare">
+                <div>
+                  <span class="compare__label">Default</span>
+                  <img src="../images/oakland/dashboard.webp" alt="The dashboard in default mode" width="1600" height="667" loading="lazy">
+                </div>
+                <div>
+                  <span class="compare__label">High contrast</span>
+                  <img src="../images/oakland/dashboard-hc.webp" alt="The dashboard in high contrast mode, where controls gain outlines and borders" width="1600" height="667" loading="lazy">
+                </div>
+              </div>
               <figcaption>The dashboard in default and high contrast mode. Staff can switch between the two from the top bar or in settings.</figcaption>
             </figure>
           </div>
 
-          <div class="cs-subsection">
-            <h3>2. How the conversion works</h3>
-            <p>Behind the interface, the team fine-tuned two OpenAI models. The first model reads an inaccessible document and creates a remediation plan, listing each issue, how severe it is, which guideline it breaks, and how to fix it. The second model then takes in both the document and the plan to produce the accessible version. Some common fixes include adding alt text to images (WCAG 1.1.1), making sure information isn’t conveyed by color alone (1.4.1), increasing text contrast (1.4.3), and turning list-like content into properly tagged lists for screen readers (1.3.1).</p>
+          <div class="oak-step">
+            <h3 class="oak-h3">2. How the conversion works</h3>
+            <div class="oak-text"><p>Behind the interface, the team fine-tuned two OpenAI models. The first model reads an inaccessible document and creates a remediation plan, listing each issue, how severe it is, which guideline it breaks, and how to fix it. The second model then takes in both the document and the plan to produce the accessible version. Some common fixes include adding alt text to images (WCAG 1.1.1), making sure information isn’t conveyed by color alone (1.4.1), increasing text contrast (1.4.3), and turning list-like content into properly tagged lists for screen readers (1.3.1).</p></div>
+            <figure class="oak-figure">
+              <div class="wipe-labels" aria-hidden="true"><span>Before</span><span>After</span></div>
+              <div class="wipe">
+                <img src="../images/oakland/chart-before.webp" alt="A bar chart that relies on color alone, with low-contrast labels" width="1200" height="752" loading="lazy">
+                <img class="wipe__after" src="../images/oakland/chart-after.webp" alt="The same chart made accessible, with a unique pattern on each bar, value labels, and higher contrast" width="1200" height="727" loading="lazy">
+              </div>
+              <figcaption>An example from our team’s poster: a chart that relies on color alone, and the accessible version with patterns, value labels, and stronger contrast. The patterns on this page come from that chart.</figcaption>
+            </figure>
+            <figure class="oak-figure">
+              <img src="../images/oakland/remediation-plan.webp" alt="A remediation plan listing four WCAG failures for a bar chart, each with its criterion and level, followed by the techniques used to fix them" width="1400" height="549" loading="lazy">
+              <figcaption>A remediation plan from the first model: each failure, the guideline it breaks, and how it was fixed.</figcaption>
+            </figure>
           </div>
         </section>
 
-        <section class="cs-section reveal" aria-labelledby="outcome">
-          <h2 id="outcome">Outcome</h2>
-          <p>We delivered a first iteration of the website. The frontend is functional, allowing staff to upload a PDF and review the automated fixes and flagged issues in a report. However, the tool isn’t live yet, as the AI’s document formatting wasn’t finalized and still needs more iteration.</p>
-          <div class="cs-callout">
-            <p>We found that splitting the AI’s job into two steps, first creating a remediation plan and then the corrected document, led to more precise, guideline-aware results than fixing the documents directly.</p>
+        <section class="oak-section" aria-labelledby="outcome">
+          <div class="band band--grid" aria-hidden="true"></div>
+          <h2 class="oak-h2" id="outcome">Outcome</h2>
+          <div class="oak-split">
+            <div class="oak-text">
+              <p>We delivered a first iteration of the website. The frontend is functional, allowing staff to upload a PDF and review the automated fixes and flagged issues in a report. However, the tool isn’t live yet, as the AI’s document formatting wasn’t finalized and still needs more iteration.</p>
+              <p>Our biggest lesson was the importance of scoping realistically from the start. Narrowing our focus to PDFs mid-semester allowed us to produce something stable rather than something broad but unfinished. Personally, I enjoyed this project enough that it’s the reason I want to keep working on accessibility in tech.</p>
+            </div>
+            <aside class="oak-card status" aria-label="Project status">
+              <p class="oak-card__title">Where it stands</p>
+              <ul>
+                <li>Frontend: functional</li>
+                <li>Upload, fixes, and report: working</li>
+                <li class="is-pending">AI document formatting: needs more iteration</li>
+              </ul>
+            </aside>
           </div>
-          <p>Our biggest lesson was the importance of scoping realistically from the start. Narrowing our focus to PDFs mid-semester allowed us to produce something stable rather than something broad but unfinished. Personally, I enjoyed this project enough that it’s the reason I want to keep working on accessibility in tech.</p>
+          <div class="oak-callout"><p>We found that splitting the AI’s job into two steps, first creating a remediation plan and then the corrected document, led to more precise, guideline-aware results than fixing the documents directly.</p></div>
         </section>
 
-        <nav class="cs-footer-nav" aria-label="Case study">
-          <a href="../index.html">Back to home</a>
-          <a class="cs-next" href="nus.html">
-            <span class="cs-next__label">Next project</span>
-            <span class="cs-next__title">FitCheck</span>
-          </a>
+        <nav class="next" aria-label="Next project">
+          <a class="poster poster--fitcheck" href="nus.html" tabindex="-1" aria-hidden="true">
+              <span class="poster__shape"></span>
+              <span class="poster__block"></span>
+              <span class="poster__block poster__block--blue"></span>
+              <span class="poster__barcode"></span>
+              <img class="poster__img poster__img--a" src="../images/fitcheck/scan.webp" alt="" width="520" height="1125" loading="lazy">
+              <img class="poster__img poster__img--b" src="../images/fitcheck/wardrobe.webp" alt="" width="520" height="1125" loading="lazy">
+              <span class="poster__sticker">First<br>Prize</span>
+              <span class="poster__title">FITCHECK</span>
+            </a>
+          <div>
+            <p class="next__label">Next project</p>
+            <p class="next__title"><a href="nus.html">FitCheck</a></p>
+            <a class="read-more" href="../index.html">Back to home</a>
+          </div>
         </nav>
 
       </div>
@@ -149,7 +237,7 @@
 
   <!-- ============ SHARED FOOTER (keep in sync across all pages) ============ -->
   <footer class="site-footer">
-    <div class="container">
+    <div class="wrap">
       <p>&copy; 2026 Teuku Dakari</p>
       <ul>
         <li><a href="mailto:teukuomardakari@gmail.com">Email</a></li>
@@ -160,6 +248,33 @@
     </div>
   </footer>
   <!-- ============ /SHARED FOOTER ============ -->
-  <script src="../js/reveal.js" defer></script>
+  <script>
+    (function () {
+      // High contrast toggle: same idea as the tool's own, remembered across visits
+      var btn = document.querySelector(".hc-toggle");
+      var hint = document.querySelector(".hc-toggle__hint");
+      var root = document.documentElement;
+      if (btn) {
+        btn.hidden = false;
+        hint.hidden = false;
+        var sync = function () { btn.setAttribute("aria-pressed", String(root.classList.contains("hc"))); };
+        sync();
+        btn.addEventListener("click", function () {
+          root.classList.toggle("hc");
+          try { localStorage.setItem("portfolio-hc", String(root.classList.contains("hc"))); } catch (e) {}
+          sync();
+        });
+      }
+      // Chart wipe: reveal the accessible version when it scrolls into view
+      var wipe = document.querySelector(".wipe");
+      if (wipe && "IntersectionObserver" in window) {
+        new IntersectionObserver(function (entries, obs) {
+          entries.forEach(function (e) { if (e.isIntersecting) { wipe.classList.add("is-visible"); obs.disconnect(); } });
+        }, { threshold: 0.5 }).observe(wipe);
+      } else if (wipe) {
+        wipe.classList.add("is-visible");
+      }
+    })();
+  </script>
 </body>
 </html>
