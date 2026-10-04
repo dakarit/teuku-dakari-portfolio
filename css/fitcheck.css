@@ -9,7 +9,6 @@
   --fc-red: #D92D20;    /* destructive red */
   --yellow: #E8B62C;    /* collage yellow */
   --label: #FBF8F2;     /* satin care-label white */
-  --font-hand: "Kalam", "Bradley Hand", cursive;
 }
 
 .lb-text {
@@ -538,7 +537,7 @@
   letter-spacing: 0.08em;
 }
 
-/* Wardrobe: design decisions as product cards with hand-inked notes */
+/* Wardrobe: design decisions as product cards */
 .decisions {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -571,28 +570,6 @@
   border-radius: 12px;
 }
 
-.ink-note {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: visible;
-}
-
-.ink-note path {
-  fill: none;
-  stroke: var(--vermilion);
-  stroke-width: 3;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.ink-note text {
-  font-family: var(--font-hand);
-  font-size: 22px;
-  fill: var(--vermilion-text);
-}
 
 .decision h4 {
   margin: 0;
